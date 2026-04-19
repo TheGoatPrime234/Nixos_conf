@@ -37,6 +37,7 @@
         ./spicetify.nix
 	./zen-browser.nix
 	./nixvim.nix
+	./zsh.nix
       ];
     };
   };
