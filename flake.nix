@@ -7,6 +7,8 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixvim.url = "github:nix-community/nixvim/nixos-25.11";
+    alejandra.url = "github:kamadorueda/alejandra/4.0.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -37,7 +39,8 @@
         ./spicetify.nix
 	./zen-browser.nix
 	./nixvim.nix
-	./zsh.nix
+#	./zsh.nix
+	./alejandra.nix
       ];
     };
   };
