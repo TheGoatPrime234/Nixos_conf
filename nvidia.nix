@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   hardware = {
     graphics = {
       enable = true;
@@ -18,10 +20,10 @@
       };
       prime = {
         sync = {
-	  enable = true;
-	};
-	intelBusId = "PCI:0:2:0";
-	nvidiaBusId = "PCI:1:0:0";
+          enable = true;
+        };
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
       };
     };
   };
@@ -36,5 +38,5 @@
       GDM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     };
-  };  
-}  
+  };
+}

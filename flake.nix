@@ -9,38 +9,46 @@
     nixvim.url = "github:nix-community/nixvim/nixos-25.11";
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
+    p10k-src = {
+      url = "github:romkatv/powerlevel10k";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
       modules = [
-	# Inputs
+        # Inputs
         inputs.spicetify-nix.nixosModules.default
-	inputs.nixvim.nixosModules.default
+        inputs.nixvim.nixosModules.default
 
-	# Wichtig
+        # Wichtig
         ./hardware-configuration.nix
 
-	# Abspaltung  
+        # Abspaltung
         ./configuration.nix
-	./nvidia.nix
-	./fonts.nix
-	./apps_main.nix
-	./unstable-packages.nix
-	./programs.nix
-	./services.nix
-	./hardware.nix
-	./boot.nix
+        ./nvidia.nix
+        ./fonts.nix
+        ./apps_main.nix
+        ./unstable-packages.nix
+        ./programs.nix
+        ./services.nix
+        ./hardware.nix
+        ./boot.nix
 
-	# Add-Ons  
-	./pixiesddm.nix
+        # Add-Ons
+        ./pixiesddm.nix
         ./spicetify.nix
-	./zen-browser.nix
-	./nixvim.nix
-#	./zsh.nix
-	./alejandra.nix
+        ./zen-browser.nix
+        ./nixvim.nix
+        ./zsh.nix
+        ./alejandra.nix
       ];
     };
   };

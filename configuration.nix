@@ -1,16 +1,18 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   security.pam.services.sddm.enableKwallet = true;
   networking.networkmanager.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   time.timeZone = "Europe/Berlin";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -27,7 +29,6 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -40,13 +41,12 @@
   users.users.cato = {
     isNormalUser = true;
     description = "Cato";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }

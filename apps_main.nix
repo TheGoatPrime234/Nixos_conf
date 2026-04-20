@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # System & Tools
     #neovim --> Nixvim
-    wget # 
+    wget #
     fastfetch # Fastfetch halt
     git # Versionierung
-    tailscale # VPN 
+    tailscale # VPN
     pavucontrol # Ton in und outputs
     efibootmgr # Änderungen der EFIs
     gparted # Partionen
@@ -19,9 +21,9 @@
     pciutils # Lib für PCI
 
     ## Files
-    yazi # TUI Fileexplorer 
+    yazi # TUI Fileexplorer
     tree
-    zip   # Zipen
+    zip # Zipen
     unzip # Zipen
     syncthing # Dateisynchronisierung
 
@@ -33,25 +35,25 @@
 
     # Hyprland Setup
     ## sddm --> pixiesddm
-    ## spicetify-cli --> spicetify 
-    hyprland               # Tiling Manager
-    hyprpaper              # Hintergrund Bild
-    hyprlock               # Lockmanager
-    hyprpicker		   # Colorpicker
-    wlogout                # Herunterfahrmenu 
-    waybar                 # Taskleiste
-    pulsemixer             # Lautstärkekontrolle (Win + G Alternative)
-    grim                   # 
-    slurp                  #
-    wl-clipboard           #
-    swaynotificationcenter # Benachrichtigunge 
-    kitty                  # Terminal
-    zsh                    # Terminal engine
-    rofi                   # Appmenu
-    cava                   # Musikvisualisierung 
-    playerctl              # Musikplayer integrationen
+    ## spicetify-cli --> spicetify
+    hyprland # Tiling Manager
+    hyprpaper # Hintergrund Bild
+    hyprlock # Lockmanager
+    hyprpicker # Colorpicker
+    wlogout # Herunterfahrmenu
+    waybar # Taskleiste
+    pulsemixer # Lautstärkekontrolle (Win + G Alternative)
+    grim #
+    slurp #
+    wl-clipboard #
+    swaynotificationcenter # Benachrichtigunge
+    kitty # Terminal
+    zsh # Terminal engine
+    rofi # Appmenu
+    cava # Musikvisualisierung
+    playerctl # Musikplayer integrationen
 
-    # Cybersec 
+    # Cybersec
     aircrack-ng
     metasploit
     nmap

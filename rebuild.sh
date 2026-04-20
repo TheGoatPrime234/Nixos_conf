@@ -4,6 +4,7 @@ set -e
 cd ~/nixos-config
 
 git add . 
+alejandra -q * 
 sudo nixos-rebuild switch --flake .#nixos -v
 
 if [ -z "$1" ]; then

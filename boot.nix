@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   boot = {
     loader = {
       efi = {
@@ -13,6 +15,6 @@
     kernelPackages = pkgs.linuxPackages_6_12;
     kernelParams = [
       "btusb.enable_autosuspend=0"
-    ];  
+    ];
   };
 }

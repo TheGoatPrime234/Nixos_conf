@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-{ 
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
@@ -13,22 +15,22 @@
     };
     keymaps = [
       {
-        mode = [ "n" "i" "v" ];
+        mode = ["n" "i" "v"];
         key = "<Up>";
         action = "<Nop>";
       }
       {
-        mode = [ "n" "i" "v" ];
+        mode = ["n" "i" "v"];
         key = "<Down>";
         action = "<Nop>";
       }
       {
-        mode = [ "n" "i" "v" ];
+        mode = ["n" "i" "v"];
         key = "<Left>";
         action = "<Nop>";
       }
       {
-        mode = [ "n" "i" "v" ];
+        mode = ["n" "i" "v"];
         key = "<Right>";
         action = "<Nop>";
       }

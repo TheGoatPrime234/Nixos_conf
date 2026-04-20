@@ -1,12 +1,14 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs = {
     hyprland = {
       enable = true;
       xwayland = {
         enable = true;
-      };	
+      };
     };
     hyprlock = {
       enable = true;
@@ -27,7 +29,7 @@
       enable = true;
       nix-direnv = {
         enable = true;
-      };	
-    };  
+      };
+    };
   };
 }

@@ -1,14 +1,16 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   hardware = {
     bluetooth = {
       enable = true;
       powerOnBoot = true;
       settings = {
         General = {
-	  FastConnectable = "true";
-	};
+          FastConnectable = "true";
+        };
       };
     };
     opengl = {
@@ -16,5 +18,4 @@
       driSupport32Bit = true;
     };
   };
-}  
-
+}
