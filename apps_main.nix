@@ -37,7 +37,7 @@
     ## sddm --> pixiesddm
     ## spicetify-cli --> spicetify
     hyprland # Tiling Manager
-    hyprpaper # Hintergrund Bild
+    #hyprpaper # Hintergrund Bild --> unstable
     hyprlock # Lockmanager
     hyprpicker # Colorpicker
     wlogout # Herunterfahrmenu
