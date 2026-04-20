@@ -11,6 +11,8 @@
     ./../modules/nixvim.nix
     ./../modules/nvidia.nix
     ./../modules/tailscale.nix
+    ./../modules/boot.nix
+    ./../modules/bluetooth.nix
   ];
 
   config = {
@@ -21,6 +23,8 @@
       nixvim.enable = true;
       nvidia.enable = true;
       tailscale.enable = true;
+      boot.enable = true;
+      bluetooth.enable = true;
     };
   };
 }
