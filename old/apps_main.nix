@@ -7,9 +7,6 @@
     # System & Tools
     #neovim --> Nixvim
     wget #
-    fastfetch # Fastfetch halt
-    git # Versionierung
-    tailscale # VPN
     pavucontrol # Ton in und outputs
     efibootmgr # Änderungen der EFIs
     gparted # Partionen
