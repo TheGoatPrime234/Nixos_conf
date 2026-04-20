@@ -49,6 +49,9 @@
         ./nixvim.nix
         ./zsh.nix
         ./alejandra.nix
+
+        # Hyprland
+        ./hyprpaper.nix
       ];
     };
   };

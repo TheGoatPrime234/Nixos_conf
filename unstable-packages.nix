@@ -9,6 +9,5 @@ in {
   environment.systemPackages = with pkgs-25-11; [
     quickshell
     element-desktop
-    hyprpaper
   ];
 }
