@@ -4,14 +4,14 @@
   lib,
   ...
 }: {
-imports = [
- ../alejandra.nix
- ../fastfetch.nix
- ../git.nix
- ../nixvim.nix
- ../nvidia.nix
- ../tailscale.nix
- ];
+  imports = [
+    ./../modules/alejandra.nix
+    ./../modules/fastfetch.nix
+    ./../modules/git.nix
+    ./../modules/nixvim.nix
+    ./../modules/nvidia.nix
+    ./../modules/tailscale.nix
+  ];
 
   config = {
     xanterella = {

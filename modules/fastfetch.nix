@@ -8,7 +8,7 @@
     xanterella.fastfetch.enable = lib.mkEnableOption "Aktiviert fastfetch";
   };
 
-  config = libmkIF config.xanterella.fastfetch.enable {
+  config = lib.mkIf config.xanterella.fastfetch.enable {
     environment.systemPackages = with pkgs; [
       fastfetch
     ];
