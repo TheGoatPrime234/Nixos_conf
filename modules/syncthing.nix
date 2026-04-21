@@ -16,7 +16,7 @@
       syncthing = {
         enable = true;
         user = "cato";
-        dataDir = "/home/cato";
+        dataDir = "/home/cato/Documents";
         configDir = "/home/cato/.config/syncthing";
         openDefaultPorts = true;
         overrideDevices = true;

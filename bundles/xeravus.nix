@@ -12,6 +12,8 @@
     ./modules/nixedit.nix
     ./modules/laptop.nix
     ./modules/game.nix
+    ./modules/cybersecurity.nix
+    ./modules/vault.nix
     ./../modules/ani-cli.nix
     ./../modules/bluetooth.nix
     ./../modules/boot.nix
@@ -31,6 +33,8 @@
     ./../modules/wget.nix
     ./../modules/zip.nix
     ./../modules/nixvim.nix
+    ./../modules/zen-browser.nix
+    ./../modules/yazi.nix
   ];
 
   config = {
@@ -55,6 +59,8 @@
       wget.enable = true;
       zip.enable = true;
       nixvim.enable = true;
+      zen-browser.enable = true;
+      yazi.enable = true;
     };
   };
 }
