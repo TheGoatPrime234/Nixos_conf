@@ -28,32 +28,6 @@
         inputs.spicetify-nix.nixosModules.default
         inputs.nixvim.nixosModules.default
         ./bundles/xeravus.nix
-
-        # Wichtig
-        ./hosts/xeravus/hardware-configuration.nix
-        ./hosts/xeravus/configuration.nix
-
-        # Abspaltung
-        #./configuration.nix
-        #./nvidia.nix
-        #./fonts.nix
-        #./apps_main.nix
-        #./unstable-packages.nix
-        #./programs.nix
-        #./services.nix
-        #./hardware.nix
-        #./boot.nix
-
-        # Add-Ons
-        #./pixiesddm.nix
-        #./spicetify.nix
-        #./zen-browser.nix
-        #./nixvim.nix
-        #./zsh.nix
-        #./alejandra.nix
-
-        # Hyprland
-        #./hyprpaper.nix
       ];
     };
   };
