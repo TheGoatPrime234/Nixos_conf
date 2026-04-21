@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs; [
     # System & Tools
     wget #
-    efibootmgr # Änderungen der EFIs
     gparted # Partionen
     btop
     sl # WICHTIG !!!
@@ -19,11 +18,9 @@
     tree
 
     # Daily Use
-    ## spotify --> spicetify
     vscode
     ani-cli
 
-    # Hyprland Setup
     ## spicetify-cli --> spicetify
 
     # Cybersec
