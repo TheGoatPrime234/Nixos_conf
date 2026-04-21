@@ -17,6 +17,7 @@
     ./../../modules/kitty.nix
     ./../../modules/rofi.nix
     ./../../modules/cava.nix
+    ./../../modules/quickshell.nix
   ];
 
   config = {
@@ -33,6 +34,7 @@
       kitty.enable = true;
       rofi.enable = true;
       cava.enable = true;
+      quickshell.enable = true;
     };
   };
 }
