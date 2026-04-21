@@ -26,7 +26,7 @@
       hyprpicker.enable = true;
       pulsemixer.enable = true;
       screenshots.enable = true;
-      kitty.enabel = true;
+      kitty.enable = true;
     };
   };
 }
