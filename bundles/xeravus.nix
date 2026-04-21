@@ -8,8 +8,9 @@
     ./../hosts/xeravus/configuration.nix
     ./../hosts/xeravus/hardware-configuration.nix
     ./../modules/local.nix
-    ./modules/hyprland.nix
+    ./modules/essentials.nix
     ./modules/nixedit.nix
+    ./modules/hyprland.nix
     ./modules/laptop.nix
     ./modules/game.nix
     ./modules/cybersecurity.nix
@@ -43,26 +44,17 @@
       local.enable = true;
       ani-cli.enable = true;
       bluetooth.enable = true;
-      boot.enable = true;
       btop.enable = true;
-      dbus.enable = true;
       direnv.enable = true;
-      git.enable = true;
       gnome-keyring.enable = true;
       gparted.enable = true;
-      libnotify.enable = true;
       nvidia.enable = true;
       audio.enable = true;
-      sl.enable = true;
       tailscale.enable = true;
       tree.enable = true;
       vscode.enable = true;
       wget.enable = true;
       zip.enable = true;
-      nixvim.enable = true;
-      zen-browser.enable = true;
-      yazi.enable = true;
-      zsh.enable = true;
     };
   };
 }
