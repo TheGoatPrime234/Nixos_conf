@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  spicePkgs = inputs.spicetify-nix.legacyPackges.${pkgs.systen};
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in {
   options = {
     xanterella.spicetify.enable = lib.mkEnableOption "Aktiviert spicetify";
@@ -14,13 +14,13 @@ in {
   config = lib.mkIf config.xanterella.spicetify.enable {
     programs.spicetify = {
       enable = true;
-      enableExtensions = with spicePkgs.extensions; [
+      enabledExtensions = with spicePkgs.extensions; [
         adblockify
         hidePodcasts
         shuffle
       ];
       theme = spicePkgs.themes.catppuccin;
-      colorSheme = "mocha";
+      colorScheme = "mocha";
     };
   };
 }

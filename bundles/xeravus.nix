@@ -37,6 +37,7 @@
     ./../modules/zen-browser.nix
     ./../modules/yazi.nix
     ./../modules/zsh.nix
+    ./../modules/spicetify.nix
   ];
 
   config = {
@@ -55,6 +56,7 @@
       vscode.enable = true;
       wget.enable = true;
       zip.enable = true;
+      spicetify.enable = true;
     };
   };
 }
