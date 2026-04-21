@@ -7,6 +7,7 @@
   imports = [
     ./../../modules/hyprland.nix
     ./../../modules/hyprpaper.nix
+    ./../../modules/hypridle.nix
     ./../../modules/sddm.nix
     ./../../modules/hyprlock.nix
     ./../../modules/wlogout.nix
@@ -22,6 +23,7 @@
     xanterella = {
       hyprland.enable = true;
       hyprpaper.enable = true;
+      hypridle.enable = true;
       sddm.enable = true;
       hyprlock.enable = true;
       wlogout.enable = true;

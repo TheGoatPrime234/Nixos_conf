@@ -7,29 +7,27 @@
   imports = [
     ./modules/hyprland.nix
     ./modules/nixedit.nix
-    ./../modules/fastfetch.nix
-    ./../modules/git.nix
-    ./../modules/nixvim.nix
-    ./../modules/nvidia.nix
-    ./../modules/tailscale.nix
-    ./../modules/boot.nix
+    ./modules/laptop.nix
     ./../modules/bluetooth.nix
-    ./../modules/yazi.nix
-    ./../modules/rofi.nix
+    ./../modules/boot.nix
+    ./../modules/dbus.nix
+    ./../modules/git.nix
+    ./../modules/nvidia.nix
+    ./../modules/playerctl.nix
+    ./../modules/tailscale.nix
+    ./../modules/zip.nix
   ];
 
   config = {
     xanterella = {
-      alejandra.enable = true;
-      fastfetch.enable = true;
-      git.enable = true;
-      nixvim.enable = true;
-      nvidia.enable = true;
-      tailscale.enable = true;
-      boot.enable = true;
       bluetooth.enable = true;
-      yazi.enable = true;
-      rofi.enable = true;
+      boot.enable = true;
+      dbus.enable = true;
+      git.enable = true;
+      nvidia.enable = true;
+      playerctl.enable = true;
+      tailscale.enable = true;
+      zip.enable = true;
     };
   };
 }
