@@ -11,9 +11,6 @@
         variant = "";
       };
     };
-    upower = {
-      enable = true;
-    };
     gnome = {
       gnome-keyring = {
         enable = true;

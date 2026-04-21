@@ -17,13 +17,9 @@
 
     ## Files
     tree
-    zip # Zipen
-    unzip # Zipen
-    syncthing # Dateisynchronisierung
 
     # Daily Use
     ## spotify --> spicetify
-    obsidian
     vscode
     ani-cli
 
