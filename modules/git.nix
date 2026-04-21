@@ -16,4 +16,19 @@
       git-lfs
     ];
   };
+  programs.git.config = [
+{
+  init = {
+    defaultBranch = "main";
+  };
+  url = {
+    "https://github.com/" = {
+      insteadOf = [
+        "gh:"
+        "github:"
+      ];
+    };
+];
+  };
+}
 }
