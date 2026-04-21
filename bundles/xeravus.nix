@@ -5,7 +5,8 @@
   ...
 }: {
   imports = [
-    ./../modules/alejandra.nix
+    ./modules/hyprland.nix
+    ./modules/nixedit.nix
     ./../modules/fastfetch.nix
     ./../modules/git.nix
     ./../modules/nixvim.nix
