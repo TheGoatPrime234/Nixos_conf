@@ -25,24 +25,13 @@ in {
   };
 
   config = lib.mkIf config.xanterella.sddm.enable {
-    services.displayManager.sddm = {
-      enable = true;
-      package = pkgs.kdePackages.sddm;
-      theme = "pixie";
-      wayland.enable = true;
-    };
-    environment.systemPackages = with pkgs; [
-      pixie-sddm-theme
-      kdePackages.qtdeclarative
-      kdePackages.qtsvg
-      kdePackages.qt5compat
-    ];
     services = {
       displayManager = {
         sddm = {
           enable = true;
-          theme = "pixie";
+          package = pkgs.kdePackages.sddm;
           autoNumlock = true;
+          theme = "pixie";
           wayland = {
             enable = true;
           };
@@ -50,5 +39,11 @@ in {
         defaultSession = "hyprland";
       };
     };
+    environment.systemPackages = with pkgs; [
+      pixie-sddm-theme
+      kdePackages.qtdeclarative
+      kdePackages.qtsvg
+      kdePackages.qt5compat
+    ];
   };
 }

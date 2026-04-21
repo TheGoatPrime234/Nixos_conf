@@ -14,7 +14,7 @@
     ];
     services = {
       hypridle = {
-        enabel = true;
+        enable = true;
       };
     };
   };

@@ -34,7 +34,7 @@
       };
     };
     services = {
-      xerver = {
+      xserver = {
         enable = true;
         videoDrivers = ["nvidia"];
       };

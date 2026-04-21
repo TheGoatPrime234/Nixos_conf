@@ -12,7 +12,7 @@ in {
   };
 
   config = lib.mkIf config.xanterella.quickshell.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs-25-11; [
       quickshell
     ];
   };

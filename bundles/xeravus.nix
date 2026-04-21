@@ -5,6 +5,8 @@
   ...
 }: {
   imports = [
+    ./../hosts/xeravus/configuration.nix
+    ./../hosts/xeravus/hardware-configuration.nix
     ./../modules/local.nix
     ./modules/hyprland.nix
     ./modules/nixedit.nix
@@ -28,6 +30,7 @@
     ./../modules/vscode.nix
     ./../modules/wget.nix
     ./../modules/zip.nix
+    ./../modules/nixvim.nix
   ];
 
   config = {
@@ -44,13 +47,14 @@
       gparted.enable = true;
       libnotify.enable = true;
       nvidia.enable = true;
-      playerctl.enable = true;
+      audio.enable = true;
       sl.enable = true;
       tailscale.enable = true;
       tree.enable = true;
       vscode.enable = true;
       wget.enable = true;
       zip.enable = true;
+      nixvim.enable = true;
     };
   };
 }

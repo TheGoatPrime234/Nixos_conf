@@ -12,12 +12,13 @@
     ./../../modules/hyprlock.nix
     ./../../modules/wlogout.nix
     ./../../modules/hyprpicker.nix
-    ./../../modules/pulxemixer.nix
+    ./../../modules/pulsemixer.nix
     ./../../modules/screenshots.nix
     ./../../modules/kitty.nix
     ./../../modules/rofi.nix
     ./../../modules/cava.nix
     ./../../modules/quickshell.nix
+    ./../../modules/fastfetch.nix
   ];
 
   config = {
@@ -35,6 +36,7 @@
       rofi.enable = true;
       cava.enable = true;
       quickshell.enable = true;
+      fastfetch.enable = true;
     };
   };
 }

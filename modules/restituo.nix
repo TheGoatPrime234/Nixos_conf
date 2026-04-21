@@ -4,8 +4,8 @@
   lib,
   ...
 }: let
-  cfg = config.xaterekka.restituo;
-  restitui = pkgs.writeShellScriptBin "restituo" ''
+  cfg = config.xanterella.restituo;
+  restituo = pkgs.writeShellScriptBin "restituo" ''
     set -e
     cd ~/nixos-config
 
@@ -35,7 +35,7 @@ in {
     enable = lib.mkEnableOption "Aktiviert das Rebuild Script";
   };
   config = lib.mkIf cfg.enable {
-    environment.systempackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       restituo
     ];
   };

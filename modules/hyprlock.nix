@@ -9,7 +9,7 @@
   };
 
   config = lib.mkIf config.xanterella.hyprlock.enable {
-    environment.systemPackges = with pkgs; [
+    environment.systemPackages = with pkgs; [
       hyprlock
     ];
     programs.hyprlock.enable = true;
