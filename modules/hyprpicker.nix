@@ -9,8 +9,8 @@
   };
 
   config = lib.mkIf config.xanterella.hyprpicker.enable {
-  environment.systemPackages = with pkgs; [
-  hyprpicker
-  ];
+    environment.systemPackages = with pkgs; [
+      hyprpicker
+    ];
   };
 }

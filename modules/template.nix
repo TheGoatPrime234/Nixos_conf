@@ -9,8 +9,8 @@
   };
 
   config = lib.mkIf config.xanterella.xyy.enable {
-  environment.systemPackages = with pkgs; [
-  ];
+    environment.systemPackages = with pkgs; [
+    ];
     goon.enable = true;
   };
 }

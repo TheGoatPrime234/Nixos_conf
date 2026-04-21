@@ -9,8 +9,8 @@
   };
 
   config = lib.mkIf config.xanterella.wlogout.enable {
-  environment.systemPackges = with pkgs; [
-  wlogout
-  ];
+    environment.systemPackges = with pkgs; [
+      wlogout
+    ];
   };
 }

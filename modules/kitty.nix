@@ -9,8 +9,8 @@
   };
 
   config = lib.mkIf config.xanterella.kitty.enable {
-  environment.systemPackages = with pkgs; [
-  ];
-  kitty
+    environment.systemPackages = with pkgs; [
+      kitty
+    ];
   };
 }
