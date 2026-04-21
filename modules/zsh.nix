@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   options = {
@@ -10,6 +11,7 @@
 
   config = lib.mkIf config.xanterella.zsh.enable {
     environment.systemPackages = [pkgs.zsh-powerlevel10k];
+    users.defaultUserShell = pkgs.zsh;
     programs = {
       zsh = {
         enable = true;
@@ -33,7 +35,6 @@
           gcheck = "git checkout";
         };
         interactiveShellInit = ''
-                 # Instant Prompt für schnelleren Start (aus deiner .zshrc) [cite: 36]
                  if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
                    source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
                  fi

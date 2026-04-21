@@ -35,6 +35,7 @@
     ./../modules/nixvim.nix
     ./../modules/zen-browser.nix
     ./../modules/yazi.nix
+    ./../modules/zsh.nix
   ];
 
   config = {
@@ -61,6 +62,7 @@
       nixvim.enable = true;
       zen-browser.enable = true;
       yazi.enable = true;
+      zsh.enable = true;
     };
   };
 }
