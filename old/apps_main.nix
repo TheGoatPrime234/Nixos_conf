@@ -5,7 +5,6 @@
 }: {
   environment.systemPackages = with pkgs; [
     # System & Tools
-    #neovim --> Nixvim
     wget #
     pavucontrol # Ton in und outputs
     efibootmgr # Änderungen der EFIs
@@ -31,20 +30,7 @@
     ani-cli
 
     # Hyprland Setup
-    ## sddm --> pixiesddm
     ## spicetify-cli --> spicetify
-    #hyprpaper # Hintergrund Bild --> unstable
-    hyprlock # Lockmanager
-    hyprpicker # Colorpicker
-    wlogout # Herunterfahrmenu
-    waybar # Taskleiste
-    pulsemixer # Lautstärkekontrolle (Win + G Alternative)
-    grim #
-    slurp #
-    wl-clipboard #
-    swaynotificationcenter # Benachrichtigunge
-    kitty # Terminal
-    zsh # Terminal engine
     rofi # Appmenu
     cava # Musikvisualisierung
     playerctl # Musikplayer integrationen

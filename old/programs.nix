@@ -4,9 +4,6 @@
   ...
 }: {
   programs = {
-    hyprlock = {
-      enable = true;
-    };
     firefox = {
       enable = true;
     };

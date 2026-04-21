@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   pixie-sddm-theme = pkgs.stdenv.mkDerivation {
@@ -19,18 +20,22 @@
     '';
   };
 in {
-  services.displayManager.sddm = {
-    enable = true;
-    package = pkgs.kdePackages.sddm;
-    theme = "pixie";
-    wayland.enable = true;
+  options = {
+    xanterella.sddm.enable = lib.mkEnableOption "Aktiviert sddm";
   };
 
-  environment.systemPackages = with pkgs; [
-    pixie-sddm-theme
-
-    kdePackages.qtdeclarative
-    kdePackages.qtsvg
-    kdePackages.qt5compat
-  ];
+  config = lib.mkIf config.xanterella.sddm.enable {
+    services.displayManager.sddm = {
+      enable = true;
+      package = pkgs.kdePackages.sddm;
+      theme = "pixie";
+      wayland.enable = true;
+    };
+    environment.systemPackages = with pkgs; [
+      pixie-sddm-theme
+      kdePackages.qtdeclarative
+      kdePackages.qtsvg
+      kdePackages.qt5compat
+    ];
+  };
 }
