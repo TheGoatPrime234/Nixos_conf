@@ -37,5 +37,18 @@ in {
       kdePackages.qtsvg
       kdePackages.qt5compat
     ];
+    services = {
+      displayManager = {
+        sddm = {
+          enable = true;
+          theme = "pixie";
+          autoNumlock = true;
+          wayland = {
+            enable = true;
+          };
+        };
+        defaultSession = "hyprland";
+      };
+    };
   };
 }

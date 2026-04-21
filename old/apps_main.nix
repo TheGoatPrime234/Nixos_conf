@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs; [
     # System & Tools
     wget #
-    pavucontrol # Ton in und outputs
     efibootmgr # Änderungen der EFIs
     gparted # Partionen
     btop
@@ -17,7 +16,6 @@
     pciutils # Lib für PCI
 
     ## Files
-    yazi # TUI Fileexplorer
     tree
     zip # Zipen
     unzip # Zipen
@@ -31,9 +29,6 @@
 
     # Hyprland Setup
     ## spicetify-cli --> spicetify
-    rofi # Appmenu
-    cava # Musikvisualisierung
-    playerctl # Musikplayer integrationen
 
     # Cybersec
     aircrack-ng

@@ -14,6 +14,8 @@
     ./../../modules/pulxemixer.nix
     ./../../modules/screenshots.nix
     ./../../modules/kitty.nix
+    ./../../modules/rofi.nix
+    ./../../modules/cava.nix
   ];
 
   config = {
@@ -27,6 +29,8 @@
       pulsemixer.enable = true;
       screenshots.enable = true;
       kitty.enable = true;
+      rofi.enable = true;
+      cava.enable = true;
     };
   };
 }

@@ -12,31 +12,7 @@
         variant = "";
       };
     };
-    displayManager = {
-      sddm = {
-        enable = true;
-        theme = "pixie";
-        autoNumlock = true;
-        wayland = {
-          enable = true;
-        };
-      };
-      defaultSession = "hyprland";
-    };
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      pulse = {
-        enable = true;
-      };
-    };
     blueman = {
-      enable = true;
-    };
-    tailscale = {
       enable = true;
     };
     syncthing = {

@@ -14,6 +14,8 @@
     ./../modules/tailscale.nix
     ./../modules/boot.nix
     ./../modules/bluetooth.nix
+    ./../modules/yazi.nix
+    ./../modules/rofi.nix
   ];
 
   config = {
@@ -26,6 +28,8 @@
       tailscale.enable = true;
       boot.enable = true;
       bluetooth.enable = true;
+      yazi.enable = true;
+      rofi.enable = true;
     };
   };
 }
