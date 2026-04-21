@@ -1,5 +1,6 @@
-{ config, pkgs, lib, ... }:
-
+{ config, pkgs, lib, ... }: let
+  cfg = config.xaterekka.restituo;
+  restitui = pkgs.writeShellScriptBin "restituo" ''
 set -e
 cd ~/nixos-config
 
@@ -23,5 +24,13 @@ else
         echo "Rebuild erfolgreich und erfolgreich committet: $COMMIT_MSG"
         notify-send "Rebuild erfolgreich: $COMMIT_MSG"
 fi
-
-cd ~
+'';
+in {
+ options.xanterella.restituo = {
+enable = lib.mkEnableOption "Aktiviert das Rebuild Script";
+};
+config = lib.mkIf cfg.enable {
+environment.systempackages = with pkgs; [
+restituo
+];
+};
