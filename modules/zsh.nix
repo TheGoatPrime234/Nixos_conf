@@ -31,7 +31,6 @@
           v = "nvim";
           sv = "sudo nvim";
           za = "yazi";
-          restituo = "cd ~/nixos-config&&./rebuild.sh";
           gcheck = "git checkout";
         };
         interactiveShellInit = ''

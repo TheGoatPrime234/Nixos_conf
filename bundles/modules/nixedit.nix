@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./../../modules/alejandra.nix
-    ./../../modules/restituo.nix
+    ./../../scripts/restituo.nix
   ];
 
   config = {

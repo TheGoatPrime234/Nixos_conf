@@ -11,7 +11,7 @@
     ./../../modules/geistmono.nix
     ./../../modules/libnotify.nix
     ./../../modules/nixvim.nix
-    ./../../modules/restituo.nix
+    ./../../scripts/restituo.nix
     ./../../modules/sl.nix
     ./../../modules/yazi.nix
     ./../../modules/zen-browser.nix
