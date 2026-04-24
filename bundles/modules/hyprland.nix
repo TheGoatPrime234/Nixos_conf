@@ -20,6 +20,7 @@
     ./../../modules/cava.nix
     ./../../modules/quickshell.nix
     ./../../modules/fastfetch.nix
+    ./../../modules/nix-switcher.nix
   ];
 
   config = {
@@ -38,6 +39,7 @@
       cava.enable = true;
       quickshell.enable = true;
       fastfetch.enable = true;
+      nix-switcher.enable = true;
     };
   };
 }
