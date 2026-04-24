@@ -25,7 +25,7 @@
             notify-send "Rebuild erfolgreich, aber kein Commit"
     else
             cd ~
-            git commit -am "$COMMIT_MSG"
+            git commit -m "$COMMIT_MSG"
             echo "Rebuild erfolgreich und erfolgreich committet: $COMMIT_MSG"
             notify-send "Rebuild erfolgreich: $COMMIT_MSG"
     fi
