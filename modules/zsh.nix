@@ -32,7 +32,7 @@
           sv = "sudo nvim";
           za = "yazi";
           gcheck = "git checkout";
-          nix-switcherr = "nix run /home/cato/rust_nix#switcher --";
+          nix-switcher = "./$HOME/rust_nix/nix_switcher/target/release/nix-switcher";
         };
         interactiveShellInit = ''
                  if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
