@@ -11,6 +11,7 @@
 
     git add .
     alejandra -q *
+    nix flake update nix-programs
     sudo nixos-rebuild switch --flake .#nixos -v
 
     if [ -z "$1" ]; then

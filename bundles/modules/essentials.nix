@@ -18,6 +18,7 @@
     ./../../modules/zen-browser.nix
     ./../../modules/kitty.nix
     ./../../modules/zsh.nix
+    ./../../modules/psmisc.nix
   ];
 
   config = {
@@ -34,6 +35,7 @@
       zen-browser.enable = true;
       kitty.enable = true;
       zsh.enable = true;
+      psmisc.enable = true;
     };
   };
 }
