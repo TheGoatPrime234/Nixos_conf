@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.xanterella.psmisc.enable {
     environment.systemPackages = with pkgs; [
-    psmisc
+      psmisc
     ];
   };
 }
