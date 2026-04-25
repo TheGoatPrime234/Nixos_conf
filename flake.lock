@@ -197,11 +197,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1777063947,
-        "narHash": "sha256-QPGK7bL6FI46BjXr0HuBhb/72ZK1Au4w+vxp4tmk1k0=",
+        "lastModified": 1777151202,
+        "narHash": "sha256-Udtf13NbuSqYXzuWaaIj39xF7Fr2+eLCCo09RjA+rM4=",
         "owner": "TheGoatPrime234",
         "repo": "Nixos_programs",
-        "rev": "84428bced8414e77eb24e5e21985748abda064b2",
+        "rev": "2ddb846c148baba1806424417bcbb56b0a05ad0a",
         "type": "github"
       },
       "original": {

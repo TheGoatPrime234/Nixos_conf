@@ -9,7 +9,7 @@
     set -e
     cd ~/nixos-config
 
-    git add .
+    git add -A
     alejandra -q *
     nix flake update nix-programs
     sudo nixos-rebuild switch --flake .#nixos -v
@@ -21,12 +21,10 @@
     fi
 
     if git diff --cached --quiet; then
-            cd ~
             echo "Rebuild erfolgreich, aber keine neuen Änderungen zum Commiten"
             notify-send "Rebuild erfolgreich, aber kein Commit"
     else
-            cd ~
-            git commit -m "$COMMIT_MSG"
+            git commit -am "$COMMIT_MSG"
             echo "Rebuild erfolgreich und erfolgreich committet: $COMMIT_MSG"
             notify-send "Rebuild erfolgreich: $COMMIT_MSG"
     fi

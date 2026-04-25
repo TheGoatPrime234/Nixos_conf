@@ -30,7 +30,7 @@
           folder = {
             "Vaults" = {
               id = "ngxgj-f2ouz";
-              path = "/home/cato/Documents/Vault";
+              path = "/home/cato/Documents/Vaults";
               devices = ["raspi"];
               versioning = {
                 type = "staggered";
