@@ -5,10 +5,12 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./../../bundles/xeravus.nix
   ];
 
   networking.hostName = "xeravus";
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.trusted-users = ["cato"];
   security.pam.services.sddm.enableKwallet = true;
   networking.networkmanager.enable = true;
 

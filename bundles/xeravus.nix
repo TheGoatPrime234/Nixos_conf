@@ -2,11 +2,10 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
-    ./../hosts/xeravus/configuration.nix
-    ./../hosts/xeravus/hardware-configuration.nix
     ./../modules/local.nix
     ./modules/essentials.nix
     ./modules/nixedit.nix
@@ -15,6 +14,8 @@
     ./modules/game.nix
     ./modules/cybersecurity.nix
     ./modules/vault.nix
+    inputs.spicetify-nix.nixosModules.default
+    inputs.nixvim.nixosModules.default
     ./../modules/ani-cli.nix
     ./../modules/audio.nix
     ./../modules/bluetooth.nix

@@ -19,6 +19,7 @@
     ./../../modules/kitty.nix
     ./../../modules/zsh.nix
     ./../../modules/psmisc.nix
+    ./../../modules/ssh.nix
   ];
 
   config = {
@@ -36,6 +37,7 @@
       kitty.enable = true;
       zsh.enable = true;
       psmisc.enable = true;
+      ssh.enable = true;
     };
   };
 }

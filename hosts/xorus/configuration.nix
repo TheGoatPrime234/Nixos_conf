@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./../../bundles/xorus.nix
   ];
 
   networking.hostName = "xorus";

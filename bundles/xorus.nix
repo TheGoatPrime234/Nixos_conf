@@ -2,15 +2,15 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
-    ./../hosts/xorus/configuration.nix
-    ./../hosts/xorus/hardware-configuration.nix
     ./../modules/local.nix
     ./modules/essentials.nix
     ./modules/nixedit.nix
     ./modules/laptop.nix
+    inputs.nixvim.nixosModules.default
     ./../modules/audio.nix
     ./../modules/bluetooth.nix
     ./../modules/btop.nix
@@ -20,6 +20,7 @@
     ./../modules/wget.nix
     ./../modules/zip.nix
     ./../modules/yazi.nix
+    ./../modules/remote-build.nix
   ];
 
   config = {
@@ -34,6 +35,7 @@
       wget.enable = true;
       zip.enable = true;
       yazi.enable = true;
+      remote-build.enable = true;
     };
   };
 }
