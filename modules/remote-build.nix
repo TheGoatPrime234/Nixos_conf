@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.xanterella.remote-build.enable {
     nix = {
-      buildMashines = [
+      buildMachines = [
         {
           hostName = "xeravus";
           system = "x86_64-linux";
