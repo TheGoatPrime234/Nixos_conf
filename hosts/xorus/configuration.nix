@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "xeravus";
+  networking.hostName = "xorus";
   nix.settings.experimental-features = ["nix-command" "flakes"];
   security.pam.services.sddm.enableKwallet = true;
   networking.networkmanager.enable = true;
