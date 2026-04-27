@@ -21,8 +21,8 @@
       };
     };
 
-  environment.sessionVariables = {
-    STEAM_EXTRA_COMPACT_TOOLS_PATH = "/home/cato/.steam/root/compatibilitytools.d";
-  };
+    environment.sessionVariables = {
+      STEAM_EXTRA_COMPACT_TOOLS_PATH = "/home/cato/.steam/root/compatibilitytools.d";
+    };
   };
 }

@@ -16,5 +16,14 @@
       enable = true;
       xwayland.enable = true;
     };
+    environment.sessionVariables = {
+      XDG_SESSION_TYPE = "wayland";
+    };
+    xdg = {
+      portal = {
+        enable = true;
+        extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+      };
+    };
   };
 }
