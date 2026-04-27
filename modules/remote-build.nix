@@ -7,22 +7,24 @@
   options = {
     xanterella.remote-build.enable = lib.mkEnableOption "Aktiviert remote-build";
   };
-
-  config = lib.mkIf config.xanterella.remote-build.enable {
+config = lib.mkIf config.xanterella.remote-build.enable {
     nix = {
-      buildMachines = [
+      buildMachines = [ # <-- Korrigiert zu "buildMachines"
         {
-          hostName = "xeravus";
+          hostName = "192.168.178.163";
           system = "x86_64-linux";
           sshUser = "cato";
           maxJobs = 4;
+          protocol = "ssh-ng"; # Schnelleres, modernes SSH-Protokoll für Nix
+          sshKey = "/root/.ssh/id_ed25519"; # Wichtig für die Authentifizierung
+          supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
         }
       ];
       extraOptions = ''
         builders-use-substitutes = true
       '';
       distributedBuilds = true;
-      settings.max-jobs = 0;
+      settings.max-jobs = 0; # Sorgt dafür, dass lokal gar nichts mehr gebaut wird
     };
   };
 }
