@@ -34,7 +34,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          ./bundles/xorus.nix
+          ./hosts/xorux/configuration.nix
         ];
       };
     };

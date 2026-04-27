@@ -6,8 +6,6 @@
   ...
 }: {
   imports = [
-    ./../hosts/xorus/configuration.nix
-    ./../hosts/xorus/hardware-configuration.nix
     ./../modules/local.nix
     ./modules/essentials.nix
     ./modules/nixedit.nix

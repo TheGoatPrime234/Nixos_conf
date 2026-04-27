@@ -6,8 +6,6 @@
   ...
 }: {
   imports = [
-    #    ./../hosts/xeravus/configuration.nix
-    #    ./../hosts/xeravus/hardware-configuration.nix
     ./../modules/local.nix
     ./modules/essentials.nix
     ./modules/nixedit.nix
