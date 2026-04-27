@@ -18,6 +18,9 @@
           maxJobs = 4;
         }
       ];
+      extraOptions = ''
+        builders-use-substitutes = true
+      '';
       distributedBuilds = true;
       settings.max-jobs = 0;
     };
