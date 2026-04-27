@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
@@ -11,6 +12,7 @@
     ./modules/essentials.nix
     ./modules/nixedit.nix
     ./modules/laptop.nix
+    inputs.nixvim.nixosModules.default
     ./../modules/audio.nix
     ./../modules/bluetooth.nix
     ./../modules/btop.nix

@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
@@ -15,6 +16,8 @@
     ./modules/game.nix
     ./modules/cybersecurity.nix
     ./modules/vault.nix
+    inputs.spicetify-nix.nixosModules.default
+    inputs.nixvim.nixosModules.default
     ./../modules/ani-cli.nix
     ./../modules/audio.nix
     ./../modules/bluetooth.nix

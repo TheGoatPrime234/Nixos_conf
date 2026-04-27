@@ -22,15 +22,21 @@
     nix-programs,
     ...
   } @ inputs: {
-    nixosConfigurations.xeravus = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
-      modules = [
-        # Inputs
-        inputs.spicetify-nix.nixosModules.default
-        inputs.nixvim.nixosModules.default
-        ./bundles/xeravus.nix
-      ];
+    nixosConfigurations = {
+      xeravus = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./bundles/xeravus.nix
+        ];
+      };
+      xorus = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./bundles/xorus.nix
+        ];
+      };
     };
   };
 }
