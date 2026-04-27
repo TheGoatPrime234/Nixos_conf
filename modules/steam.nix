@@ -20,5 +20,9 @@
         };
       };
     };
+
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPACT_TOOLS_PATH = "/home/cato/.steam/root/compatibilitytools.d";
+  };
   };
 }
