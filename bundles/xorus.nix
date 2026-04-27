@@ -20,6 +20,7 @@
     ./../modules/wget.nix
     ./../modules/zip.nix
     ./../modules/yazi.nix
+    ./../modules/remote-build.nix
   ];
 
   config = {
@@ -34,6 +35,7 @@
       wget.enable = true;
       zip.enable = true;
       yazi.enable = true;
+      remote-build.enable = true;
     };
   };
 }
