@@ -10,6 +10,7 @@
     ./modules/essentials.nix
     ./modules/nixedit.nix
     ./modules/laptop.nix
+    ./modules/hyprland.nix
     inputs.nixvim.nixosModules.default
     ./../modules/audio.nix
     ./../modules/bluetooth.nix
@@ -27,14 +28,14 @@
     xanterella = {
       local.enable = true;
       audio.enable = true;
-      #      bluetooth.enable = true;
+      bluetooth.enable = true;
       btop.enable = true;
       direnv.enable = true;
-      #      tailscale.enable = true;
-      #      tree.enable = true;
-      #      wget.enable = true;
-      #      zip.enable = true;
-      #      yazi.enable = true;
+      tailscale.enable = true;
+      tree.enable = true;
+      wget.enable = true;
+      zip.enable = true;
+      yazi.enable = true;
       remote-build.enable = true;
     };
   };
