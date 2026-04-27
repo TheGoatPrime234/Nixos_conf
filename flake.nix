@@ -27,7 +27,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          ./bundles/xeravus.nix
+          ./hosts/xeravus/configuration.nix
         ];
       };
       xorus = nixpkgs.lib.nixosSystem {

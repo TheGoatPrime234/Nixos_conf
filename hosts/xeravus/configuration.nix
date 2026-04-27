@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./../../bundles/xeravus.nix
   ];
 
   networking.hostName = "xeravus";
