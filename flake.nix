@@ -49,7 +49,7 @@
           config.allowUnfree = true;
         };
         specialArgs = {inherit inputs;};
-	purity = "impure";
+        purity = "impure";
       };
       xeravus = {
         deployment = {
