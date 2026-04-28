@@ -32,6 +32,7 @@
     ./../modules/zen-browser.nix
     ./../modules/yazi.nix
     ./../modules/spicetify.nix
+    ./../modules/ssh.nix
   ];
 
   config = {
@@ -53,6 +54,7 @@
       zen-browser.enable = true;
       yazi.enable = true;
       spicetify.enable = true;
+      ssh.enable = true;
     };
   };
 }
