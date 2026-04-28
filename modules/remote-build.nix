@@ -15,14 +15,14 @@ config = lib.mkIf config.xanterella.remote-build.enable {
           system = "x86_64-linux";
           sshUser = "cato";
           maxJobs = 4;
-          protocol = "ssh-ng"; # Schnelleres, modernes SSH-Protokoll für Nix
-          sshKey = "/root/.ssh/id_ed25519"; # Wichtig für die Authentifizierung
+          protocol = "ssh-ng"; 
+          sshKey = "/root/.ssh/id_ed25519"; 
           supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
         }
       ];
       distributedBuilds = true;
       settings = {
-        max-jobs = 0; # Sorgt dafür, dass lokal gar nichts mehr gebaut wird
+        max-jobs = 0; 
 	builder-use-substitutes = true;
         builders = [
 	  "ssh://cato@192.168.178.163 x86_64-linux - 4 1"
