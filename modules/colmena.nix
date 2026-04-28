@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgs-25-11,
   ...
 }: {
   options = {
@@ -9,7 +10,7 @@
   };
 
   config = lib.mkIf config.xanterella.colmena.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs-25-11; [
       colmena
     ];
   };

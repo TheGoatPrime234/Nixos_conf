@@ -25,18 +25,22 @@
     systemarch = "x86_64-linux";
     tarhost = "192.168.178.163";
     taruser = "root";
+    pkgs-25-11 = import inputs.nixpkgs-25-11 {
+      system = systemarch;
+      config.allowUnfree = true;
+    };
   in {
     nixosConfigurations = {
       xeravus = nixpkgs.lib.nixosSystem {
         system = systemarch;
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs pkgs-25-11;};
         modules = [
           ./hosts/xeravus/configuration.nix
         ];
       };
       xorus = nixpkgs.lib.nixosSystem {
         system = systemarch;
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs pkgs-25-11;};
         modules = [
           ./hosts/xorus/configuration.nix
         ];
