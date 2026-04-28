@@ -21,6 +21,7 @@
     ./../modules/wget.nix
     ./../modules/zip.nix
     ./../modules/yazi.nix
+    ./../modules/ssh.nix
     ./../modules/remote-build.nix
   ];
 
@@ -36,6 +37,7 @@
       wget.enable = true;
       zip.enable = true;
       yazi.enable = true;
+      ssh.enable = true;
       remote-build.enable = true;
     };
   };
