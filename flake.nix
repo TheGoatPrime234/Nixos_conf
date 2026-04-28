@@ -21,19 +21,50 @@
     nixpkgs,
     nix-programs,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    systemarch = "x86_64-linux";
+    tarhost = "192.168.178.163";
+    taruser = "root";
+  in {
     nixosConfigurations = {
       xeravus = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = systemarch;
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/xeravus/configuration.nix
         ];
       };
       xorus = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = systemarch;
         specialArgs = {inherit inputs;};
         modules = [
+          ./hosts/xorus/configuration.nix
+        ];
+      };
+    };
+    colmena = {
+      meta = {
+        nixpkgs = import nixpkgs {
+          system = systemarch;
+          config.allowUnfree = true;
+        };
+        specialArgs = {inherit inputs;};
+      };
+      xeravus = {
+        deployment = {
+          targetHost = "127.0.0.1";
+          targetUser = taruser;
+        };
+        imports = [
+          ./hosts/xeravus/configuration.nix
+        ];
+      };
+      xorus = {
+        deployment = {
+          targetHost = tarhost;
+          targetUser = taruser;
+        };
+        imports = [
           ./hosts/xorus/configuration.nix
         ];
       };
