@@ -10,6 +10,7 @@
     nixvim.url = "github:nix-community/nixvim/nixos-25.11";
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
+    colmena.url = "github:zhaofengli/colmena";
     p10k-src = {
       url = "github:romkatv/powerlevel10k";
       flake = false;
@@ -20,6 +21,7 @@
     self,
     nixpkgs,
     nix-programs,
+    colmena,
     ...
   } @ inputs: let
     systemarch = "x86_64-linux";
@@ -42,6 +44,35 @@
         system = systemarch;
         specialArgs = {inherit inputs pkgs-25-11;};
         modules = [
+          ./hosts/xorus/configuration.nix
+        ];
+      };
+    };
+    colmena = {
+      meta = {
+        nixpkgs = import nixpkgs {
+          system = systemarch;
+          config.allowUnfree = true;
+        };
+        specialArgs = {inherit inputs pkgs-25-11;};
+      };
+      xeravus = {
+        deployment = {
+          targetHost = null;
+          allowLocalDeployment = true;
+          buildOnTarget = true;
+        };
+        imports = [
+          ./hosts/xeravus/configuration.nix
+        ];
+      };
+      xorus = {
+        deployment = {
+          targetHost = tarhost;
+          targetUser = taruser;
+          buildOnTarget = false;
+        };
+        imports = [
           ./hosts/xorus/configuration.nix
         ];
       };
