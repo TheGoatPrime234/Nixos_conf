@@ -24,7 +24,13 @@ config = lib.mkIf config.xanterella.remote-build.enable {
         builders-use-substitutes = true
       '';
       distributedBuilds = true;
-      settings.max-jobs = 0; # Sorgt dafür, dass lokal gar nichts mehr gebaut wird
+      settings = {
+        max-jobs = 0; # Sorgt dafür, dass lokal gar nichts mehr gebaut wird
+	builder-use-substitutes = true;
+        builders = [
+	  "ssh://cato@192.168.178.163 x86_64-linux - 4 1"
+	];  
+      };
     };
   };
 }
