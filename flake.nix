@@ -25,7 +25,7 @@
     ...
   } @ inputs: let
     systemarch = "x86_64-linux";
-    tarhost = "192.168.178.163";
+    tarhost = "192.168.178.69";
     taruser = "root";
     pkgs-25-11 = import inputs.nixpkgs-25-11 {
       system = systemarch;
