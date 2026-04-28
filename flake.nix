@@ -46,37 +46,5 @@
         ];
       };
     };
-    colmena = {
-      meta = {
-        nixpkgs = import nixpkgs {
-          system = systemarch;
-          config.allowUnfree = true;
-        };
-        specialArgs = {inherit inputs;};
-        purity = "impure";
-      };
-      xeravus = {
-        deployment = {
-          targetHost = null;
-          allowLocalDeployment = true;
-          buildOnTarget = false;
-          tags = ["build"];
-        };
-        imports = [
-          ./hosts/xeravus/configuration.nix
-        ];
-      };
-      xorus = {
-        deployment = {
-          targetHost = tarhost;
-          targetUser = taruser;
-          buildOnTarget = false;
-          tags = ["nobuild"];
-        };
-        imports = [
-          ./hosts/xorus/configuration.nix
-        ];
-      };
-    };
   };
 }
