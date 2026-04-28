@@ -49,11 +49,14 @@
           config.allowUnfree = true;
         };
         specialArgs = {inherit inputs;};
+	purity = "impure";
       };
       xeravus = {
         deployment = {
-          targetHost = "127.0.0.1";
-          targetUser = taruser;
+          targetHost = null;
+          allowLocalDeployment = true;
+          buildOnTarget = false;
+          tags = ["build"];
         };
         imports = [
           ./hosts/xeravus/configuration.nix
@@ -63,6 +66,8 @@
         deployment = {
           targetHost = tarhost;
           targetUser = taruser;
+          buildOnTarget = false;
+          tags = ["nobuild"];
         };
         imports = [
           ./hosts/xorus/configuration.nix
