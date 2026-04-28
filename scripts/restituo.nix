@@ -13,6 +13,7 @@
     alejandra -q *
     nix flake update nix-programs
     sudo nixos-rebuild switch --flake .#xeravus -v
+    colmena apply --impure
 
     if [ -z "$1" ]; then
             COMMIT_MSG="Auto-Rebuild: $(date +'%Y-%m-%d %H:%M:%S')"

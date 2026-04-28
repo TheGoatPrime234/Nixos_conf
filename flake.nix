@@ -53,6 +53,7 @@
         nixpkgs = import nixpkgs {
           system = systemarch;
           config.allowUnfree = true;
+          purity = "impure";
         };
         specialArgs = {inherit inputs pkgs-25-11;};
       };
