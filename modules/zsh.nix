@@ -31,7 +31,6 @@
           v = "nvim";
           sv = "sudo nvim";
           za = "yazi";
-          "v flake" = "nvim flake.nix";
         };
         interactiveShellInit = ''
                  if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
