@@ -20,9 +20,6 @@ config = lib.mkIf config.xanterella.remote-build.enable {
           supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
         }
       ];
-      extraOptions = ''
-        builders-use-substitutes = true
-      '';
       distributedBuilds = true;
       settings = {
         max-jobs = 0; # Sorgt dafür, dass lokal gar nichts mehr gebaut wird
