@@ -23,7 +23,6 @@ config = lib.mkIf config.xanterella.remote-build.enable {
       distributedBuilds = true;
       settings = {
         max-jobs = 0; 
-	builder-use-substitutes = true;
         builders = [
 	  "ssh://cato@192.168.178.163 x86_64-linux - 4 1"
 	];  
