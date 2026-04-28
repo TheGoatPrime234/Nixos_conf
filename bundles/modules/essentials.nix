@@ -10,6 +10,7 @@
     ./../../modules/dbus.nix
     ./../../modules/git.nix
     ./../../modules/geistmono.nix
+    ./../../modules/libnotify.nix
     ./../../modules/nixvim.nix
     ./../../modules/sl.nix
     ./../../modules/yazi.nix
@@ -26,6 +27,7 @@
       boot.enable = true;
       dbus.enable = true;
       git.enable = true;
+      libnotify.enable = true;
       geistmono.enable = true;
       nixvim.enable = true;
       sl.enable = true;
