@@ -16,5 +16,14 @@
         };
       };
     };
+    security = {
+      pam = {
+        services = {
+          sddm = {
+            enableGnomeKeyring = true;
+          };
+        };
+      };
+    };
   };
 }
