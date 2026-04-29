@@ -1,0 +1,26 @@
+{
+imports = [
+./ani-cli.nix
+./cava.nix
+./fastfetch.nix
+./gnome-keyring.nix
+./hypridle.nix
+./hyprland.nix
+./hyprlock.nix
+./hyprpaper.nix
+./hyprpicker
+./kitty.nix
+./nix-switcher.nix
+./psmisc.nix
+./pulsemixer.nix
+./quickshell.nix
+./rofi
+./screenshots.nix
+./sddm.nix
+./spicetify.nix
+./vscode.nix
+./wlogout.nix
+./yazi.nix
+./zen-browser.nix
+];
+}
