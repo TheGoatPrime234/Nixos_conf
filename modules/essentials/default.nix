@@ -1,0 +1,19 @@
+{
+  imports = [
+    ./alejandra.nix
+    ./audio.nix
+    ./bluetooth.nix
+    ./btop.nix
+    ./dbus.nix
+    ./direnv.nix
+    ./geistmono.nix
+    ./libnotify.nix
+    ./sl.nix
+    ./tailscale.nix
+    ./tree.nix
+    ./upower.nix
+    ./wget.nix
+    ./zip.nix
+    ./zsh
+  ];
+}

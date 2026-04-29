@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.xanterella.hashcat.enable {
     environment.systemPackages = with pkgs; [
-    hashcat
+      hashcat
     ];
   };
 }

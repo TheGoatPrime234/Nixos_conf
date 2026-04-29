@@ -39,6 +39,15 @@ in {
         defaultSession = "hyprland";
       };
     };
+    security = {
+      pam = {
+        services = {
+          sddm = {
+            enableKwallet = true;
+          };
+        };
+      };
+    };
     environment.systemPackages = with pkgs; [
       pixie-sddm-theme
       kdePackages.qtdeclarative
