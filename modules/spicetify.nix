@@ -21,8 +21,5 @@ in {
       theme = spicePkgs.themes.catppuccin;
       colorScheme = "mocha";
     };
-    environment.systemPackages = with pkgs; [
-      spotify
-    ];
   };
 }
