@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ./../../modules
     ./../../profiles/boot.nix
-    ./../../profiles/essentails.nix
+    ./../../profiles/essentials.nix
     ./../../profiles/hyprland.nix
     ./../../profiles/vault.nix
   ];

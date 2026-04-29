@@ -13,6 +13,7 @@
       direnv.enable = true;
       geistmono.enable = true;
       libnotify.enable = true;
+      restituo.enable = true;
       sl.enable = true;
       tailscale.enable = true;
       tree.enable = true;

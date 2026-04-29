@@ -7,6 +7,9 @@
 }: let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in {
+  imports = [
+    inputs.spicetify-nix.nixosModules.default
+  ];
   options = {
     xanterella.spicetify.enable = lib.mkEnableOption "Aktiviert spicetify";
   };

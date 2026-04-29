@@ -8,12 +8,13 @@
     ./direnv.nix
     ./geistmono.nix
     ./libnotify.nix
+    ./restituo.nix
     ./sl.nix
     ./tailscale.nix
     ./tree.nix
     ./upower.nix
     ./wget.nix
     ./zip.nix
-    ./zsh
+    ./zsh.nix
   ];
 }

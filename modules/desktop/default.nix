@@ -8,13 +8,13 @@
     ./hyprland.nix
     ./hyprlock.nix
     ./hyprpaper.nix
-    ./hyprpicker
+    ./hyprpicker.nix
     ./kitty.nix
     ./nix-switcher.nix
     ./psmisc.nix
     ./pulsemixer.nix
     ./quickshell.nix
-    ./rofi
+    ./rofi.nix
     ./screenshots.nix
     ./sddm.nix
     ./spicetify.nix

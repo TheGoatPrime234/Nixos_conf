@@ -2,8 +2,12 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.nixvim.nixosModules.default
+  ];
   options = {
     xanterella.nixvim.enable = lib.mkEnableOption "Aktiviert Nixvim";
   };
