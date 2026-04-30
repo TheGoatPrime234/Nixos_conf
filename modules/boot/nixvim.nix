@@ -44,6 +44,27 @@
           key = "<Right>";
           action = "<Nop>";
         }
+        {
+          mode = ["n"];
+          key = "<C-n>";
+          action = "<cmd>Neotree toggle<CR>";
+          options.desc = "Toggle Neo-Tree";
+        }
+        {
+          key = "<S-h>";
+          action = "<cmd>bprevious<CR>";
+          options.desc = "Vorheriger Tab";
+        }
+        {
+          key = "<S-l>";
+          action = "<cmd>bnext<CR>";
+          options.desc = "Nächster Tab";
+        }
+        {
+          key = "<leader>x";
+          action = "<cmd>bdelete<CR>";
+          options.desc = "Aktuellen Tab schließen";
+        }
       ];
 
       colorschemes.catppuccin.enable = true;
@@ -52,6 +73,15 @@
       plugins = {
         lualine.enable = true;
         treesitter.enable = true;
+        neo-tree.enable = true;
+        bufferline.enable = true;
+        telescope = {
+          enable = true;
+          keymaps = {
+            "<leader>p" = "finde_files";
+            "<leader>g" = "live_grep";
+          };
+        };
       };
     };
   };
