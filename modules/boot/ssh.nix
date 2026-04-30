@@ -12,6 +12,16 @@
     environment.systemPackages = with pkgs; [
       openssh
     ];
-    services.openssh.enable = true;
+    services.openssh = {
+      enable = true;
+      authorizedKeysFiles = lib.mkForce [
+        "/etc/ssh/authorized_keys.d/%u"
+        ".ssh/authorized_keys"
+      ];
+      settings = {
+        PermitRootLogin = "prohibit-password";
+        PasswordAuthentication = false;
+      };
+    };
   };
 }
