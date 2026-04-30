@@ -75,6 +75,7 @@
         treesitter.enable = true;
         neo-tree.enable = true;
         bufferline.enable = true;
+        web-devicons.enable = true;
         telescope = {
           enable = true;
           keymaps = {
