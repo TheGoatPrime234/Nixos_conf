@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.xanterella.plymouth.enable {
     environment.systemPackages = with pkgs; [
-    plymouth
+      plymouth
     ];
     boot = {
       plymouth = {
