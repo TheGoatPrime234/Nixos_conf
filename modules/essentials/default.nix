@@ -6,6 +6,7 @@
     ./btop.nix
     ./dbus.nix
     ./direnv.nix
+    ./firewall.nix
     ./geistmono.nix
     ./libnotify.nix
     ./restituo.nix

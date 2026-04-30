@@ -11,6 +11,7 @@
       btop.enable = true;
       dbus.enable = true;
       direnv.enable = true;
+      firewall.enable = true;
       geistmono.enable = true;
       libnotify.enable = true;
       restituo.enable = true;
