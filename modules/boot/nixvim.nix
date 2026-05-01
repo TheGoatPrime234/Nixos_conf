@@ -13,6 +13,10 @@
   };
 
   config = lib.mkIf config.xanterella.nixvim.enable {
+    environment.systemPackages = with pkgs; [
+      qt6.qtdeclarative
+      kdePackages.qtdeclarative
+    ];
     programs.nixvim = {
       enable = true;
       defaultEditor = true;
@@ -76,6 +80,17 @@
         neo-tree.enable = true;
         bufferline.enable = true;
         web-devicons.enable = true;
+        conform-nvim = {
+          settings = {
+            format_on_save = {
+              lsp_fallback = true;
+              timeout_ms = 500;
+            };
+            formatters_by_ft = {
+              qml = ["qmlformat"];
+            };
+          };
+        };
         telescope = {
           enable = true;
           keymaps = {
