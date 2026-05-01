@@ -12,6 +12,7 @@
     git add -A
     alejandra -q *
     nix flake update nix-programs
+    nom build .#nixosConfigurations.xeravus.config.system.build.toplevel
     colmena apply-local --sudo --impure
 
     if [ -z "$1" ]; then
