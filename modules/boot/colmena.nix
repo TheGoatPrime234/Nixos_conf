@@ -12,6 +12,7 @@
   config = lib.mkIf config.xanterella.colmena.enable {
     environment.systemPackages = with pkgs-25-11; [
       colmena
+      nix-output-monitor
     ];
   };
 }
