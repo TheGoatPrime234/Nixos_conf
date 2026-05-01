@@ -15,5 +15,8 @@ in {
     environment.systemPackages = with pkgs-25-11; [
       quickshell
     ];
+    environment.variables = {
+      QML_XHR_ALLOW_FILE_READ = "1";
+    };
   };
 }
