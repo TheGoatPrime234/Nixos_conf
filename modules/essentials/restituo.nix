@@ -12,8 +12,8 @@
     git add -A
     alejandra -q *
     nix flake update nix-programs
-    nom build .#nixosConfigurations.xeravus.config.system.build.toplevel
-    colmena apply-local --sudo --impure
+    nom build --dry-run --no-link .#nixosConfigurations.xeravus.config.system.build.toplevel
+    colmena apply-local --sudo --impure --color always
 
     if [ -z "$1" ]; then
             COMMIT_MSG="Auto-Rebuild: $(date +'%Y-%m-%d %H:%M:%S')"
@@ -29,6 +29,9 @@
             echo "Rebuild erfolgreich und erfolgreich committet: $COMMIT_MSG"
             notify-send "Rebuild erfolgreich: $COMMIT_MSG"
     fi
+    fastfetch
+    echo ""
+    read -n 1 -s -r -p "Rebuild beendet! Drücke eine beliebige Taste..."
   '';
 in {
   options.xanterella.restituo = {
