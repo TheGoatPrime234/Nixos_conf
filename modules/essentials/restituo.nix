@@ -12,8 +12,7 @@
     git add -A
     alejandra -q *
     nix flake update nix-programs
-    nom build .#nixosConfigurations.xeravus.config.system.build.toplevel
-    colmena apply-local --sudo --impure
+    nh os switch .#xeravus -d -e
 
     if [ -z "$1" ]; then
             COMMIT_MSG="Auto-Rebuild: $(date +'%Y-%m-%d %H:%M:%S')"
@@ -36,6 +35,9 @@ in {
   };
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      nh
+      nix-output-monitor
+      nvd
       restituo
     ];
   };
