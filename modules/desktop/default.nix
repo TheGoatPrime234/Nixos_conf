@@ -20,7 +20,6 @@
     ./sddm.nix
     ./spicetify.nix
     ./vscode.nix
-    ./wlogout.nix
     ./yazi.nix
     ./zen-browser.nix
   ];

@@ -25,7 +25,6 @@
       sddm.enable = true;
       spicetify.enable = true;
       vscode.enable = true;
-      wlogout.enable = true;
       yazi.enable = true;
       zen-browser.enable = true;
     };
