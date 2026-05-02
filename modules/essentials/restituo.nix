@@ -31,7 +31,6 @@
     fi
     fastfetch
     echo ""
-    read -n 1 -s -r -p "Rebuild beendet! Drücke eine beliebige Taste..."
   '';
 in {
   options.xanterella.restituo = {
