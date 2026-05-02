@@ -6,5 +6,6 @@
     ./essentials
     ./games
     ./vault
+    ./creative
   ];
 }

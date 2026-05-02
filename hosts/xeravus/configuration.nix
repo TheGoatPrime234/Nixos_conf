@@ -11,6 +11,7 @@
     ./../../profiles/hyprland.nix
     ./../../profiles/vault.nix
     ./../../profiles/cybersec.nix
+    ./../../profiles/creative.nix
     ./../../profiles/gaming.nix
   ];
 
