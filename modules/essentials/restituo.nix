@@ -12,7 +12,7 @@
     git add -A
     alejandra -q *
     nix flake update nix-programs
-    nom build --dry-run --no-link .#nixosConfigurations.xeravus.config.system.build.toplevel
+    nom build --no-link .#nixosConfigurations.xeravus.config.system.build.toplevel
     colmena apply-local --sudo --impure --color always
 
     if [ -z "$1" ]; then
