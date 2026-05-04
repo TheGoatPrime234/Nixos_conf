@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-25-11.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-programs.url = "github:TheGoatPrime234/Nixos_programs";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
@@ -64,6 +65,15 @@
           targetHost = "192.168.178.69";
           targetUser = taruser;
           buildOnTarget = false;
+          keys = {
+            "id_ed25519" = {
+              keyFile = "/home/cato/.ssh/id_ed25519";
+              destDir = "/etc/ssh";
+              user = "root";
+              group = "root";
+              permissions = "0600";
+            };
+          };
         };
         imports = [
           ./hosts/xorus/configuration.nix
@@ -74,8 +84,22 @@
           targetHost = "192.168.178.78";
           targetUser = taruser;
           buildOnTarget = false;
+          keys = {
+            "id_ed25519" = {
+              keyFile = "/home/cato/.ssh/id_ed25519";
+              destDir = "/etc/ssh";
+              user = "root";
+              group = "root";
+              permissions = "0600";
+            };
+          };
+        };
+        nodeNixpkgs = import nixpkgs {
+          system = "aarch64-linux";
+          config.allowUnfree = true;
         };
         imports = [
+          inputs.nixos-hardware.nixosModules.raspberry-pi-5
           ./hosts/vicuna/configuration.nix
         ];
       };

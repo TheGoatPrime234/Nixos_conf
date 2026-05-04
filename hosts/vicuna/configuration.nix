@@ -6,9 +6,10 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules
-    ./../../profiles/boot.nix
+    ./../../profiles/boot_server.nix
     ./../../profiles/essentials.nix
-    ./../../profiles/vault.nix
+    ./../../profiles/.nix
+    ./../../profiles/server.nix
   ];
 
   networking.hostName = "vicuna";
