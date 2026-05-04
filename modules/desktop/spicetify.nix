@@ -3,6 +3,7 @@
   pkgs,
   lib,
   inputs,
+  pkgs-25-11,
   ...
 }: let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
@@ -32,9 +33,9 @@ in {
 
   config = lib.mkIf config.xanterella.spicetify.enable {
     environment = {
-      systemPackages = with pkgs; [
-        sptlrx
-        spotify-player
+      systemPackages = [
+        pkgs-25-11.spotify-player
+        pkgs.sptlrx
       ];
     };
     programs = {
