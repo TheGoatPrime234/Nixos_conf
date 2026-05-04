@@ -33,7 +33,7 @@
     };
     networking = {
       firewall = {
-        allowTCPPorts = [
+        allowedTCPPorts = [
           8989
         ];
       };

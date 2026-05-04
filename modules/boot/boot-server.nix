@@ -5,16 +5,16 @@
   ...
 }: {
   options = {
-    xanterella.boot.enable = lib.mkEnableOption "Aktiviert Grub als bootloader";
+    xanterella.boot-server.enable = lib.mkEnableOption "Aktiviert boot für ARM Server";
   };
 
-  config = lib.mkIf config.xanterella.boot.enable {
+  config = lib.mkIf config.xanterella.boot-server.enable {
     boot = {
       loader = {
         efi = {
           canTouchEfiVariables = true;
         };
-        systemd = {
+        systemd-boot = {
           enable = false;
         };
         grub = {

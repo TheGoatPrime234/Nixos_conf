@@ -3,7 +3,7 @@
     ./audiobookshelf.nix
     ./grafana.nix
     ./pihole.nix
-    ./syncthing.nix
+    ./syncthing-server.nix
     ./vaultwarden.nix
   ];
 }

@@ -30,7 +30,6 @@
         user = "syncthing";
         group = "syncthing";
         guiAddress = "0.0.0.0:8384";
-        openDefaultProts = true;
       };
     };
     networking = {

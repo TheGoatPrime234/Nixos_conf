@@ -31,15 +31,23 @@ in {
   };
 
   config = lib.mkIf config.xanterella.spicetify.enable {
-    programs.spicetify = {
-      enable = true;
-      spotifyPackage = spotify-fix;
-      enabledExtensions = with spicePkgs.extensions; [
-        hidePodcasts
-        shuffle
+    environment = {
+      systemPackages = with pkgs; [
+        sptlrx
+        spotify-player
       ];
-      theme = spicePkgs.themes.catppuccin;
-      colorScheme = "mocha";
+    };
+    programs = {
+      spicetify = {
+        enable = true;
+        spotifyPackage = spotify-fix;
+        enabledExtensions = with spicePkgs.extensions; [
+          hidePodcasts
+          shuffle
+        ];
+        theme = spicePkgs.themes.catppuccin;
+        colorScheme = "mocha";
+      };
     };
   };
 }

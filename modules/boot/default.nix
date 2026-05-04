@@ -1,7 +1,7 @@
 {
   imports = [
     ./boot.nix
-    ./boot_server.nix
+    ./boot-server.nix
     ./colmena.nix
     ./git.nix
     ./local.nix

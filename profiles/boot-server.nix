@@ -5,7 +5,7 @@
 }: {
   config = {
     xanterella = {
-      boot_server.enable = true;
+      boot-server.enable = true;
       colmena.enable = true;
       git.enable = true;
       local.enable = true;
