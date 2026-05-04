@@ -25,7 +25,6 @@
     ...
   } @ inputs: let
     systemarch = "x86_64-linux";
-    tarhost = "192.168.178.69";
     taruser = "root";
     pkgs-25-11 = import inputs.nixpkgs-25-11 {
       system = systemarch;
@@ -38,13 +37,6 @@
         specialArgs = {inherit inputs pkgs-25-11;};
         modules = [
           ./hosts/xeravus/configuration.nix
-        ];
-      };
-      xorus = nixpkgs.lib.nixosSystem {
-        system = systemarch;
-        specialArgs = {inherit inputs pkgs-25-11;};
-        modules = [
-          ./hosts/xorus/configuration.nix
         ];
       };
     };
@@ -69,12 +61,22 @@
       };
       xorus = {
         deployment = {
-          targetHost = tarhost;
+          targetHost = "192.168.178.69";
           targetUser = taruser;
           buildOnTarget = false;
         };
         imports = [
           ./hosts/xorus/configuration.nix
+        ];
+      };
+      vicuna = {
+        deployment = {
+          targetHost = "192.168.178.78";
+          targetUser = taruser;
+          buildOnTarget = false;
+        };
+        imports = [
+          ./hosts/vicuna/configuration.nix
         ];
       };
     };

@@ -7,5 +7,6 @@
     ./games
     ./vault
     ./creative
+    ./server
   ];
 }
