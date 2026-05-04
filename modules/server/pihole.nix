@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    xanterella.xyy.enable = lib.mkEnableOption "Aktiviert xyy";
+    xanterella.pihole.enable = lib.mkEnableOption "Aktiviert pihole";
   };
 
-  config = lib.mkIf config.xanterella.xyy.enable {
+  config = lib.mkIf config.xanterella.pihole.enable {
     environment.systemPackages = with pkgs; [
       pihole-ftl
     ];

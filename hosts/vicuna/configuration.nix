@@ -13,4 +13,14 @@
   ];
 
   networking.hostName = "vicuna";
+  fileSystems = {
+    "/mnt/data" = {
+      device = "/dev/disk/by-uuid/1046B06546B04CEA";
+      fsType = "ntfs";
+      options = [
+        "nofail"
+        "defaults"
+      ];
+    };
+  };
 }
