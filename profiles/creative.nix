@@ -5,7 +5,7 @@
 }: {
   config = {
     xanterella = {
-    inkspace.enable = true;
+      inkspace.enable = true;
     };
   };
 }
