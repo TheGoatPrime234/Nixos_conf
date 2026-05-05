@@ -25,7 +25,7 @@
             notify-send "Rebuild erfolgreich, aber kein Commit"
     else
             git commit -am "$COMMIT_MSG"
-            echo "Rebuild erfolgreich und erfolgreich committet: $COMMIT_MSG"
+            echo "Rebuild erfolgreich und erfolgreich committet: $COMMIT_MSG" --a=nix-switcher
             notify-send "Rebuild erfolgreich: $COMMIT_MSG"
     fi
     fastfetch
