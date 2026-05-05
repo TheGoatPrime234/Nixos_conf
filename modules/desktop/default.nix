@@ -15,7 +15,6 @@
     ./psmisc.nix
     ./pulsemixer.nix
     ./quickshell.nix
-    ./rofi.nix
     ./screenshots.nix
     ./sddm.nix
     ./spicetify.nix

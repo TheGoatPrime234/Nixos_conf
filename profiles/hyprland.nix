@@ -20,7 +20,6 @@
       psmisc.enable = true;
       pulsemixer.enable = true;
       quickshell.enable = true;
-      rofi.enable = true;
       screenshots.enable = true;
       sddm.enable = true;
       spicetify.enable = true;
