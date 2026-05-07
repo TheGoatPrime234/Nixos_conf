@@ -17,15 +17,10 @@
     ];
     programs = {
       git = {
+        enable = true;
         config = {
           init = {
             defaultBranch = "main";
-          };
-          alias = {
-            ck = "checkout";
-            st = "status";
-            cm = "commit -am";
-            br = "branch";
           };
         };
       };
