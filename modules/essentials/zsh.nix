@@ -56,13 +56,13 @@
               if [[ "$1" == "ck" ]]; then
           	shift
           	command git checkout "$@"
-                     if [[ "$1" == "st" ]]; then
+                     elif [[ "$1" == "st" ]]; then
           	shift
           	command git status "$@"
-                     if [[ "$1" == "cm" ]]; then
+                     elif [[ "$1" == "cm" ]]; then
           	shift
           	command git commit -am "$@"
-                     if [[ "$1" == "br" ]]; then
+                     elif [[ "$1" == "br" ]]; then
           	shift
           	command git branch "$@"
               else
