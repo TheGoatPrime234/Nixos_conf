@@ -10,6 +10,7 @@
       metasploit.enable = true;
       nmap.enable = true;
       wifite.enable = true;
+      wireshark.enable = true;
     };
   };
 }

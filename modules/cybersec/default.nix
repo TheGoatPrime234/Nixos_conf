@@ -5,5 +5,6 @@
     ./metasploit.nix
     ./nmap.nix
     ./wifite.nix
+    ./wireshark.nix
   ];
 }
