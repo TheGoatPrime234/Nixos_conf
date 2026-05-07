@@ -15,9 +15,19 @@
       gh
       git-lfs
     ];
-    programs.git.config = {
-      init = {
-        defaultBranch = "main";
+    programs = {
+      git = {
+        config = {
+          init = {
+            defaultBranch = "main";
+          };
+          alias = {
+            ck = "checkout";
+            st = "status";
+            cm = "commit -am";
+            br = "branch";
+          };
+        };
       };
     };
   };
