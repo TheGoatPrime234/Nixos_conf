@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  secrets = import "/home/cato/xanterella/modules/agenix/usb-secrets.nix";
+  secrets = import "/home/cato/xanterella/config/modules/agenix/usb-secrets.nix";
 in {
   options = {
     xanterella = {

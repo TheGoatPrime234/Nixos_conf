@@ -49,7 +49,7 @@ in {
     programs = {
       nh = {
         enable = true;
-        flake = "/home/cato/xanterella/";
+        flake = "/home/cato/xanterella/config/";
       };
     };
   };
