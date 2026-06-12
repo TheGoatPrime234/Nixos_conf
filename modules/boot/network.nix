@@ -71,7 +71,7 @@ in {
                 wifi-security = {
                   auth-alg = "open";
                   key-mgmt = "wpa-psk";
-                  psk = "$PSK_HOME$";
+                  psk = "$PSK_HOME";
                 };
               };
               #hotspot = { connection = { id = "S25+ von Cato"; type = "wifi"; }; ipv4 = { method = "auto"; }; ipv6 = { method = "auto"; }; wifi = { mode = "infrastructure"; ssid = "S25+ von Cato"; }; wifi-security = { auth-alg = "open"; key-mgmt = "wpa-psk"; psk = "$PSK_HOTSPOT$"; }; };
