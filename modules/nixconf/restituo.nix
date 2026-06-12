@@ -7,7 +7,7 @@
   cfg = config.xanterella.restituo;
   restituo = pkgs.writeShellScriptBin "restituo" ''
     set -e
-    cd ~/xanterella
+    cd ~/xanterella/config
 
     git add -A
     alejandra -q *
