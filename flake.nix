@@ -117,6 +117,16 @@
           ./profiles/ssh-keys.nix
         ];
       };
+      vicuna-image = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
+        modules = [
+          ./hosts/vicuna/configuration.nix
+          ./profiles/ssh-keys.nix
+          inputs.nixos-hardware.nixosModules.raspberry-pi-5
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        ];
+      };
       crylia = nixpkgs.lib.nixosSystem {
         system = systemarch;
         specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
