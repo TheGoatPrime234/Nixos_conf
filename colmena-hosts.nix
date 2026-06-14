@@ -36,9 +36,9 @@
       ./profiles/ssh-keys.nix
     ];
   };
-  xorus = {
+  lacrux = {
     deployment = {
-      targetHost = "192.168.178.69";
+      targetHost = "192.168.178.34";
       targetUser = taruser;
       buildOnTarget = false;
       keys = commonSSHKeys;
