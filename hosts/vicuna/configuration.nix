@@ -18,6 +18,9 @@
       enable = lib.mkForce false;
     };
   };
+  sdImage = {
+    firmwareSize = 256;
+  };
   fileSystems = {
     "/mnt/server-data" = {
       device = "/dev/disk/by-uuid/1046B06546B04CEA";
