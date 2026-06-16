@@ -33,7 +33,7 @@
         enable = true;
       };
       ssh = {
-        enable = true;
+        enable = lib.mkForce true;
       };
     };
   };

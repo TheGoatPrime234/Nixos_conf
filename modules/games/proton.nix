@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgs-unstable,
   ...
 }: {
   options = {
@@ -14,8 +15,8 @@
 
   config = lib.mkIf config.xanterella.proton.enable {
     environment = {
-      systemPackages = with pkgs; [
-        protonup
+      systemPackages = with pkgs-unstable; [
+        protonup-ng
       ];
     };
   };

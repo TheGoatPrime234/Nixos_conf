@@ -26,6 +26,7 @@
       programs = {
         ssh = {
           startAgent = true;
+          askPassword = lib.mkForce "";
         };
       };
       services = {
@@ -45,6 +46,11 @@
     })
 
     (lib.mkIf config.xanterella.ssh-installer.enable {
+      programs = {
+        ssh = {
+          askPassword = lib.mkForce "";
+        };
+      };
       services = {
         openssh = {
           enable = true;
