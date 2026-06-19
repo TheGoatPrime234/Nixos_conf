@@ -5,22 +5,22 @@
 }: {
   config = {
     xanterella = {
-      audiobookshelf = {
+      audiobookshelf-extern = {
         enable = true;
       };
       caddy = {
         enable = true;
       };
-      grafana = {
+      grafana-extern = {
         enable = true;
       };
       pihole = {
         enable = true;
       };
-      syncthing = {
+      syncthing-extern = {
         enable = true;
       };
-      vaultwarden = {
+      vaultwarden-extern = {
         enable = true;
       };
       fastfetch = {

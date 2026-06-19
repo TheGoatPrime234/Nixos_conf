@@ -36,30 +36,6 @@
       ./profiles/ssh-keys.nix
     ];
   };
-  lacrux = {
-    deployment = {
-      targetHost = "192.168.178.34";
-      targetUser = taruser;
-      buildOnTarget = false;
-      keys = commonSSHKeys;
-    };
-    imports = [
-      ./hosts/xorus/configuration.nix
-      ./profiles/ssh-keys.nix
-    ];
-  };
-  megatron = {
-    deployment = {
-      targetHost = "crylia";
-      targetUser = taruser;
-      buildOnTarget = false;
-      keys = commonSSHKeys;
-    };
-    imports = [
-      ./profiles/ssh-keys.nix
-      ./hosts/xorus/configuration.nix
-    ];
-  };
   vicuna = {
     deployment = {
       targetHost = "192.168.178.30";
@@ -71,6 +47,18 @@
       ./hosts/vicuna/configuration.nix
       ./profiles/ssh-keys.nix
       inputs.nixos-hardware.nixosModules.raspberry-pi-5
+    ];
+  };
+  lutik = {
+    deployment = {
+      targetHost = "192.168.178.34";
+      targetUser = taruser;
+      buildOnTarget = true;
+      keys = commonSSHKeys;
+    };
+    imports = [
+      ./hosts/lutik/configuration.nix
+      ./profiles/ssh-keys.nix
     ];
   };
 }

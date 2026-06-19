@@ -8,7 +8,7 @@
     ./hardware-configuration.nix
     ./../../modules
     ./../../profiles/boot/boot-server.nix
-    ./../../profiles/apps/apps-server.nix
+    ./../../profiles/server/apps-server-extern.nix
   ];
   networking = {
     hostName = "vicuna";

@@ -7,42 +7,80 @@
   options = {
     xanterella = {
       grafana = {
-        enable = lib.mkEnableOption "Aktiviert grafana";
+        enable = lib.mkEnableOption "Aktiviert Grafana ohne externes Speichermedium";
+      };
+      grafana-extern = {
+        enable = lib.mkEnableOption "Aktiviert Grafana mit externem Speichermedium";
       };
     };
   };
 
-  config = lib.mkIf config.xanterella.grafana.enable {
-    environment = {
-      systemPackages = with pkgs; [
-        grafana
-      ];
-    };
-    systemd = {
-      tmpfiles = {
-        rules = [
-          "d /mnt/server-data/nix/grafana 0750 grafana grafana -"
+  config = lib.mkMerge [
+    (lib.mkIf config.xanterella.grafana.enable {
+      environment = {
+        systemPackages = with pkgs; [
+          grafana
         ];
       };
-    };
-    services = {
-      grafana = {
-        enable = true;
-        dataDir = "/mnt/server-data/nix/grafana";
-        settings = {
-          server = {
-            http_addr = "0.0.0.0";
-            http_port = 8989;
+      systemd = {
+        tmpfiles = {
+          rules = [
+            "d server-data/nix/grafana 0750 grafana grafana -"
+          ];
+        };
+      };
+      services = {
+        grafana = {
+          enable = true;
+          dataDir = "server-data/nix/grafana";
+          settings = {
+            server = {
+              http_addr = "0.0.0.0";
+              http_port = 8989;
+            };
           };
         };
       };
-    };
-    networking = {
-      firewall = {
-        allowedTCPPorts = [
-          8989
+      networking = {
+        firewall = {
+          allowedTCPPorts = [
+            8989
+          ];
+        };
+      };
+    })
+    (lib.mkIf config.xanterella.grafana-extern.enable {
+      environment = {
+        systemPackages = with pkgs; [
+          grafana
         ];
       };
-    };
-  };
+      systemd = {
+        tmpfiles = {
+          rules = [
+            "d /mnt/server-data/nix/grafana 0750 grafana grafana -"
+          ];
+        };
+      };
+      services = {
+        grafana = {
+          enable = true;
+          dataDir = "/mnt/server-data/nix/grafana";
+          settings = {
+            server = {
+              http_addr = "0.0.0.0";
+              http_port = 8989;
+            };
+          };
+        };
+      };
+      networking = {
+        firewall = {
+          allowedTCPPorts = [
+            8989
+          ];
+        };
+      };
+    })
+  ];
 }
