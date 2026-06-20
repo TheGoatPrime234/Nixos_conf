@@ -6,5 +6,6 @@
     ./pihole.nix
     ./syncthing-server.nix
     ./vaultwarden.nix
+    ./github-runner.nix
   ];
 }

@@ -23,6 +23,9 @@
       vaultwarden-extern = {
         enable = true;
       };
+      github-runner = {
+        enable = true;
+      };
       fastfetch = {
         enable = true;
       };

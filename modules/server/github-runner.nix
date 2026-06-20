@@ -25,7 +25,7 @@
       github-runners = {
         xanterella-ci = {
           enable = true;
-          url = "https://github.com/DeinName/xanterella";
+          url = "https://github.com/Xeravus/Xanterella-Cli";
           tokenFile = config.age.secrets.github-runner-token.path;
           extraPackages = with pkgs; [
             nix
