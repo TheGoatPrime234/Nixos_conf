@@ -11,4 +11,7 @@ in {
   "global.age" = {
     publicKeys = users ++ systems;
   };
+  "github-ŕunner.age" = {
+    publicKeys = users ++ systems;
+  };
 }

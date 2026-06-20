@@ -26,6 +26,9 @@
       nixvim = {
         enable = true;
       };
+      tailscale = {
+        enable = true;
+      };
       ssh = {
         enable = true;
       };
