@@ -9,7 +9,6 @@
     ./../../profiles/boot/boot-crylia.nix
     ./../../profiles/essentials/essentials-crylia.nix
     ./../../profiles/apps/apps.nix
-    ./../../profiles/desktops/desktop.nix
     ./../../profiles/desktops/gnome.nix
   ];
   networking = {

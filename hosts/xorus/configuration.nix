@@ -10,7 +10,6 @@
     ./../../profiles/boot/boot.nix
     ./../../profiles/essentials/essentials.nix
     ./../../profiles/apps/apps.nix
-    ./../../profiles/desktops/desktop.nix
     ./../../profiles/desktops/gnome.nix
     ./../../profiles/dev.nix
     ./../../profiles/vault.nix
