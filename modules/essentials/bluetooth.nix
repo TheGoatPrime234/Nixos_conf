@@ -31,8 +31,10 @@
     };
     powerManagement = {
       resumeCommands = ''
-        sleep 2
-               ${pkgs.bluez}/bin/bluetoothctl power on
+                sleep 2
+                       ${pkgs.bluez}/bin/bluetoothctl power on
+              sleep 3
+        ${pkgs.bluez}/bin/bluetoothctl connect 84:D3:52:2A:B5:97
       '';
     };
   };
