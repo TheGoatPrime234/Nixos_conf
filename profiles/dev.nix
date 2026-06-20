@@ -20,6 +20,9 @@
       vimgolf = {
         enable = true;
       };
+      tokei = {
+        enable = true;
+      };
       vscode = {
         enable = true;
       };
