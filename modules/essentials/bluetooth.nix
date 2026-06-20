@@ -13,20 +13,30 @@
   };
 
   config = lib.mkIf config.xanterella.bluetooth.enable {
+    environment = {
+      systemPackages = with pkgs; [
+        blueman
+        bluetui
+      ];
+    };
     hardware = {
       bluetooth = {
         enable = true;
         powerOnBoot = true;
         settings = {
-          general = {
+          General = {
             FastConnectable = "true";
+            Experimental = "true";
+          };
+          Policy = {
+            AutoEnable = "true";
           };
         };
       };
     };
     services = {
       blueman = {
-        enable = true;
+        enable = false;
       };
     };
   };
