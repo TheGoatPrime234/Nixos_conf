@@ -15,7 +15,6 @@
   config = lib.mkIf config.xanterella.bluetooth.enable {
     environment = {
       systemPackages = with pkgs; [
-        blueman
         bluetui
       ];
     };
@@ -34,10 +33,10 @@
         };
       };
     };
-    services = {
-      blueman = {
-        enable = false;
-      };
+    powerManagement = {
+      resumeCommands = ''
+        ${pkgs.bluez}/bin/bluetoothctl power on
+      '';
     };
   };
 }
