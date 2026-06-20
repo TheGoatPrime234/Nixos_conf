@@ -17,7 +17,7 @@
       pihole = {
         enable = true;
       };
-      syncthing-extern = {
+      syncthing_server-extern = {
         enable = true;
       };
       vaultwarden-extern = {

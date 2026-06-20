@@ -3,6 +3,9 @@
   lib,
   ...
 }: {
+  imports = [
+    ./desktop.nix
+  ];
   config = {
     xanterella = {
       gnome-keyring = {
