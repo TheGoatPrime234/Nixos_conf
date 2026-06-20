@@ -26,9 +26,6 @@
           General = {
             FastConnectable = "true";
           };
-          Policy = {
-            AutoEnable = "true";
-          };
         };
       };
     };
