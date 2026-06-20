@@ -8,6 +8,9 @@
       boot-server = {
         enable = true;
       };
+      stay-on = {
+        enable = true;
+      };
       colmena = {
         enable = true;
       };
