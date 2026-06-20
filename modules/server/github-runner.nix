@@ -16,7 +16,7 @@
     age = {
       secrets = {
         github-runner-token = {
-          file = ../../agenix/github-runner.age;
+          file = ./../agenix/github-runner.age;
         };
       };
     };
