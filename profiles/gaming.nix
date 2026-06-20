@@ -23,6 +23,9 @@
       steam = {
         enable = true;
       };
+      mount-games = {
+        enable = true;
+      };
     };
   };
 }
