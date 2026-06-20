@@ -25,7 +25,6 @@
         settings = {
           General = {
             FastConnectable = "true";
-            Experimental = "true";
           };
           Policy = {
             AutoEnable = "true";
@@ -35,7 +34,8 @@
     };
     powerManagement = {
       resumeCommands = ''
-        ${pkgs.bluez}/bin/bluetoothctl power on
+        sleep 2
+               ${pkgs.bluez}/bin/bluetoothctl power on
       '';
     };
   };
