@@ -25,6 +25,7 @@
     };
     specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
   };
+  # --- Xanterella Hosts Start ---
   xeravus = {
     deployment = {
       targetHost = null;
@@ -53,7 +54,7 @@
     deployment = {
       targetHost = "192.168.178.34";
       targetUser = taruser;
-      buildOnTarget = true;
+      buildOnTarget = false;
       keys = commonSSHKeys;
     };
     imports = [
@@ -61,4 +62,5 @@
       ./profiles/ssh-keys.nix
     ];
   };
+  # --- Xanterella Hosts End ---
 }
