@@ -14,9 +14,6 @@
       grafana-extern = {
         enable = true;
       };
-      pihole = {
-        enable = true;
-      };
       syncthing_server-extern = {
         enable = true;
       };
