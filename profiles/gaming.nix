@@ -8,6 +8,9 @@
       discord = {
         enable = true;
       };
+      logitech = {
+        enable = true;
+      };
       gamemode = {
         enable = true;
       };
