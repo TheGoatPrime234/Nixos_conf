@@ -90,6 +90,14 @@
           }
           {
             mode = "n";
+            key = "<leader>fs";
+            action = "<cmd>lua Snacks.picker.treesitter()<CR>";
+            options = {
+              desc = "Funktionen und Struktur (Outline)";
+            };
+          }
+          {
+            mode = "n";
             key = "<leader>fp";
             action = "<cmd>lua Snacks.picker.projects()<CR>";
             options = {
