@@ -19,11 +19,11 @@
     };
   };
   sdImage = {
-    firmwareSize = 256;
+    firmwareSize = 1024;
   };
   fileSystems = {
     "/mnt/server-data" = {
-      device = "/dev/disk/by-uuid/1046B06546B04CEA";
+      device = "/dev/disk/by-label/Server";
       fsType = "ntfs";
       options = [
         "defaults"

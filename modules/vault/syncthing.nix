@@ -32,12 +32,18 @@
             "raspi" = {
               id = "IKHZFQ4-UEA4QFZ-AQETPT7-TH2J65Z-3UBP6Y5-KP4QEVI-YR6QNR5-43YSAAC";
             };
+            "Samsung S25+" = {
+              id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";
+            };
           };
           folder = {
             "Vaults" = {
               id = "ngxgj-f2ouz";
-              path = "/home/cato/Documents/Vaults";
-              devices = ["raspi"];
+              path = "/home/cato/Documents/Vaults/";
+              devices = [
+                "raspi"
+                "Samsung S25+"
+              ];
               versioning = {
                 type = "staggered";
                 params = {

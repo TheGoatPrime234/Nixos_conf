@@ -10,6 +10,11 @@
   ];
 
   boot.initrd.availableKernelModules = lib.mkForce [
+    "pcie_brcmstb" # Lebenswichtig: Der PCIe-Treiber für den RP1-Chip des Pi 5
+    "reset-raspberrypi" # Reset-Treiber
+    "sdhci_pci" # SD-Karten-Controller
+    "cqhci"
+    "mmc_block"
     "usbhid"
     "usb_storage"
   ];
@@ -20,6 +25,16 @@
   boot.supportedFilesystems = lib.mkForce ["vfat" "ext4" "ntfs3" "ntfs-3g"];
 
   swapDevices = [];
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/NIXOS_SD";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/FIRMWARE";
+    fsType = "vfat";
+    options = ["fmask=0022" "dmask=0022"];
+  };
 
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.end0.useDHCP = lib.mkDefault true;
