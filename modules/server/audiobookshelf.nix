@@ -26,7 +26,10 @@
       fileSystems = {
         "/var/lib/audiobookshelf" = {
           device = "server-data/nix/audiobookshelf";
-          options = ["bind"];
+          options = [
+            "bind"
+            "nofail"
+          ];
         };
       };
       services = {
@@ -64,7 +67,10 @@
       fileSystems = {
         "/var/lib/audiobookshelf" = {
           device = "/mnt/server-data/nix/audiobookshelf";
-          options = ["bind"];
+          options = [
+            "bind"
+            "nofail"
+          ];
           # Sagt NixOS, dass es erst die Hauptfestplatte mounten muss, bevor dieser Mount passiert
           depends = ["/mnt/server-data"];
         };

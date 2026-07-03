@@ -22,6 +22,8 @@
       emulatedSystems = ["aarch64-linux"];
     };
   };
+  zramSwap.enable = true;
+  systemd.oomd.enable = false;
   networking = {
     hostName = "xeravus";
   };

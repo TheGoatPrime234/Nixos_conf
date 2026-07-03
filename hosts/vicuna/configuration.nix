@@ -24,7 +24,7 @@
   fileSystems = {
     "/mnt/server-data" = {
       device = "/dev/disk/by-label/Server";
-      fsType = "ntfs";
+      fsType = "ext4";
       options = [
         "defaults"
         "nofail"
@@ -32,7 +32,13 @@
       ];
     };
   };
+  hardware = {
+    bluetooth = {
+      enable = false;
+    };
+    enableRedistributableFirmware = true;
+  };
   system = {
-    stateVersion = "25.11";
+    stateVersion = "26.05";
   };
 }
