@@ -26,6 +26,9 @@
       vscode = {
         enable = true;
       };
+      github-runner = {
+        enable = true;
+      };
     };
   };
 }
