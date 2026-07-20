@@ -20,9 +20,6 @@
       dbus = {
         enable = true;
       };
-      direnv = {
-        enable = true;
-      };
       nix-warper = {
         enable = true;
       };

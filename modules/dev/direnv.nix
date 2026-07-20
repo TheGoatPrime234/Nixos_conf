@@ -15,6 +15,7 @@
   config = lib.mkIf config.xanterella.direnv.enable {
     programs = {
       direnv = {
+        enable = true;
         nix-direnv = {
           enable = true;
         };
