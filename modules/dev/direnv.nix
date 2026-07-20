@@ -17,6 +17,9 @@
       direnv = {
         enable = true;
         silent = true;
+        settings = {
+          log_format = "";
+        };
         nix-direnv = {
           enable = true;
         };
