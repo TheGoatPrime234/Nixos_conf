@@ -48,11 +48,6 @@
           sv = "sudo nvim";
           za = "yazi";
           nix-pr = "nixpkgs-review pr --print-result";
-          gst = "git status";
-          gck = "git checkout";
-          gcm = "git commit -am";
-          gbr = "git branch";
-          gdf = "git diff --stat";
         };
         interactiveShellInit = ''
           zmodload zsh/zprof
