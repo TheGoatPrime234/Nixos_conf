@@ -54,47 +54,32 @@
             nix-pr = "nixpkgs-review pr --print-result";
           };
           interactiveShellInit = ''
-                                ZSH_CACHE_DIR="$HOME/.cache/zsh"
-                                        if [[ ! -d "$ZSH_CACHE_DIR" ]]; then
-                                          mkdir -p "$ZSH_CACHE_DIR"
-                                        fi
-                           export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-$HOST-$ZSH_VERSION"
-                           if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-                           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-                        fi
-                                          source ${inputs.p10k-src}/powerlevel10k.zsh-theme
-                                                 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+            zmodload zsh/zprof
+                             ZSH_CACHE_DIR="$HOME/.cache/zsh"
+                             if [[ ! -d "$ZSH_CACHE_DIR" ]]; then
+                               mkdir -p "$ZSH_CACHE_DIR"
+                             fi
 
-                                                 # Deine Yazi-Funktion y()
-                                                 function y() {
-                                                   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-                                                   command yazi "$@" --cwd-file="$tmp"
-                                                   IFS= read -r -d "" cwd < "$tmp"
-                                                   [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-                                                   rm -f -- "$tmp"
-                                                 }
-            function git() {
-                if [[ "$1" == "ck" ]]; then
-            	shift
-            	command git checkout "$@"
-                       elif [[ "$1" == "st" ]]; then
-            	shift
-            	command git status "$@"
-                       elif [[ "$1" == "cm" ]]; then
-            	shift
-            	command git commit -am "$@"
-                       elif [[ "$1" == "br" ]]; then
-            	shift
-            	command git branch "$@"
-                else
-            	command git "$@"
-                       fi
-                   }
+                             export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-$HOST-$ZSH_VERSION"
+                      export DIRENV_LOG_FORMAT=""
+
+                             if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+                               source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+                             fi
+
+                             source ${inputs.p10k-src}/powerlevel10k.zsh-theme
+                             [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+                             # Deine Yazi-Funktion bleibt unverändert
+                             function y() {
+                               local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+                               command yazi "$@" --cwd-file="$tmp"
+                               IFS= read -r -d "" cwd < "$tmp"
+                               [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+                               rm -f -- "$tmp"
+                             }
+            zprof
           '';
-          ohMyZsh = {
-            enable = true;
-            plugins = ["git"];
-          };
         };
       };
       users = {
