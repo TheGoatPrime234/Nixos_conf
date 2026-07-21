@@ -25,8 +25,23 @@
       git = {
         enable = true;
         config = {
+          user = {
+            name = "Xeravus";
+            email = "cato.jenisch@gmail.com";
+          };
           init = {
             defaultBranch = "main";
+          };
+          pull = {
+            rebase = true;
+          };
+          alias = {
+            ck = "checkout";
+            ch = "checkout";
+            st = "status";
+            cm = "commit -am";
+            br = "branch";
+            df = "diff --stat";
           };
         };
       };
