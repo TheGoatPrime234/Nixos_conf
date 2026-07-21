@@ -52,6 +52,7 @@
             sv = "sudo nvim";
             za = "yazi";
             nix-pr = "nixpkgs-review pr --print-result";
+            b = "btop";
           };
           interactiveShellInit = ''
                    ZSH_CACHE_DIR="$HOME/.cache/zsh"
