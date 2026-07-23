@@ -8,6 +8,9 @@
       discord = {
         enable = true;
       };
+      minecraft = {
+        enable = false;
+      };
       logitech = {
         enable = true;
       };

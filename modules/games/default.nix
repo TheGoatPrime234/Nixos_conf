@@ -1,6 +1,7 @@
 {
   imports = [
     ./discord.nix
+    ./minecraft.nix
     ./logitech.nix
     ./gamemode.nix
     ./nvidia.nix

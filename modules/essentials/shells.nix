@@ -53,6 +53,7 @@
             za = "yazi";
             nix-pr = "nixpkgs-review pr --print-result";
             b = "btop";
+            carrun = "cargo check && cargo test && cargo build";
           };
           interactiveShellInit = ''
                    ZSH_CACHE_DIR="$HOME/.cache/zsh"
