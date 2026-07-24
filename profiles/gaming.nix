@@ -27,7 +27,7 @@
         enable = true;
       };
       steam = {
-        enable = false;
+        enable = true;
       };
       mount-games = {
         enable = true;
