@@ -15,7 +15,7 @@
 
   config = lib.mkIf config.xanterella.steam.enable {
     environment = {
-      systemPackages = with pkgs; [
+      systemPackages = with pkgs-unstable; [
         steam
       ];
     };
