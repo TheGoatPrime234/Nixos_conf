@@ -98,6 +98,22 @@
           }
           {
             mode = "n";
+            key = "<leader>j";
+            action = "<cmd>cnext<CR>";
+            options = {
+              desc = "Nächster Quickfix-Eintrag";
+            };
+          }
+          {
+            mode = "n";
+            key = "<leader>k";
+            action = "<cmd>cprev<CR>";
+            options = {
+              desc = "Vorheriger Quickfix-Eintrag";
+            };
+          }
+          {
+            mode = "n";
             key = "<leader>fp";
             action = "<cmd>lua Snacks.picker.projects()<CR>";
             options = {
