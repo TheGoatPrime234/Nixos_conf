@@ -249,7 +249,7 @@
             enable = true;
             settings = {
               format_on_save = {
-                lsp_fallback = true;
+                lsp_fallback = false;
                 timeout_ms = 500;
               };
               formatters_by_ft = {
