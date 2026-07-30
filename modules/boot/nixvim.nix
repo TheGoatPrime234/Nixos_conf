@@ -262,6 +262,39 @@
               };
             };
           };
+          cmp = {
+            enable = true;
+            settings = {
+              sources = [
+                {name = "nvim_lsp";}
+                {name = "path";}
+                {name = "buffer";}
+              ];
+              mapping = {
+                "<C-n>" = "cmp.mapping.select_next_item()";
+                "<C-p>" = "cmp.mapping.select_prev_item()";
+                "<S-CR>" = "cmp.mapping.confirm({ select = true })";
+                "<C-Space>" = "cmp.mapping.complete()";
+              };
+            };
+          };
+          lsp = {
+            enable = true;
+            servers = {
+              rust_analyzer = {
+                enable = true;
+                installCargo = true;
+                installRustc = true;
+              };
+            };
+            keymaps = {
+              lspBuf = {
+                "gd" = "definition";
+                "K" = "hover";
+                "<leader>ca" = "code_action";
+              };
+            };
+          };
         };
         extraPackages = with pkgs-new; [
           alejandra
