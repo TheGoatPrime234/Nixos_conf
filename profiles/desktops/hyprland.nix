@@ -41,6 +41,9 @@
       swww = {
         enable = true;
       };
+      quickshell_noctalia = {
+        enable = true;
+      };
     };
   };
 }

@@ -35,9 +35,6 @@
       pulsemixer = {
         enable = true;
       };
-      quickshell = {
-        enable = true;
-      };
       spicetify = {
         enable = true;
       };
