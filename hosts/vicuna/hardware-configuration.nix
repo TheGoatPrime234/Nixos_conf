@@ -10,9 +10,11 @@
   ];
 
   boot.initrd.availableKernelModules = lib.mkForce [
-    "pcie_brcmstb" # Lebenswichtig: Der PCIe-Treiber für den RP1-Chip des Pi 5
-    "reset-raspberrypi" # Reset-Treiber
-    "sdhci_pci" # SD-Karten-Controller
+    "pcie_brcmstb"
+    "reset-raspberrypi"
+    "sdhci_pci"
+    "xhci_pci"
+    "uas"
     "cqhci"
     "mmc_block"
     "usbhid"
