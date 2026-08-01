@@ -256,9 +256,9 @@
                 qml = [
                   "qmlformat"
                 ];
-                nix = [
-                  "alejandra"
-                ];
+                #nix = [
+                #  "alejandra"
+                #];
               };
             };
           };
