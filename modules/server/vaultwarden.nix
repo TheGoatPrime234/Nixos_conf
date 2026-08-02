@@ -39,13 +39,40 @@
           ];
         };
       };
+      security = {
+        acme = {
+          defaults = {
+            email = "cato.jenisch@gmail.com";
+          };
+          acceptTerms = true;
+        };
+      };
       services = {
         vaultwarden = {
           enable = true;
           config = {
+            DOMAIN = "https://xanterella.come/vaultwarden";
             DATA_FOLDER = "server-data/nix/vaultwarden";
             ROCKET_ADDRESS = "0.0.0.0";
             ROCKET_PORT = 8222;
+          };
+        };
+        nginx = {
+          enable = true;
+          recommendedGzipSettings = true;
+          recommendedProxySettings = true;
+          recommendedTlsSettings = true;
+          virtualHosts = {
+            "xanterella.com" = {
+              enableACME = true;
+              forceSSL = true;
+              locations = {
+                "/vaultwarden/" = {
+                  proxyPass = "http://127.0.0.1:8222";
+                  proxyWebsockets = true;
+                };
+              };
+            };
           };
         };
       };
