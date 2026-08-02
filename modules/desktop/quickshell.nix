@@ -23,10 +23,13 @@
         systemPackages = with pkgs-new; [
           quickshell
         ];
-      };
-      environment = {
         variables = {
           QML_XHR_ALLOW_FILE_READ = "1";
+        };
+        etc = {
+          "wallpaper" = {
+            source = inputs.wallpaper;
+          };
         };
       };
     })

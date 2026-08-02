@@ -671,6 +671,7 @@
         "p10k-src": "p10k-src",
         "pomo-src": "pomo-src",
         "spicetify-nix": "spicetify-nix",
+        "wallpaper": "wallpaper",
         "zen-browser": "zen-browser"
       }
     },
@@ -800,6 +801,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wallpaper": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785696884,
+        "narHash": "sha256-xfwg/r8cuI10ffYwz/n+0k3fQdOsIiBqoXdSYBHq6XQ=",
+        "owner": "Xeravus",
+        "repo": "wallpaper",
+        "rev": "146fb282e90fa5423749bbd07547abb1359bd0ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Xeravus",
+        "repo": "wallpaper",
         "type": "github"
       }
     },

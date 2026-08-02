@@ -60,6 +60,10 @@
       url = "github:romkatv/powerlevel10k";
       flake = false;
     };
+    wallpaper = {
+      url = "github:Xeravus/wallpaper";
+      flake = false;
+    };
     pomo-src = {
       url = "github:Bahaaio/pomo";
       flake = false;
