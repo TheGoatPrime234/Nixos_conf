@@ -31,7 +31,7 @@
       };
       vaultwarden = {
         enable = true;
-        domain = "vault.domain.de";
+        domain = "xeravus.gute-nessie.ts.net";
       };
     };
   };
