@@ -28,14 +28,14 @@
           vaultwarden = {
             serviceConfig = {
               ReadWritePaths = [
-                "server-data/nix/vaultwarden"
+                "/etc/server-data/nix/vaultwarden"
               ];
             };
           };
         };
         tmpfiles = {
           rules = [
-            "d server-data/nix/vaultwarden 0750 vaultwarden vaultwarden -"
+            "d /etc/server-data/nix/vaultwarden 0750 vaultwarden vaultwarden -"
           ];
         };
       };
@@ -52,7 +52,7 @@
           enable = true;
           config = {
             DOMAIN = "https://xanterella.come/vaultwarden";
-            DATA_FOLDER = "server-data/nix/vaultwarden";
+            DATA_FOLDER = "/etc/server-data/nix/vaultwarden";
             ROCKET_ADDRESS = "0.0.0.0";
             ROCKET_PORT = 8222;
           };
