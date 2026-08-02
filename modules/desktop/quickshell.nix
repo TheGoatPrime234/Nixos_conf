@@ -26,11 +26,6 @@
         variables = {
           QML_XHR_ALLOW_FILE_READ = "1";
         };
-        etc = {
-          "wallpaper" = {
-            source = inputs.wallpaper;
-          };
-        };
       };
     })
     (lib.mkIf config.xanterella.quickshell_noctalia.enable {
@@ -38,6 +33,11 @@
         systemPackages = [
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
+        etc = {
+          "wallpaper" = {
+            source = inputs.wallpaper;
+          };
+        };
       };
     })
   ];
