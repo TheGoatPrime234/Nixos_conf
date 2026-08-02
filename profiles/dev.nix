@@ -29,6 +29,9 @@
       github-runner = {
         enable = true;
       };
+      vaultwarden = {
+        enable = true;
+      };
     };
   };
 }

@@ -17,7 +17,7 @@
         enable = true;
       };
       netbird = {
-      enable = true;
+        enable = true;
       };
     };
   };
