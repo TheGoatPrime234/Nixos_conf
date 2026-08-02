@@ -31,6 +31,7 @@
       };
       vaultwarden = {
         enable = true;
+        domain = "vault.domain.de";
       };
     };
   };

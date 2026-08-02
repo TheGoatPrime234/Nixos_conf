@@ -807,11 +807,11 @@
     "wallpaper": {
       "flake": false,
       "locked": {
-        "lastModified": 1785697479,
-        "narHash": "sha256-cAk00t3VBKuIa8g63D7M1rjroNdTtvFC2SA0AE0sm5c=",
+        "lastModified": 1785697686,
+        "narHash": "sha256-QsG4WyaZzlQFkwIbm0JFE6TZTdGwt468qu/EXiUsZo4=",
         "owner": "Xeravus",
         "repo": "wallpaper",
-        "rev": "d602ab9614c5738b4dc1c9542733d49a0fc1fa7b",
+        "rev": "d7d4c865d57e58e653b340918adadaa582362cb0",
         "type": "github"
       },
       "original": {
