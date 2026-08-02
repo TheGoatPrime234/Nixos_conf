@@ -18,7 +18,9 @@
   };
 
   config = lib.mkIf config.xanterella.vaultwarden.enable {
+    users.users.caddy.extraGroups = ["tailscale"];
     services = {
+      tailscale.permitCertUid = "caddy";
       vaultwarden = {
         enable = true;
         config = {
