@@ -256,9 +256,9 @@
                 qml = [
                   "qmlformat"
                 ];
-                #nix = [
-                #  "alejandra"
-                #];
+                nix = [
+                  "alejandra"
+                ];
               };
             };
           };
@@ -278,23 +278,23 @@
               };
             };
           };
-          # lsp = {
-          #   enable = true;
-          #   servers = {
-          #     rust_analyzer = {
-          #       enable = false;
-          #       installCargo = true;
-          #       installRustc = true;
-          #     };
-          #   };
-          #   keymaps = {
-          #     lspBuf = {
-          #       "gd" = "definition";
-          #       "K" = "hover";
-          #       "<leader>ca" = "code_action";
-          #     };
-          #   };
-          # };
+          lsp = {
+            enable = true;
+            servers = {
+              # rust_analyzer = {
+              # enable = false;
+              # installCargo = true;
+              # installRustc = true;
+              # };
+            };
+            keymaps = {
+              lspBuf = {
+                "gd" = "definition";
+                "K" = "hover";
+                "<leader>ca" = "code_action";
+              };
+            };
+          };
         };
         extraPackages = with pkgs-new; [
           alejandra

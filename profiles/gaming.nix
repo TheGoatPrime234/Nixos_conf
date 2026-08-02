@@ -15,22 +15,22 @@
         enable = true;
       };
       gamemode = {
-        enable = true;
+        enable = false;
       };
       nvidia = {
-        enable = true;
+        enable = false;
       };
       opengl = {
         enable = true;
       };
       proton = {
-        enable = true;
+        enable = false;
       };
       steam = {
-        enable = true;
+        enable = false;
       };
       mount-games = {
-        enable = true;
+        enable = false;
       };
     };
   };
