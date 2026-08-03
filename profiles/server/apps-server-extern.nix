@@ -20,9 +20,6 @@
       syncthing_server-extern = {
         enable = true;
       };
-      vaultwarden-extern = {
-        enable = true;
-      };
       fastfetch = {
         enable = true;
       };
