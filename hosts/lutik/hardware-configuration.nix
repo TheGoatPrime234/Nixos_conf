@@ -23,13 +23,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/28FD-00A7";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
-  };
-
-  fileSystems."/mnt/sdboot" = {
-    device = "/dev/disk/by-uuid/2178-694E";
+    device = "/dev/disk/by-uuid/F204-7C1B";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
   };
