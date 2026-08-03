@@ -27,11 +27,15 @@
         enable = true;
       };
       github-runner = {
-        enable = true;
-      };
-      vaultwarden = {
-        enable = true;
-        domain = "xeravus.gute-nessie.ts.net";
+        "fast_builder" = {
+          url = "https://github.com/Xeravus/Xanterella-Cli";
+          labels = [
+            "nixos"
+            "self-hosted"
+            "xanterella"
+            "fast"
+          ];
+        };
       };
     };
   };
