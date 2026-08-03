@@ -8,12 +8,6 @@
       audiobookshelf = {
         enable = true;
       };
-      caddy = {
-        enable = true;
-      };
-      syncthing_server = {
-        enable = true;
-      };
       github-runner = {
         enable = true;
       };
