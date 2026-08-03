@@ -5,19 +5,16 @@
 }: {
   config = {
     xanterella = {
-      audiobookshelf-extern = {
+      audiobookshelf = {
         enable = true;
       };
       caddy = {
         enable = true;
       };
-      grafana-extern = {
+      grafana = {
         enable = true;
       };
-      syncthing_server-extern = {
-        enable = true;
-      };
-      vaultwarden-extern = {
+      syncthing_server = {
         enable = true;
       };
       github-runner = {
