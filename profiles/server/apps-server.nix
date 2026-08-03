@@ -11,9 +11,6 @@
       caddy = {
         enable = true;
       };
-      grafana = {
-        enable = true;
-      };
       syncthing_server = {
         enable = true;
       };
