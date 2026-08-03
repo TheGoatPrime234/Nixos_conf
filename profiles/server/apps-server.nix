@@ -5,12 +5,6 @@
 }: {
   config = {
     xanterella = {
-      audiobookshelf = {
-        enable = true;
-      };
-      github-runner = {
-        enable = true;
-      };
       fastfetch = {
         enable = true;
       };
