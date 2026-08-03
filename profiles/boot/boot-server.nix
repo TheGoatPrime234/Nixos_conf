@@ -35,6 +35,12 @@
       ssh = {
         enable = true;
       };
+      sddm = {
+        enable = false;
+      };
+      gdm = {
+        enable = false;
+      };
     };
   };
 }
