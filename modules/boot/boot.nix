@@ -23,7 +23,13 @@
             canTouchEfiVariables = true;
           };
           systemd-boot = {
+            enable = false;
+          };
+          grub = {
             enable = true;
+            efiSupport = true;
+            device = "nodev";
+            theme = pkgs.nixos-grub2-theme;
           };
         };
         kernelPackages = pkgs.linuxPackages_6_12;
@@ -38,13 +44,10 @@
             canTouchEfiVariables = true;
           };
           systemd-boot = {
-            enable = false;
+            enable = true;
           };
           grub = {
             enable = false;
-          };
-          generic-extlinux-compatible = {
-            enable = true;
           };
         };
         kernelPackages = pkgs.linuxPackages_6_12;
