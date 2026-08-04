@@ -24,7 +24,7 @@
         settings = {
           listen = "127.0.0.1:6000";
           database = {
-            url = "sqlite:///var/lib/atticd/server.db?mode=rwc";
+            url = "sqlite:///var/lib/atticd/server.db";
           };
           storage = {
             type = "local";
