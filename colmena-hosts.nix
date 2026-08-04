@@ -51,7 +51,7 @@
   };
   lutik = {
     deployment = {
-      targetHost = "192.168.178.34";
+      targetHost = "lutik";
       targetUser = taruser;
       buildOnTarget = false;
       keys = commonSSHKeys;
