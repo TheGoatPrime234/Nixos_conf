@@ -7,5 +7,6 @@
     ./vaultwarden.nix
     ./github-runner.nix
     ./monitoring.nix
+    ./stress.nix
   ];
 }

@@ -21,6 +21,9 @@
       btop = {
         enable = true;
       };
+      stress = {
+        enable = true;
+      };
       monitoring = {
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
