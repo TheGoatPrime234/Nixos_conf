@@ -65,6 +65,9 @@
               handle /_attic* {
               reverse_proxy ${config.services.atticd.settings.listen}
               }
+              handle /api* {
+              reverse_proxy ${config.services.atticd.settings.listen}
+              }
               handle /main* {
               reverse_proxy ${config.services.atticd.settings.listen}
               }
