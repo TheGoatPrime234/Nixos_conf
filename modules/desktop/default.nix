@@ -16,5 +16,6 @@
     ./screenshots.nix
     ./tldr.nix
     ./yazi.nix
+    ./lightdm.nix
   ];
 }

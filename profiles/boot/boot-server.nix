@@ -41,6 +41,9 @@
       gdm = {
         enable = false;
       };
+      lightdm = {
+        enable = false;
+      };
     };
   };
 }
