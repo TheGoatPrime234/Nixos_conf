@@ -37,17 +37,16 @@
       ./profiles/ssh-keys.nix
     ];
   };
-  vicuna = {
+  xorus = {
     deployment = {
-      targetHost = "192.168.178.30";
+      targetHost = "192.168.178.69";
       targetUser = taruser;
       buildOnTarget = false;
       keys = commonSSHKeys;
     };
     imports = [
-      ./hosts/vicuna/configuration.nix
+      ./hosts/xorus/configuration.nix
       ./profiles/ssh-keys.nix
-      inputs.nixos-hardware.nixosModules.raspberry-pi-5
     ];
   };
   lutik = {
