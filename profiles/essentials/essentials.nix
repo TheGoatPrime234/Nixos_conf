@@ -56,6 +56,9 @@
       zip = {
         enable = true;
       };
+      attic = {
+        enable = true;
+      };
       zsh = {
         enable = true;
       };

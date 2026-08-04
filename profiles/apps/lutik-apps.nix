@@ -28,7 +28,7 @@
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
       };
-      attic = {
+      attic-server = {
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
       };

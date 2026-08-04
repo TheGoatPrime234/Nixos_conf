@@ -6,7 +6,7 @@
 }: {
   options = {
     xanterella = {
-      attic = {
+      attic-server = {
         enable = lib.mkEnableOption "Aktiviert Attic für Caching";
         domain = lib.mkOption {
           type = lib.types.str;
@@ -16,7 +16,7 @@
     };
   };
 
-  config = lib.mkIf config.xanterella.attic.enable {
+  config = lib.mkIf config.xanterella.attic-server.enable {
     services = {
       atticd = {
         enable = true;
@@ -60,7 +60,7 @@
       caddy = {
         enable = true;
         virtualHosts = {
-          "https://${config.xanterella.attic.domain}" = {
+          "https://${config.xanterella.attic-server.domain}" = {
             extraConfig = ''
               handle /_attic/* {
               reverse_proxy ${config.services.atticd.settings.listen}

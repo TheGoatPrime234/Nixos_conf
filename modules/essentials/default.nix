@@ -16,5 +16,6 @@
     ./wget.nix
     ./zip.nix
     ./shells.nix
+    ./attic.nix
   ];
 }
