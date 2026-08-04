@@ -19,9 +19,12 @@
           "nix-command"
           "flakes"
         ];
-        # substitutors = [
-        #   "https://lutik.gute-nessie.ts.net/cachix/"
-        # ];
+        substituters = [
+          "https://lutik.gute-nessie.ts.net/main"
+        ];
+        trusted-public-keys = [
+          "main:bLMFpRICiPB1bYrlJCfFuYthr3VG5Xhmcz2R6rubCFc="
+        ];
         trusted-users = [
           "root"
           "cato"
