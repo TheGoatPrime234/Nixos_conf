@@ -62,13 +62,7 @@
         virtualHosts = {
           "https://${config.xanterella.attic-server.domain}" = {
             extraConfig = ''
-              handle /_attic*{
-              reverse_proxy ${config.services.atticd.settings.listen}
-              }
-              handle /api* {
-              reverse_proxy ${config.services.atticd.settings.listen}
-              }
-              handle /main* {
+              handle {
               reverse_proxy ${config.services.atticd.settings.listen}
               }
             '';
