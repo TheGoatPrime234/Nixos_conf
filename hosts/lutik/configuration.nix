@@ -8,7 +8,6 @@
     ./hardware-configuration.nix
     ./../../modules
     ./../../profiles/boot/boot-server.nix
-    ./../../profiles/server/headless.nix
     ./../../profiles/apps/lutik-apps.nix
   ];
   networking = {
