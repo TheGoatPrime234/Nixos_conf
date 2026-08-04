@@ -18,8 +18,6 @@
         gnome-tweaks
         gnome-extension-manager
       ];
-    };
-    environment = {
       gnome = {
         excludePackages = with pkgs; [
           gnome-tour
@@ -29,6 +27,11 @@
       };
     };
     services = {
+      gnome = {
+        gcr-ssh-agent = {
+          enable = false;
+        };
+      };
       libinput = {
         enable = true;
       };
