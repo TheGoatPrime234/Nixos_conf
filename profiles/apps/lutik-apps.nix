@@ -21,6 +21,10 @@
       btop = {
         enable = true;
       };
+      monitoring = {
+        enable = true;
+        domain = "lutik.gute-nessie.ts.net";
+      };
     };
   };
 }
