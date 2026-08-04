@@ -19,6 +19,9 @@
           "nix-command"
           "flakes"
         ];
+        # substitutors = [
+        #   "https://lutik.gute-nessie.ts.net/cachix/"
+        # ];
         trusted-users = [
           "root"
           "cato"

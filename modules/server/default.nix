@@ -8,5 +8,6 @@
     ./github-runner.nix
     ./monitoring.nix
     ./stress.nix
+    ./attic.nix
   ];
 }

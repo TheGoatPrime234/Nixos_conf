@@ -28,6 +28,9 @@
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
       };
+      attic = {
+        enable = true;
+      };
     };
   };
 }
