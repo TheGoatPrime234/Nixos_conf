@@ -59,7 +59,7 @@
         scrapeConfigs = [
           {
             job_name = "nixos-laptop";
-            scrape_interval = "15s";
+            scrape_interval = "10s";
             static_configs = [
               {
                 targets = [
