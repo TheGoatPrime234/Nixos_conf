@@ -19,12 +19,6 @@
           "nix-command"
           "flakes"
         ];
-        substituters = [
-          "https://lutik.gute-nessie.ts.net/"
-        ];
-        trusted-public-keys = [
-          "main:bLMFpRICiPB1bYrlJCfFuYthr3VG5Xhmcz2R6rubCFc="
-        ];
         trusted-users = [
           "root"
           "cato"
