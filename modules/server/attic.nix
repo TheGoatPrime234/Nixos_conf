@@ -8,6 +8,10 @@
     xanterella = {
       attic = {
         enable = lib.mkEnableOption "Aktiviert Attic für Caching";
+        domain = lib.mkOption {
+          type = lib.types.str;
+          default = "xanterella.de/attic";
+        };
       };
     };
   };
@@ -39,6 +43,39 @@
       systemPackages = with pkgs; [
         openssl
       ];
+    };
+    users = {
+      users = {
+        caddy = {
+          extraGroups = [
+            "tailscale"
+          ];
+        };
+      };
+    };
+    services = {
+      tailscale = {
+        permitCertUid = "caddy";
+      };
+      caddy = {
+        enable = true;
+        virtualHosts = {
+          "https://${config.xanterella.attic.domain}" = {
+            extraConfig = ''
+              handle /_attic/* {
+              reverse_proxy ${config.services.atticd.settings.listen}
+              }
+            '';
+          };
+        };
+      };
+    };
+    networking = {
+      firewall = {
+        allowedTCPPorts = [
+          6000
+        ];
+      };
     };
   };
 }

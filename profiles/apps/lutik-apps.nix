@@ -30,6 +30,7 @@
       };
       attic = {
         enable = true;
+        domain = "lutik.gute-nessie.ts.net";
       };
     };
   };
