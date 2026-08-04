@@ -36,9 +36,7 @@
         virtualHosts = {
           "https://${config.xanterella.vaultwarden.domain}:8222" = {
             extraConfig = ''
-              handle {
-                       reverse_proxy 127.0.0.1:8222
-                }
+              reverse_proxy 127.0.0.1:8222
             '';
           };
         };

@@ -29,6 +29,9 @@
       pomodoro = {
         enable = true;
       };
+      reddit = {
+        enable = true;
+      };
       spicetify = {
         enable = true;
       };
