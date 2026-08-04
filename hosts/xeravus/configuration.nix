@@ -9,7 +9,7 @@
     ./../../modules
     ./../../profiles/boot/boot.nix
     ./../../profiles/essentials/essentials.nix
-    ./../../profiles/apps/apps.nix
+    ./../../profiles/apps/xeravus-apps.nix
     ./../../profiles/desktops/hyprland.nix
     ./../../profiles/dev.nix
     ./../../profiles/vault.nix

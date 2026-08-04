@@ -13,12 +13,6 @@
         zen = {
           enable = true;
         };
-        firefox = {
-          enable = true;
-        };
-        librewolf = {
-          enable = true;
-        };
       };
       brightnessctl = {
         enable = true;
@@ -32,13 +26,7 @@
       nitch = {
         enable = true;
       };
-      soomfon = {
-        enable = true;
-      };
       pomodoro = {
-        enable = true;
-      };
-      reddit = {
         enable = true;
       };
       spicetify = {

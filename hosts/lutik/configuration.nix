@@ -8,7 +8,7 @@
     ./hardware-configuration.nix
     ./../../modules
     ./../../profiles/boot/boot-server.nix
-    ./../../profiles/server/apps-server.nix
+    ./../../profiles/server/lutik-apps.nix
   ];
   networking = {
     hostName = "lutik";
