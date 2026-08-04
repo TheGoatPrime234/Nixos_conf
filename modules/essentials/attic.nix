@@ -21,7 +21,7 @@
     nix = {
       settings = {
         substituters = [
-          "https://lutik.gute-nessie.ts.net/"
+          "https://lutik.gute-nessie.ts.net/main"
         ];
         trusted-public-keys = [
           "main:bLMFpRICiPB1bYrlJCfFuYthr3VG5Xhmcz2R6rubCFc="
