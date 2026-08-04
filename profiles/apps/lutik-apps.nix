@@ -32,6 +32,10 @@
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
       };
+      vaultwarden = {
+        enable = true;
+        domain = "lutik.gute-nessie.ts.net";
+      };
     };
   };
 }

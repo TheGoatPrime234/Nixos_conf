@@ -18,9 +18,7 @@
   };
 
   config = lib.mkIf config.xanterella.vaultwarden.enable {
-    users.users.caddy.extraGroups = ["tailscale"];
     services = {
-      tailscale.permitCertUid = "caddy";
       vaultwarden = {
         enable = true;
         config = {
@@ -30,14 +28,26 @@
           ROCKET_PORT = 8222;
         };
       };
+      tailscale = {
+        permitCertUid = "caddy";
+      };
       caddy = {
         enable = true;
         virtualHosts = {
-          "https://${config.xanterella.vaultwarden.domain}" = {
+          "https://${config.xanterella.vaultwarden.domain}:8222" = {
             extraConfig = ''
-              reverse_proxy 127.0.0.1:8222
+              handle {
+                       reverse_proxy 127.0.0.1:8222
+                }
             '';
           };
+        };
+      };
+    };
+    users = {
+      users = {
+        caddy = {
+          extraGroups = ["tailscale"];
         };
       };
     };
