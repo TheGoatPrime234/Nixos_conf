@@ -1,6 +1,7 @@
 {
   config,
-  lig,
+  lib,
+  pkgs,
   ...
 }: {
   config = {
