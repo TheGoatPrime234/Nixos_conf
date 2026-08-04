@@ -16,31 +16,7 @@
     };
   };
   config = lib.mkIf config.xanterella.monitoring.enable {
-    users = {
-      users = {
-        caddy = {
-          extraGroups = [
-            "tailscale"
-          ];
-        };
-      };
-    };
     services = {
-      tailscale = {
-        permitCertUid = "caddy";
-      };
-      caddy = {
-        enable = true;
-        virtualHosts = {
-          "https://${config.xanterella.monitoring.domain}" = {
-            extraConfig = ''
-              handle /grafana* {
-                       reverse_proxy ${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}
-                }
-            '';
-          };
-        };
-      };
       prometheus = {
         enable = true;
         port = 9090;
@@ -59,11 +35,22 @@
         scrapeConfigs = [
           {
             job_name = "nixos-laptop";
-            scrape_interval = "10s";
+            scrape_interval = "15s";
             static_configs = [
               {
                 targets = [
                   "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
+                ];
+              }
+            ];
+          }
+          {
+            job_name = "caddy";
+            scrape_interval = "15s";
+            static_configs = [
+              {
+                targets = [
+                  "127.0.0.1:2019"
                 ];
               }
             ];
@@ -98,12 +85,41 @@
           };
         };
       };
+      tailscale = {
+        permitCertUid = "caddy";
+      };
+      caddy = {
+        enable = true;
+        globalConfig = ''
+          servers {
+            metrics
+          }
+        '';
+        virtualHosts = {
+          "https://${config.xanterella.monitoring.domain}" = {
+            extraConfig = ''
+              handle /grafana* {
+                       reverse_proxy ${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}
+                }
+            '';
+          };
+        };
+      };
     };
     networking = {
       firewall = {
         allowedTCPPorts = [
           config.services.grafana.settings.server.http_port
         ];
+      };
+    };
+    users = {
+      users = {
+        caddy = {
+          extraGroups = [
+            "tailscale"
+          ];
+        };
       };
     };
   };
