@@ -13,6 +13,9 @@
         zen = {
           enable = true;
         };
+        librewolf = {
+          enable = true;
+        };
       };
       brightnessctl = {
         enable = true;
