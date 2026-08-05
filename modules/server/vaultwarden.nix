@@ -18,6 +18,11 @@
   };
 
   config = lib.mkIf config.xanterella.vaultwarden.enable {
+    environment = {
+      systemPackages = with pkgs-unstable; [
+        vaultwarden
+      ];
+    };
     services = {
       vaultwarden = {
         enable = true;

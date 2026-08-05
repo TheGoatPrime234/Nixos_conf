@@ -28,6 +28,7 @@
         services = {
           sddm = {
             enableGnomeKeyring = true;
+            enableKwallet = lib.mkForce false;
           };
         };
       };
