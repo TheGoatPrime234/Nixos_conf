@@ -8,6 +8,7 @@
     ./github-runner.nix
     ./monitoring.nix
     ./stress.nix
+    ./matrix-server.nix
     ./attic-server.nix
   ];
 }

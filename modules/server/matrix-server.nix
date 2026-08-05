@@ -7,7 +7,7 @@
 }: {
   options = {
     xanterella = {
-      matrix = {
+      matrix-server = {
         enable = lib.mkEnableOption "Aktiviert Matrix Pipeline";
         domain = lib.mkOption {
           type = lib.types.str;
@@ -17,7 +17,7 @@
     };
   };
 
-  config = lib.mkIf config.xanterella.vaultwarden.enable {
+  config = lib.mkIf config.xanterella.matrix-server.enable {
     age = {
       secrets = {
         matrix-password = {
@@ -32,12 +32,11 @@
       matrix-synapse = {
         enable = true;
         settings = {
-          server_name = config.xanterella.matrix.domain;
+          server_name = config.xanterella.matrix-server.domain;
           registration_shared_secret = config.age.secrets.matrix-password;
           enable_registration = false;
         };
       };
-      withPostgreSQL = true;
 
       tailscale = {
         permitCertUid = "caddy";
@@ -45,7 +44,7 @@
       caddy = {
         enable = true;
         virtualHosts = {
-          "https://${config.xanterella.matrix.domain}:8443" = {
+          "https://${config.xanterella.matrix-server.domain}" = {
             extraConfig = ''
               handle /_matrix* {
               reverse_proxy 127.0.0.1:8080

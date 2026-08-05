@@ -28,6 +28,10 @@
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
       };
+      matrix-server = {
+        enable = true;
+        domain = "lutik.gute-nessie.ts.net";
+      };
       attic-server = {
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
