@@ -22,20 +22,39 @@
       secrets = {
         matrix-password = {
           file = ./../agenix/matrix.age;
+          owner = "matrix-synapse";
+          group = "matrix-synapse";
         };
       };
     };
     services = {
       postgresql = {
         enable = true;
+        ensureDatabases = ["matrix-synapse"];
+        ensureUsers = [
+          {
+            name = "matrix-synapse";
+            ensureDBOwnership = true;
+          }
+        ];
       };
       matrix-synapse = {
         enable = true;
         settings = {
           server_name = config.xanterella.matrix-server.domain;
-          registration_shared_secret = config.age.secrets.matrix-password;
           enable_registration = false;
+          database = {
+            name = "psycopg2";
+            args = {
+              user = "matrix-synapse";
+              database = "matrix-synapse";
+              host = "/run/postgresql";
+            };
+          };
         };
+        extraConfigFiles = [
+          config.age.secrets.matrix-password.path
+        ];
       };
 
       tailscale = {
