@@ -20,6 +20,9 @@
       kitty = {
         enable = true;
       };
+      bitwarden = {
+        enable = true;
+      };
       nitch = {
         enable = true;
       };
