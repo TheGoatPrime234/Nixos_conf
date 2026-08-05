@@ -26,6 +26,7 @@
       environment = {
         systemPackages = with pkgs-new; [
           inputs.zen-browser.packages.${pkgs.system}.default
+          #bitwarden-desktop
         ];
       };
     })
