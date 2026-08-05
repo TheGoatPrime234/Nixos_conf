@@ -21,7 +21,7 @@
         enable = true;
       };
       bitwarden = {
-        enable = true;
+        enable = false;
       };
       nitch = {
         enable = true;
