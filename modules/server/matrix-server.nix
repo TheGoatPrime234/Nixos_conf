@@ -30,10 +30,22 @@
     services = {
       postgresql = {
         enable = true;
-        ensureDatabases = ["matrix-synapse"];
+        ensureDatabases = [
+          "matrix-synapse"
+          "mautrix-whatsapp"
+          "mautrix-discord"
+        ];
         ensureUsers = [
           {
             name = "matrix-synapse";
+            ensureDBOwnership = true;
+          }
+          {
+            name = "mautrix-whatsapp";
+            ensureDBOwnership = true;
+          }
+          {
+            name = "mautrix-discord";
             ensureDBOwnership = true;
           }
         ];
@@ -55,6 +67,44 @@
         extraConfigFiles = [
           config.age.secrets.matrix-password.path
         ];
+      };
+
+      mautrix-whatsapp = {
+        enable = true;
+        settings = {
+          homeserver = {
+            address = "http://127.0.0.1:8008";
+            domain = config.xanterella.matrix-server.domain;
+          };
+          database = {
+            type = "postgres";
+            uri = "postgres://mautrix-whatsapp@/mautrix-whatsapp?host=/run/postgresql";
+          };
+          bridge = {
+            permissions = {
+              "@Cato:${config.xanterella.matrix-server.domain}" = "admin";
+            };
+          };
+        };
+      };
+
+      mautrix-discord = {
+        enable = true;
+        settings = {
+          homeserver = {
+            address = "http://localhost:8008";
+            domain = config.xanterella.matrix-server.domain;
+          };
+          database = {
+            type = "postgres";
+            uri = "postgres://mautrix-discord@/mautrix-discord?host=/run/postgresql";
+          };
+          bridge = {
+            permissions = {
+              "@Cato:${config.xanterella.matrix-server.domain}" = "admin";
+            };
+          };
+        };
       };
 
       tailscale = {
