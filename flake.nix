@@ -26,6 +26,10 @@
       url = "github:hercules-ci/flake-parts";
       flake = true;
     };
+    wrapper-modules = {
+      url = "github:BirdeeHub/nix-wrapper-modules";
+      flake = true;
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       flake = true;

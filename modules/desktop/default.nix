@@ -1,6 +1,7 @@
 {
   imports = [
     ./hyprland
+    ./noctalia.nix
     ./gnome
     ./browser.nix
     ./brightnessctl.nix

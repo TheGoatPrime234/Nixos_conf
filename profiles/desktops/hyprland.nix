@@ -26,7 +26,7 @@
       sddm = {
         enable = true;
       };
-      quickshell_noctalia = {
+      noctalia = {
         enable = true;
       };
     };

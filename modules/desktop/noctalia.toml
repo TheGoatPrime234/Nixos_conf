@@ -1,0 +1,215 @@
+[accessibility]
+ui_scale = 0.9
+
+[audio]
+sound_volume = 0.0
+
+[bar.default]
+capsule_thickness = 0.99999998137354851
+center = [ "clock", "notifications" ]
+end = [ "media", "network", "bluetooth", "volume", "battery", "session" ]
+font_family = "GeistMono Nerd Font Propo"
+scale = 1.0500000081956387
+shadow = false
+start = [ "workspaces", "audio_visualizer", "wallpaper" ]
+thickness = 36
+widget_spacing = 8
+
+[battery.device."/org/freedesktop/UPower/devices/headset_dev_84_D3_52_2A_B5_97"]
+warning_threshold = 30
+
+[control_center]
+sidebar = "full"
+sidebar_section = "full"
+width = 800
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[dock]
+active_monitor_only = true
+main_axis_padding = 8
+reserve_space = false
+smart_auto_hide = true
+
+[hot_corners.top_right]
+action = "launcher"
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = false
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
+[keybinds]
+cancel = [ "Escape", "Alt+q" ]
+down = [ "Down", "Alt+j" ]
+left = [ "Left", "Alt+h" ]
+right = [ "Right", "Alt+l" ]
+up = [ "Up", "Alt+k" ]
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[notification]
+history_retention_hours = 1
+layer = "overlay"
+position = "top_center"
+
+[osd]
+scale = 1.1500000096857548
+
+[shell]
+avatar_path = "/etc/wallpaper/others/NixOS.svg"
+corner_radius_scale = 1.5000000223517418
+font_family = "GeistMono Nerd Font Propo"
+lang = "en"
+panel_anchor_bar = "default"
+screen_time_enabled = true
+
+    [shell.launcher]
+    categories = false
+    compact = true
+    provider_prefix = "-"
+
+        [shell.launcher.providers.calculator]
+        prefix = "c"
+
+        [shell.launcher.providers.emoji]
+        global = false
+        prefix = "emo"
+
+        [shell.launcher.providers.wallpaper]
+        global = false
+        prefix = "wal"
+
+        [shell.launcher.providers.windows]
+        prefix = "win"
+
+    [shell.panel]
+    launcher_position = "bottom_center"
+    open_near_click_wallpaper = true
+    shadow = false
+    transparency_mode = "soft"
+    wallpaper_position = "top_left"
+
+[theme]
+builtin = "Ayu"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-fruit-salad"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "hyprland", "kitty", "qt" ]
+    community_ids = [ "spicetify", "zen-browser", "discord", "obsidian", "vscode", "lazygit", "yazi" ]
+
+[wallpaper]
+directory = "/etc/wallpaper/wallpapers"
+transition = [ "disc", "honeycomb" ]
+transition_on_startup = true
+
+    [wallpaper.automation]
+    order = "alphabetical"
+
+    [wallpaper.default]
+    path = "/etc/wallpaper/wallpapers/astronaut_jellyfish.jpg"
+
+    [wallpaper.last]
+    path = "/etc/wallpaper/wallpapers/astronaut_jellyfish.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/etc/wallpaper/wallpapers/astronaut_jellyfish.jpg"
+
+    [[wallpaper.favorite]]
+    path = "/etc/wallpaper/wallpapers/sunset-10.jpg"
+    theme_mode = "auto"
+
+[widget.audio_visualizer]
+color_1 = "secondary"
+show_when_idle = true
+width = 100
+
+    [widget.audio_visualizer.actions]
+    left = "panel-toggle control-center media"
+
+[widget.battery]
+icon_color = "primary"
+
+[widget.clock]
+font_family = "GeistMono Nerd Font Propo"
+format = "{:%H:%M:%S}"
+
+[widget.media]
+artist_first = true
+hide_album_art = true
+hide_artist = true
+hide_when_no_media = true
+max_length = 130
+title_scroll = "on_hover"
+
+[widget.network]
+icon_color = "primary"
+show_label = false
+
+[widget.notifications]
+hide_when_no_unread = true
+
+[widget.volume]
+font_family = "GeistMono Nerd Font Propo"
