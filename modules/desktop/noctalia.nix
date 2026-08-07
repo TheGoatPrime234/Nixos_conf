@@ -9,7 +9,6 @@
   noctaliaConfigFile = ./noctalia.toml;
   fakeConfigDir = pkgs.runCommand "noctalia-fake-config-dir" {} ''
     mkdir -p $out/noctalia
-    # Kopiere die JSON-Datei direkt in den Fake-Ordner
     cp ${noctaliaConfigFile} $out/noctalia/config.json
   '';
   noctaliaWrapped = pkgs.symlinkJoin {
