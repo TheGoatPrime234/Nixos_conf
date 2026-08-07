@@ -69,9 +69,9 @@
               host = "/run/postgresql";
             };
           };
-          #app_service_config_files = [
-          #  "/var/lib/mautrix-discord/discord-registration.yaml"
-          #];
+          app_service_config_files = [
+            "/var/lib/mautrix-discord/discord-registration.yaml"
+          ];
         };
         extraConfigFiles = [
           config.age.secrets.matrix-password.path
