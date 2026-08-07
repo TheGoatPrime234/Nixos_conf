@@ -98,7 +98,7 @@
 
       mautrix-discord = {
         enable = true;
-        environmentFile = config.age.discord_secrets.path;
+        environmentFile = config.age.secrets.discord_secrets.path;
         settings = {
           homeserver = {
             address = "http://localhost:8008";
