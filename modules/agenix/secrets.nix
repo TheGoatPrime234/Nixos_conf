@@ -10,12 +10,18 @@ let
     xeravus
     lutik
   ];
+  server = [
+    lutik
+  ];
 in {
   "global.age" = {
     publicKeys = users ++ systems;
   };
-  "matrix.age" = {
-    publicKeys = users ++ systems;
+  "matrix.yaml.age" = {
+    publicKeys = users ++ server;
+  };
+  "mautrix_disord.env.age" = {
+    publicKeys = users ++ server;
   };
   "github-runner.age" = {
     publicKeys = users ++ systems;

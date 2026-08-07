@@ -21,9 +21,14 @@
     age = {
       secrets = {
         matrix-password = {
-          file = ./../agenix/matrix.age;
+          file = ./../agenix/matrix.yaml.age;
           owner = "matrix-synapse";
           group = "matrix-synapse";
+        };
+        discord_secrets = {
+          file = ./../agenix/mautrix_disord.env.age;
+          owner = "mautrix-discord";
+          group = "mautrix-discord";
         };
       };
     };
@@ -63,6 +68,9 @@
               host = "/run/postgresql";
             };
           };
+          app_service_config_files = [
+            "/var/lib/mautrix-discord/discord-registration.yaml"
+          ];
         };
         extraConfigFiles = [
           config.age.secrets.matrix-password.path
@@ -90,6 +98,7 @@
 
       mautrix-discord = {
         enable = true;
+        environmentFile = config.age.discord_secrets.path;
         settings = {
           homeserver = {
             address = "http://localhost:8008";
