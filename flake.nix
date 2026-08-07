@@ -22,6 +22,10 @@
       url = "github:Xeravus/Nixos_programs/stable";
       flake = true;
     };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      flake = true;
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       flake = true;
@@ -70,27 +74,8 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nix-programs,
-    colmena,
-    pomo-src,
-    ...
-  } @ inputs: let
+  outputs = inputs @ {flake-parts, ...}: let
     systemarch = "x86_64-linux";
-    pkgs-new = import inputs.nixpkgs-new {
-      system = systemarch;
-      config = {
-        allowUnfree = true;
-      };
-    };
-    pkgs-unstable = import inputs.nixpkgs-unstable {
-      system = systemarch;
-      config = {
-        allowUnfree = true;
-      };
-    };
     taruser = "root";
     commonSSHKeys = {
       "id_ed25519" = {
@@ -107,53 +92,20 @@
         permissions = "0600";
       };
     };
-  in {
-    nixosConfigurations = {
-      xeravus = nixpkgs.lib.nixosSystem {
-        system = systemarch;
-        specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
-        modules = [
-          inputs.disko.nixosModules.disko
-          ./hosts/xeravus/configuration.nix
-        ];
-      };
-      xorus = nixpkgs.lib.nixosSystem {
-        system = systemarch;
-        specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
-        modules = [
-          inputs.disko.nixosModules.disko
-          ./hosts/xorus/configuration.nix
-        ];
-      };
-      installer = nixpkgs.lib.nixosSystem {
-        system = systemarch;
-        specialArgs = {inherit inputs pkgs-unstable;};
-        modules = [
-          ./hosts/installer/configuration.nix
-          ./profiles/ssh-keys.nix
-        ];
-      };
-      vicuna-image = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
-        modules = [
-          ./hosts/vicuna/configuration.nix
-          ./profiles/ssh-keys.nix
-          inputs.nixos-hardware.nixosModules.raspberry-pi-5
-          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-        ];
-      };
-      crylia = nixpkgs.lib.nixosSystem {
-        system = systemarch;
-        specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
-        modules = [
-          ./hosts/crylia/configuration.nix
-          ./profiles/ssh-keys.nix
-        ];
-      };
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+      imports = [
+        ./flake-modules/hosts.nix
+        ./flake-modules/colmena.nix
+      ];
+      perSystem = {
+        pkgs,
+        system,
+        ...
+      }: {};
     };
-    colmena = import ./colmena-hosts.nix {
-      inherit inputs systemarch taruser commonSSHKeys pkgs-new pkgs-unstable;
-    };
-  };
 }
