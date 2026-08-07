@@ -27,6 +27,9 @@
   };
   # --- Xanterella Hosts Start ---
   xeravus = {
+    tags = [
+      "main"
+    ];
     deployment = {
       targetHost = null;
       allowLocalDeployment = true;
@@ -38,6 +41,10 @@
     ];
   };
   xorus = {
+    tags = [
+      "device"
+      "work"
+    ];
     deployment = {
       targetHost = "192.168.178.69";
       targetUser = taruser;
@@ -50,6 +57,10 @@
     ];
   };
   lutik = {
+    tags = [
+      "device"
+      "server"
+    ];
     deployment = {
       targetHost = "lutik";
       targetUser = taruser;
