@@ -101,6 +101,10 @@
         enable = true;
         environmentFile = config.age.secrets.discord_secrets.path;
         settings = {
+          appservice = {
+            as_token = "$MAUTRIX_DISCORD_APPSERVICE_AS_TOKEN";
+            hs_token = "$MAUTRIX_DISCORD_APPSERVICE_HS_TOKEN";
+          };
           homeserver = {
             address = "http://localhost:8008";
             domain = config.xanterella.matrix-server.domain;
