@@ -117,6 +117,14 @@
           ./hosts/xeravus/configuration.nix
         ];
       };
+      xorus = nixpkgs.lib.nixosSystem {
+        system = systemarch;
+        specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
+        modules = [
+          inputs.disko.nixosModules.disko
+          ./hosts/xorus/configuration.nix
+        ];
+      };
       installer = nixpkgs.lib.nixosSystem {
         system = systemarch;
         specialArgs = {inherit inputs pkgs-unstable;};

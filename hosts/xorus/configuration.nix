@@ -10,7 +10,7 @@
     ./../../profiles/boot/boot.nix
     ./../../profiles/essentials/essentials.nix
     ./../../profiles/apps/xorus-apps.nix
-    ./../../profiles/desktops/gnome.nix
+    ./../../profiles/desktops/hyprland.nix
   ];
 
   networking = {
