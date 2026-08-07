@@ -3,7 +3,23 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  hyprlandConf = ./hyprland.conf;
+  hyprlandRunner = pkgs.writeShellScriptBin "start-hyprland-wrapped" ''
+    exec ${pkgs.hyprland}/bin/Hyprland -c ${hyprlandConf}
+  '';
+
+  customWaylandSession =
+    (pkgs.writeTextDir "share/wayland-sessions/hyprland-wrapped.desktop" ''
+      [Desktop Entry]
+      Name=Hyprland (Wrapped)
+      Comment=Hyprland mit deklarativer Nix-Config
+      Exec=${hyprlandRunner}/bin/start-hyprland-wrapped
+      Type=Application
+    '').overrideAttrs {
+      passthru.providedSessions = ["hyprland-wrapped"];
+    };
+in {
   options = {
     xanterella = {
       hyprland = {
@@ -24,6 +40,13 @@
         xwayland = {
           enable = true;
         };
+      };
+    };
+    services = {
+      displayManager = {
+        sessionPackages = [
+          customWaylandSession
+        ];
       };
     };
     environment = {
