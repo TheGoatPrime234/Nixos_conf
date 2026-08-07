@@ -33,8 +33,8 @@
       buildOnTarget = true;
     };
     imports = [
-      ./hosts/xeravus/configuration.nix
-      ./profiles/ssh-keys.nix
+      ./../hosts/xeravus/configuration.nix
+      ./../profiles/ssh-keys.nix
     ];
   };
   xorus = {
@@ -45,8 +45,8 @@
       keys = commonSSHKeys;
     };
     imports = [
-      ./hosts/xorus/configuration.nix
-      ./profiles/ssh-keys.nix
+      ./../hosts/xorus/configuration.nix
+      ./../profiles/ssh-keys.nix
     ];
   };
   lutik = {
@@ -57,8 +57,8 @@
       keys = commonSSHKeys;
     };
     imports = [
-      ./hosts/lutik/configuration.nix
-      ./profiles/ssh-keys.nix
+      ./../hosts/lutik/configuration.nix
+      ./../profiles/ssh-keys.nix
     ];
   };
   # --- Xanterella Hosts End ---
