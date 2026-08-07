@@ -104,14 +104,14 @@
           appservice = {
             as_token = "$MAUTRIX_DISCORD_APPSERVICE_AS_TOKEN";
             hs_token = "$MAUTRIX_DISCORD_APPSERVICE_HS_TOKEN";
+            database = {
+              type = "postgres";
+              uri = "postgres://mautrix-discord@/mautrix-discord?host=/run/postgresql";
+            };
           };
           homeserver = {
             address = "http://localhost:8008";
             domain = config.xanterella.matrix-server.domain;
-          };
-          database = {
-            type = "postgres";
-            uri = "postgres://mautrix-discord@/mautrix-discord?host=/run/postgresql";
           };
           bridge = {
             permissions = {
