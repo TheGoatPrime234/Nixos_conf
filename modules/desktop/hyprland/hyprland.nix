@@ -6,7 +6,9 @@
 }: let
   hyprlandConf = ./hyprland.conf;
   hyprlandRunner = pkgs.writeShellScriptBin "start-hyprland-wrapped" ''
-    exec ${pkgs.hyprland}/bin/Hyprland -c ${hyprlandConf}
+    mkdir -p ~/.config/hypr
+    touch ~/.config/hypr/noctalia.conf
+      exec ${pkgs.hyprland}/bin/Hyprland -c ${hyprlandConf}
   '';
 
   customWaylandSession =
