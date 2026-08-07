@@ -35,6 +35,11 @@ in {
       systemPackages = [
         noctaliaWrapped
       ];
+      etc = {
+        "wallpaper" = {
+          source = inputs.wallpaper;
+        };
+      };
     };
   };
 }

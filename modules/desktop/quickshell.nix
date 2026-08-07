@@ -33,11 +33,6 @@
         systemPackages = [
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
-        etc = {
-          "wallpaper" = {
-            source = inputs.wallpaper;
-          };
-        };
       };
     })
   ];
