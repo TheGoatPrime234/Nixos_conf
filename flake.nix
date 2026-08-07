@@ -101,6 +101,7 @@
       imports = [
         ./flake-modules/hosts.nix
         ./flake-modules/colmena.nix
+        ./flake-modules/dev-shells.nix
       ];
       perSystem = {
         pkgs,
