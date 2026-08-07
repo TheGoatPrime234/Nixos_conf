@@ -13,6 +13,10 @@
   };
 
   config = lib.mkIf config.xanterella.attic.enable {
+    networking = {
+      nameservers = ["100.100.100.100"];
+      search = ["gute-nessie.ts.net"];
+    };
     environment = {
       systemPackages = with pkgs; [
         attic-client
