@@ -110,7 +110,7 @@
             };
           };
           homeserver = {
-            address = "http://localhost:8008";
+            address = "http://127.0.0.1:8008";
             domain = config.xanterella.matrix-server.domain;
           };
           bridge = {
