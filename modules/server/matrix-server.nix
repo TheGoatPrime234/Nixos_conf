@@ -69,9 +69,6 @@
               host = "/run/postgresql";
             };
           };
-          app_service_config_files = [
-            "/var/lib/matrix-synapse/discord-registration.yaml"
-          ];
         };
         extraConfigFiles = [
           config.age.secrets.matrix-password.path

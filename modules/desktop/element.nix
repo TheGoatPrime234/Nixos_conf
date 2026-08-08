@@ -14,7 +14,7 @@
   config = lib.mkIf config.xanterella.element.enable {
     environment = {
       systemPackages = with pkgs; [
-        element
+        element-desktop
       ];
     };
   };
