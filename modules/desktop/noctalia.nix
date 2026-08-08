@@ -5,7 +5,6 @@
   inputs,
   ...
 }: let
-  cfg = config.xanterella.noctalia;
   noctaliaConfigFile = ./noctalia.toml;
   fakeConfigDir = pkgs.runCommand "noctalia-fake-config-dir" {} ''
     mkdir -p $out/noctalia
@@ -26,42 +25,54 @@ in {
       noctalia = {
         enable = lib.mkEnableOption "Aktiviert den deklarativen Noctalia-Wrapper";
       };
+      noctalia_vimjoyer = {
+        enable = lib.mkEnableOption "";
+      };
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    environment = {
-      systemPackages = [
-        noctaliaWrapped
-      ];
-      etc = {
-        "wallpaper" = {
-          source = inputs.wallpaper;
+  config = lib.mkMerge [
+    (lib.mkIf config.xanterella.noctalia.enable {
+      environment = {
+        systemPackages = [
+          noctaliaWrapped
+        ];
+        etc = {
+          "wallpaper" = {
+            source = inputs.wallpaper;
+          };
         };
       };
-    };
-    systemd = {
-      user = {
-        services = {
-          noctalia = {
-            description = "Noctalia Service";
-            wantedBy = [
-              "graphical-session.target"
-            ];
-            partOf = [
-              "graphical-session.target"
-            ];
-            after = [
-              "graphical-session.target"
-            ];
-            serviceConfig = {
-              ExecStart = "${noctaliaWrapped}/bin/noctalia";
-              Restart = "on-failure";
-              RestartSec = 3;
+      systemd = {
+        user = {
+          services = {
+            noctalia = {
+              description = "Noctalia Service";
+              wantedBy = [
+                "graphical-session.target"
+              ];
+              partOf = [
+                "graphical-session.target"
+              ];
+              after = [
+                "graphical-session.target"
+              ];
+              serviceConfig = {
+                ExecStart = "${noctaliaWrapped}/bin/noctalia";
+                Restart = "on-failure";
+                RestartSec = 3;
+              };
             };
           };
         };
       };
-    };
-  };
+    })
+    (lib.mkIf config.xanterella.noctalia_vimjoyer.enable {
+      #packages.noctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
+      #  settings =
+      #    (builtins.fromTOML
+      #      (builtins.readFile ./noctalia.toml)).settings;
+      #};
+    })
+  ];
 }
