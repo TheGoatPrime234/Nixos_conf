@@ -41,6 +41,10 @@ in {
 
             reloadTriggers = [noctaliaConfigFile];
 
+            environment = {
+              PATH = lib.mkForce "/run/wrappers/bin:/run/current-system/sw/bin:/etc/profiles/per-user/cato/bin";
+            };
+
             serviceConfig = {
               ExecStart = "${inputs.noctalia.packages.${pkgs.system}.default}/bin/noctalia";
               Restart = "always";
