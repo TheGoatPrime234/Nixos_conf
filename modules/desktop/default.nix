@@ -6,6 +6,7 @@
     ./browser.nix
     ./brightnessctl.nix
     ./bitwarden.nix
+    ./element.nix
     ./cava.nix
     ./kitty.nix
     ./nix-switcher.nix

@@ -23,6 +23,9 @@
       bitwarden = {
         enable = false;
       };
+      element = {
+        enable = true;
+      };
       nitch = {
         enable = true;
       };
