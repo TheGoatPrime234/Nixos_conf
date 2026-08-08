@@ -11,7 +11,12 @@
       };
       pkgs-unstable = import inputs.nixpkgs-unstable {
         inherit system;
-        config.allowUnfree = true;
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [
+            "olm-3.2.16"
+          ];
+        };
       };
     };
   };
