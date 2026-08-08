@@ -17,6 +17,12 @@ in {
   "global.age" = {
     publicKeys = users ++ systems;
   };
+  "password_cato.age" = {
+    publicKeys = users ++ systems;
+  };
+  "password_root.age" = {
+    publicKeys = users ++ systems;
+  };
   "matrix.yaml.age" = {
     publicKeys = users ++ server;
   };

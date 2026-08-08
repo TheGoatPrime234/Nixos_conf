@@ -32,8 +32,8 @@
         };
         whatsapp_secrets = {
           file = ./../agenix/mautrix_whatsapp.env.age;
-          owner = "mautrix_whatsapp";
-          group = "mautrix_whatsapp";
+          owner = "mautrix-whatsapp";
+          group = "mautrix-whatsapp";
         };
       };
     };
@@ -87,10 +87,10 @@
           appservice = {
             as_token = "$MAUTRIX_WHATSAPP_APPSERVICE_AS_TOKEN";
             hs_token = "$MAUTRIX_WHATSAPP_APPSERVICE_HS_TOKEN";
-            database = {
-              type = "postgres";
-              uri = "postgres://mautrix-whatsapp@/mautrix-whatsapp?host=/run/postgresql";
-            };
+          };
+          database = {
+            type = "postgres";
+            uri = "postgres://mautrix-whatsapp@/mautrix-whatsapp?host=/run/postgresql";
           };
           homeserver = {
             address = "http://127.0.0.1:8008";
@@ -137,10 +137,10 @@
           "https://${config.xanterella.matrix-server.domain}" = {
             extraConfig = ''
               handle /_matrix* {
-              reverse_proxy 127.0.0.1:8080
+              reverse_proxy 127.0.0.1:8008
               }
               handle /_synapse/client* {
-              reverse_proxy 127.0.0.1:8080
+              reverse_proxy 127.0.0.1:8008
               }
             '';
           };
