@@ -23,6 +23,9 @@ in {
   "mautrix_disord.env.age" = {
     publicKeys = users ++ server;
   };
+  "mautrix_whatsapp.env.age" = {
+    publicKeys = users ++ server;
+  };
   "github-runner.age" = {
     publicKeys = users ++ systems;
   };
