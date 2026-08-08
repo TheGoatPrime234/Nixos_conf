@@ -9,36 +9,45 @@
     xanterella = {
       audiobookshelf = {
         enable = lib.mkEnableOption "Aktiviert audiobookshelf ohne externes Speichermedium";
+        domain = lib.mkOption {
+          type = lib.types.str;
+          default = "xanterella.de/audiobookshelf";
+        };
       };
       audiobookshelf-extern = {
         enable = lib.mkEnableOption "Aktiviert Audiobookshelf mit externem Speichermedium";
+        domain = lib.mkOption {
+          type = lib.types.str;
+          default = "xanterella.de/audiobookshelf";
+        };
       };
     };
   };
 
   config = lib.mkMerge [
     (lib.mkIf config.xanterella.audiobookshelf.enable {
-      environment = {
-        systemPackages = with pkgs-unstable; [
-          audiobookshelf
-        ];
-      };
-      fileSystems = {
-        "/var/lib/audiobookshelf" = {
-          device = "server-data/nix/audiobookshelf";
-          options = [
-            "bind"
-            "nofail"
-          ];
-        };
-      };
       services = {
         audiobookshelf = {
           enable = true;
           package = pkgs-unstable.audiobookshelf;
-          host = "0.0.0.0";
+          host = "127.0.0.1";
           port = 13378;
-          openFirewall = true;
+        };
+
+        tailscale = {
+          permitCertUid = "caddy";
+        };
+        caddy = {
+          enable = true;
+          virtualHosts = {
+            "https://${config.xanterella.audiobookshelf.domain}" = {
+              extraConfig = ''
+                handle /audiobookshelf* {
+                reverse_proxy 127.0.0.1:13378
+                }
+              '';
+            };
+          };
         };
       };
       systemd = {
@@ -50,20 +59,8 @@
           };
         };
       };
-      networking = {
-        firewall = {
-          allowedTCPPorts = [
-            13378
-          ];
-        };
-      };
     })
     (lib.mkIf config.xanterella.audiobookshelf-extern.enable {
-      environment = {
-        systemPackages = with pkgs-unstable; [
-          audiobookshelf
-        ];
-      };
       fileSystems = {
         "/var/lib/audiobookshelf" = {
           device = "/mnt/server-data/nix/audiobookshelf";
@@ -71,7 +68,6 @@
             "bind"
             "nofail"
           ];
-          # Sagt NixOS, dass es erst die Hauptfestplatte mounten muss, bevor dieser Mount passiert
           depends = ["/mnt/server-data"];
         };
       };
@@ -79,9 +75,23 @@
         audiobookshelf = {
           enable = true;
           package = pkgs-unstable.audiobookshelf;
-          host = "0.0.0.0";
+          host = "127.0.0.1";
           port = 13378;
-          openFirewall = true;
+        };
+        tailscale = {
+          permitCertUid = "caddy";
+        };
+        caddy = {
+          enable = true;
+          virtualHosts = {
+            "https://${config.xanterella.audiobookshelf-extern.domain}" = {
+              extraConfig = ''
+                handle /audiobookshelf* {
+                reverse_proxy 127.0.0.1:13378
+                }
+              '';
+            };
+          };
         };
       };
       systemd = {
@@ -91,13 +101,6 @@
               ROUTER_BASE_PATH = "/audiobookshelf";
             };
           };
-        };
-      };
-      networking = {
-        firewall = {
-          allowedTCPPorts = [
-            13378
-          ];
         };
       };
     })
