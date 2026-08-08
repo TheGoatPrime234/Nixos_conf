@@ -19,6 +19,11 @@ in {
 
   config = lib.mkIf cfg.enable {
     environment = {
+      sessionVariables = {
+        XDG_CONFIG_HOME = "$HOME/.config";
+        XDG_DATA_HOME = "$HOME/.local/share";
+        XDG_CACHE_HOME = "$HOME/.cache";
+      };
       etc = {
         "wallpaper" = {
           source = inputs.wallpaper;
@@ -28,9 +33,28 @@ in {
         inputs.noctalia.packages.${pkgs.system}.default
       ];
     };
-    systemd.user.tmpfiles.rules = [
-      "d %h/.config/noctalia 0755 - - -"
-      "L+ %h/.config/noctalia/config.toml - - - - ${noctaliaConfigFile}"
-    ];
+    systemd = {
+      user = {
+        services = {
+          noctalia = {
+            description = "Noctalia App Launcher";
+
+            reloadTriggers = [noctaliaConfigFile];
+
+            serviceConfig = {
+              ExecStart = "${inputs.noctalia.packages.${pkgs.system}.default}/bin/noctalia";
+              Restart = "always";
+              RestartSec = "3";
+            };
+          };
+        };
+        tmpfiles = {
+          rules = [
+            "d %h/.config/noctalia 0755 - - -"
+            "L+ %h/.config/noctalia/config.toml - - - - ${noctaliaConfigFile}"
+          ];
+        };
+      };
+    };
   };
 }

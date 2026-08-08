@@ -18,14 +18,9 @@ in {
       };
     };
 
-    # HIER IST DIE MAGIE: NixOS verwaltet die Dateien für uns deklarativ!
-    # %h steht für das Home-Verzeichnis des aktuellen Users.
     systemd.user.tmpfiles.rules = [
-      # Erstellt den Ordner, falls er fehlt
       "d %h/.config/hypr 0755 - - -"
-      # Erstellt den Symlink zu deiner Datei im schreibgeschützten Nix-Store
       "L+ %h/.config/hypr/hyprland.conf - - - - ${hyprlandConf}"
-      # Erstellt die leere noctalia.conf (fixt den Crash auf neuen Laptops!)
       "f %h/.config/hypr/noctalia.conf 0644 - - -"
     ];
 
