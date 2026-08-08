@@ -1,6 +1,7 @@
 {
   imports = [
     ./audiobookshelf.nix
+    ./netbird-server.nix
     ./stay-on.nix
     ./pihole.nix
     ./syncthing-server.nix

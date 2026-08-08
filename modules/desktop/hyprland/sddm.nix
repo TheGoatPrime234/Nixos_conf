@@ -40,7 +40,7 @@ in {
             enable = true;
           };
         };
-        defaultSession = "hyprland-wrapped";
+        defaultSession = "hyprland";
       };
     };
     security = {

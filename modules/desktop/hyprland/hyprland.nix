@@ -5,68 +5,42 @@
   ...
 }: let
   hyprlandConf = ./hyprland.conf;
-  hyprlandRunner = pkgs.writeShellScriptBin "start-hyprland-wrapped" ''
-    source /etc/profile
-    mkdir -p ~/.config/hypr
-    touch ~/.config/hypr/noctalia.conf
-    exec /run/current-system/sw/bin/Hyprland -c ${hyprlandConf}
-  '';
-
-  customWaylandSession =
-    (pkgs.writeTextDir "share/wayland-sessions/hyprland-wrapped.desktop" ''
-      [Desktop Entry]
-      Name=Hyprland (Wrapped)
-      Comment=Hyprland mit deklarativer Nix-Config
-      Exec=${hyprlandRunner}/bin/start-hyprland-wrapped
-      Type=Application
-    '').overrideAttrs {
-      passthru.providedSessions = ["hyprland-wrapped"];
-    };
 in {
   options = {
-    xanterella = {
-      hyprland = {
-        enable = lib.mkEnableOption "Aktiviert hyprland";
-      };
-    };
+    xanterella.hyprland.enable = lib.mkEnableOption "Aktiviert hyprland";
   };
 
   config = lib.mkIf config.xanterella.hyprland.enable {
-    environment = {
-      systemPackages = with pkgs; [
-        hyprland
-      ];
-    };
     programs = {
       hyprland = {
         enable = true;
-        xwayland = {
-          enable = true;
-        };
+        xwayland.enable = true;
       };
     };
-    services = {
-      displayManager = {
-        sessionPackages = [
-          customWaylandSession
-        ];
-      };
+
+    # HIER IST DIE MAGIE: NixOS verwaltet die Dateien für uns deklarativ!
+    # %h steht für das Home-Verzeichnis des aktuellen Users.
+    systemd.user.tmpfiles.rules = [
+      # Erstellt den Ordner, falls er fehlt
+      "d %h/.config/hypr 0755 - - -"
+      # Erstellt den Symlink zu deiner Datei im schreibgeschützten Nix-Store
+      "L+ %h/.config/hypr/hyprland.conf - - - - ${hyprlandConf}"
+      # Erstellt die leere noctalia.conf (fixt den Crash auf neuen Laptops!)
+      "f %h/.config/hypr/noctalia.conf 0644 - - -"
+    ];
+
+    environment.sessionVariables = {
+      XDG_SESSION_TYPE = "wayland";
+      NIXOS_OZONE_WL = "1";
+      PASSWORD_STORE = "basic";
     };
-    environment = {
-      sessionVariables = {
-        XDG_SESSION_TYPE = "wayland";
-        NIXOS_OZONE_WL = "1";
-        PASSWORD_STORE = "basic";
-      };
-    };
-    xdg = {
-      portal = {
-        enable = true;
-        extraPortals = [
-          pkgs.xdg-desktop-portal-hyprland
-          pkgs.xdg-desktop-portal-gtk
-        ];
-      };
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+      ];
     };
   };
 }

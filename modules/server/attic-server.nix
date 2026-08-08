@@ -70,12 +70,5 @@
         };
       };
     };
-    networking = {
-      firewall = {
-        allowedTCPPorts = [
-          6000
-        ];
-      };
-    };
   };
 }

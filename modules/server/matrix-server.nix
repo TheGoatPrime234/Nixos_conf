@@ -155,13 +155,6 @@
         };
       };
     };
-    networking = {
-      firewall = {
-        allowedTCPPorts = [
-          8222
-        ];
-      };
-    };
     nixpkgs = {
       config = {
         permittedInsecurePackages = [

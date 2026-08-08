@@ -42,9 +42,9 @@
           virtualHosts = {
             "https://${config.xanterella.audiobookshelf.domain}" = {
               extraConfig = ''
-                handle /audiobookshelf* {
+                   handle /audiobookshelf* {
                 reverse_proxy 127.0.0.1:13378
-                }
+                          }
               '';
             };
           };
@@ -86,8 +86,14 @@
           virtualHosts = {
             "https://${config.xanterella.audiobookshelf-extern.domain}" = {
               extraConfig = ''
-                handle /audiobookshelf* {
-                reverse_proxy 127.0.0.1:13378
+                       handle /audiobookshelf* {
+                                  reverse_proxy ${config.extern.services.audiobookshelf.host}:${toString config.extern.services.audiobookshelf.port} {
+                	flush_interval -1
+                    }
+
+                    request_body {
+                	max_size 0
+                    }
                 }
               '';
             };

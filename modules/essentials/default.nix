@@ -1,6 +1,7 @@
 {
   imports = [
     ./audio.nix
+    ./netbird.nix
     ./nix-warper.nix
     ./bluetooth.nix
     ./btop.nix

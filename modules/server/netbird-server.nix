@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgs-unstable,
   ...
 }: {
   options = {
@@ -11,13 +12,18 @@
       };
     };
   };
-  config = lib.mkIf config.xanterella.netbird-server {
+  config = lib.mkIf config.xanterella.netbird-server.enable {
     services = {
-      resolved = {
-        enable = true;
-      };
       netbird = {
         enable = true;
+        package = pkgs-unstable.netbird;
+      };
+    };
+    networking = {
+      firewall = {
+        allowedUDPPorts = [
+          51820
+        ];
       };
     };
   };

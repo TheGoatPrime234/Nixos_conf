@@ -43,29 +43,6 @@ in {
           };
         };
       };
-      systemd = {
-        user = {
-          services = {
-            noctalia = {
-              description = "Noctalia Service";
-              wantedBy = [
-                "graphical-session.target"
-              ];
-              partOf = [
-                "graphical-session.target"
-              ];
-              after = [
-                "graphical-session.target"
-              ];
-              serviceConfig = {
-                ExecStart = "${noctaliaWrapped}/bin/noctalia";
-                Restart = "on-failure";
-                RestartSec = 3;
-              };
-            };
-          };
-        };
-      };
     })
     (lib.mkIf config.xanterella.noctalia_vimjoyer.enable {
       #packages.noctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {

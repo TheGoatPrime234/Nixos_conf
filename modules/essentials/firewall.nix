@@ -27,7 +27,6 @@
           22
           80
           443
-          8384
         ];
         allowedUDPPorts = [
         ];

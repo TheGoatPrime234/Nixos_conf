@@ -44,6 +44,9 @@
       tailscale = {
         enable = true;
       };
+      netbird = {
+        enable = true;
+      };
       tree = {
         enable = true;
       };

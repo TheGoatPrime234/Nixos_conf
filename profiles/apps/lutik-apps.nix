@@ -44,6 +44,9 @@
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
       };
+      netbird = {
+        enable = true;
+      };
     };
   };
 }

@@ -54,12 +54,5 @@
         };
       };
     };
-    networking = {
-      firewall = {
-        allowedTCPPorts = [
-          8222
-        ];
-      };
-    };
   };
 }

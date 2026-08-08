@@ -32,6 +32,9 @@ in {
   "mautrix_whatsapp.env.age" = {
     publicKeys = users ++ server;
   };
+  "netbird.env.age" = {
+    publicKeys = users ++ systems;
+  };
   "github-runner.age" = {
     publicKeys = users ++ systems;
   };
