@@ -82,6 +82,7 @@
 
       mautrix-whatsapp = {
         enable = true;
+        package = pkgs-unstable.mautrix-whatsapp;
         environmentFile = config.age.secrets.whatsapp_secrets.path;
         settings = {
           appservice = {
@@ -98,7 +99,7 @@
           };
           bridge = {
             permissions = {
-              "@Cato:${config.xanterella.matrix-server.domain}" = "admin";
+              "@xeravus:${config.xanterella.matrix-server.domain}" = "admin";
             };
           };
         };
@@ -122,7 +123,7 @@
           };
           bridge = {
             permissions = {
-              "@Cato:${config.xanterella.matrix-server.domain}" = "admin";
+              "@xeravus:${config.xanterella.matrix-server.domain}" = "admin";
             };
           };
         };
