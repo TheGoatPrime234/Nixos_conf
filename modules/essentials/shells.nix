@@ -5,7 +5,30 @@
   inputs,
   zsh-src,
   ...
-}: {
+}: let
+  p10kConf = ./p10k.zsh;
+  yaziFunc = ''
+    function y() {
+      local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+      command yazi "$@" --cwd-file="$tmp"
+      IFS= read -r -d "" cwd < "$tmp"
+      [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+      rm -f -- "$tmp"
+    }
+  '';
+  zshInit = ''
+    ZSH_CACHE_DIR="$HOME/.cache/zsh"
+    if [[ ! -d "$ZSH_CACHE_DIR" ]]; then
+      mkdir -p "$ZSH_CACHE_DIR"
+    fi
+    export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-$HOST-$ZSH_VERSION"
+    export DIRENV_LOG_FORMAT=""
+
+    if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+      source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+    fi
+  '';
+in {
   options = {
     xanterella = {
       zsh = {
@@ -56,29 +79,10 @@
             carrun = "cargo c && cargo t && cargo b";
           };
           interactiveShellInit = ''
-                   ZSH_CACHE_DIR="$HOME/.cache/zsh"
-                   if [[ ! -d "$ZSH_CACHE_DIR" ]]; then
-                     mkdir -p "$ZSH_CACHE_DIR"
-                   fi
-
-                   export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-$HOST-$ZSH_VERSION"
-            export DIRENV_LOG_FORMAT=""
-
-                   if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-                     source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-                   fi
-
-                   source ${inputs.p10k-src}/powerlevel10k.zsh-theme
-                   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-                   # Deine Yazi-Funktion bleibt unverändert
-                   function y() {
-                     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-                     command yazi "$@" --cwd-file="$tmp"
-                     IFS= read -r -d "" cwd < "$tmp"
-                     [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-                     rm -f -- "$tmp"
-                   }
+            ${zshInit}
+            source ${inputs.p10k-src}/powerlevel10k.zsh-theme
+            source ${p10kConf}
+            ${yaziFunc}
           '';
         };
       };
