@@ -69,7 +69,7 @@
       flake = false;
     };
     wallpaper = {
-      url = "github:Xeravus/wallpaper";
+      url = "github:Xeravus/Xanterella-Etc";
       flake = false;
     };
     pomo-src = {
