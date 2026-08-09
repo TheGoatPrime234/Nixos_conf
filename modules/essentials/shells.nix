@@ -62,6 +62,7 @@ in {
           };
           setOptions = [
             "NO_NOMATCH"
+            "NO_PROMPT_CR"
           ];
           syntaxHighlighting = {
             enable = true;
@@ -79,10 +80,12 @@ in {
             carrun = "cargo c && cargo t && cargo b";
           };
           interactiveShellInit = ''
-            ${zshInit}
-            source ${inputs.p10k-src}/powerlevel10k.zsh-theme
-            source ${p10kConf}
-            ${yaziFunc}
+                   ${zshInit}
+                   source ${inputs.p10k-src}/powerlevel10k.zsh-theme
+                   source ${p10kConf}
+                   ${yaziFunc}
+
+            (( ! ''${+functions[p10k]} )) || p10k finalize
           '';
         };
       };
