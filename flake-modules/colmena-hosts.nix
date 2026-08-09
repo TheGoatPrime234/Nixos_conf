@@ -23,11 +23,13 @@
         };
       };
     };
-    specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
+    specialArgs = {
+      inputs = inputs;
+      pkgs-new = pkgs-new;
+      pkgs-unstable = pkgs-unstable;
+    };
   };
-  # --- Xanterella Hosts Start ---
   xeravus = {
-    # tags = [ "main" ];
     deployment = {
       targetHost = null;
       allowLocalDeployment = true;
@@ -39,7 +41,6 @@
     ];
   };
   xorus = {
-    # tags = [ "device" "work" ];
     deployment = {
       targetHost = "192.168.178.69";
       targetUser = taruser;
@@ -52,7 +53,6 @@
     ];
   };
   lutik = {
-    # tags = [ "device" "server" ];
     deployment = {
       targetHost = "lutik";
       targetUser = taruser;
@@ -64,5 +64,4 @@
       ./../profiles/ssh-keys.nix
     ];
   };
-  # --- Xanterella Hosts End ---
 }

@@ -23,9 +23,6 @@
       fastfetch = {
         enable = true;
       };
-      gparted = {
-        enable = true;
-      };
       nitch = {
         enable = true;
       };

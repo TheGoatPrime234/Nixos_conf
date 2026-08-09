@@ -22,15 +22,18 @@
   };
 in {
   flake = {
-    colmena = withSystem systemarch (
-      {
-        pkgs-new,
-        pkgs-unstable,
-        ...
-      }:
-        import ./colmena-hosts.nix {
-          inherit inputs systemarch taruser commonSSHKeys pkgs-new pkgs-unstable;
-        }
-    );
+    colmena = withSystem systemarch ({
+      pkgs-new,
+      pkgs-unstable,
+      ...
+    }:
+      import ./colmena-hosts.nix {
+        inputs = inputs;
+        systemarch = systemarch;
+        taruser = taruser;
+        commonSSHKeys = commonSSHKeys;
+        pkgs-new = pkgs-new;
+        pkgs-unstable = pkgs-unstable;
+      });
   };
 }
