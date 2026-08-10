@@ -23,6 +23,9 @@
       spicetify = {
         enable = true;
       };
+      direnv = {
+        enable = true;
+      };
     };
   };
 }
