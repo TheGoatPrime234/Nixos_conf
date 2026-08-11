@@ -10,6 +10,7 @@
     ./monitoring.nix
     ./stress.nix
     ./matrix-server.nix
+    ./homarr.nix
     ./attic-server.nix
   ];
 }

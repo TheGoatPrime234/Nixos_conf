@@ -40,6 +40,10 @@
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
       };
+      homarr = {
+        enable = true;
+        domain = "lutik.gute-nessie.ts.net";
+      };
       audiobookshelf = {
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
