@@ -53,8 +53,9 @@
         virtualHosts = {
           "https://${config.xanterella.homarr.domain}" = {
             extraConfig = ''
-              handle /home*
-                reverse_proxy ${config.virtualisation.oci-containers.containers.homarr.ports}
+                          handle /home* {
+                            reverse_proxy ${config.virtualisation.oci-containers.containers.homarr.ports}
+              }
             '';
           };
         };
