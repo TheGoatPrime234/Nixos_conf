@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   lib,
   ...
 }: {
@@ -18,7 +19,7 @@
       search = ["gute-nessie.ts.net"];
     };
     environment = {
-      systemPackages = with pkgs; [
+      systemPackages = with pkgs-unstable; [
         attic-client
       ];
     };

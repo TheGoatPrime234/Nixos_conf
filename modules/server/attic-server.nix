@@ -1,6 +1,6 @@
 {
   config,
-  pkgs,
+  pkgs-unstable,
   lib,
   ...
 }: {
@@ -40,7 +40,7 @@
       };
     };
     environment = {
-      systemPackages = with pkgs; [
+      systemPackages = with pkgs-unstable; [
         openssl
       ];
     };

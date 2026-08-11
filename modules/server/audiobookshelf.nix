@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  pkgs-unstable,
+  pkgs-new,
   ...
 }: {
   options = {
@@ -29,7 +29,7 @@
       services = {
         audiobookshelf = {
           enable = true;
-          package = pkgs-unstable.audiobookshelf;
+          package = pkgs-new.audiobookshelf;
           host = "127.0.0.1";
           port = 13378;
         };
@@ -74,7 +74,7 @@
       services = {
         audiobookshelf = {
           enable = true;
-          package = pkgs-unstable.audiobookshelf;
+          package = pkgs-new.audiobookshelf;
           host = "127.0.0.1";
           port = 13378;
         };
