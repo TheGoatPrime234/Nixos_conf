@@ -54,7 +54,7 @@
           "https://${config.xanterella.homarr.domain}" = {
             extraConfig = ''
                           handle /home* {
-                            reverse_proxy ${config.virtualisation.oci-containers.containers.homarr.ports}
+                            reverse_proxy 127.0.0.1:7575
               }
             '';
           };
