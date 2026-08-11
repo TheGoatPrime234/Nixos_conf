@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   lib,
   ...
 }: {
@@ -79,6 +80,21 @@
                   access = "proxy";
                   url = "http://127.0.0.1:${toString config.services.prometheus.port}";
                   isDefault = true;
+                }
+              ];
+              dashboards = {
+                default_home_dashboard_path = "${inputs.xanterella-etc}/grafana/monitoring.json";
+              };
+            };
+          };
+          dashboards = {
+            settings = {
+              providers = [
+                {
+                  name = "GitHub Dashboard";
+                  options = {
+                    path = "${inputs.xanterella-etc}";
+                  };
                 }
               ];
             };

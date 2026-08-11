@@ -25,8 +25,8 @@ in {
         XDG_CACHE_HOME = "$HOME/.cache";
       };
       etc = {
-        "wallpaper" = {
-          source = inputs.wallpaper;
+        "xanterella-etc" = {
+          source = inputs.xanterella-etc;
         };
       };
       systemPackages = [

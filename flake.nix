@@ -68,7 +68,7 @@
       url = "github:romkatv/powerlevel10k";
       flake = false;
     };
-    wallpaper = {
+    xanterella-etc = {
       url = "github:Xeravus/Xanterella-Etc";
       flake = false;
     };

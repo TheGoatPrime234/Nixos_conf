@@ -12,7 +12,7 @@
     git add -A
     alejandra -q *
     nix flake update nix-programs
-    nix flake update wallpaper
+    nix flake update xanterella-etc
     nh os switch . -H xeravus
 
     if [ -z "$1" ]; then
@@ -23,11 +23,11 @@
 
     if git diff --cached --quiet; then
             echo "Rebuild erfolgreich, aber keine neuen Änderungen zum Commiten"
-            notify-send "Rebuild erfolgreich, aber kein Commit"
+            notify-send "Rebuild erfolgreich, aber kein Commit" -a NixOs -t 3000
     else
             git commit -am "$COMMIT_MSG"
             echo "Rebuild erfolgreich und erfolgreich committet: $COMMIT_MSG" -a nix-switcher
-            notify-send "Rebuild erfolgreich: $COMMIT_MSG"
+            notify-send "Rebuild erfolgreich: $COMMIT_MSG" -a NixOs -t 3000
     fi
     fastfetch
     echo ""
