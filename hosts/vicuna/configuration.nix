@@ -7,8 +7,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules
-    ./../../profiles/boot/boot-server.nix
-    ./../../profiles/server/apps-server-extern.nix
+    ./../../profiles/boot/boot-vicuna.nix
   ];
   networking = {
     hostName = "vicuna";
