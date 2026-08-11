@@ -17,16 +17,17 @@
     }
   '';
   zshInit = ''
-    ZSH_CACHE_DIR="$HOME/.cache/zsh"
-    if [[ ! -d "$ZSH_CACHE_DIR" ]]; then
-      mkdir -p "$ZSH_CACHE_DIR"
-    fi
-    export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-$HOST-$ZSH_VERSION"
-    export DIRENV_LOG_FORMAT=""
+    unsetopt prompt_cr prompt_sp
+        ZSH_CACHE_DIR="$HOME/.cache/zsh"
+        if [[ ! -d "$ZSH_CACHE_DIR" ]]; then
+          mkdir -p "$ZSH_CACHE_DIR"
+        fi
+        export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-$HOST-$ZSH_VERSION"
+        export DIRENV_LOG_FORMAT=""
 
-    if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-      source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-    fi
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
   '';
 in {
   options = {
