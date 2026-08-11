@@ -7,7 +7,12 @@
     _module.args = {
       pkgs-new = import inputs.nixpkgs-new {
         system = system;
-        config.allowUnfree = true;
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [
+            "docker-28.5.2"
+          ];
+        };
       };
       pkgs-unstable = import inputs.nixpkgs-unstable {
         system = system;
