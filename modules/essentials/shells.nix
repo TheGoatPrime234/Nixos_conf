@@ -90,6 +90,7 @@ in {
             carrun = "cargo c && cargo t && cargo b";
             pclear = "pyroclear";
             pcl = "pyroclear";
+            plc = "pyroclear";
           };
           interactiveShellInit = ''
             unsetopt prompt_cr
