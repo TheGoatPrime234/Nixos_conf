@@ -88,6 +88,8 @@ in {
             nix-pr = "nixpkgs-review pr --print-result";
             b = "btop";
             carrun = "cargo c && cargo t && cargo b";
+            pclear = "pyroclear";
+            pcl = "pyroclear";
           };
           interactiveShellInit = ''
             unsetopt prompt_cr

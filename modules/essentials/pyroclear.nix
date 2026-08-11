@@ -19,13 +19,5 @@
         inputs.pyroclear.packages.${pkgs.system}.default
       ];
     };
-    programs = {
-      zsh = {
-        shellAliases = {
-          pclear = "pyroclear";
-          pcl = "pyroclear";
-        };
-      };
-    };
   };
 }
