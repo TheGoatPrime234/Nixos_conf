@@ -44,6 +44,7 @@
       keyMap = "de";
     };
     users = {
+      mutableUsers = false;
       users = {
         cato = {
           isNormalUser = true;
@@ -53,7 +54,6 @@
             "wheel"
             "plugdev"
           ];
-          initialPassword = "xanterella";
           hashedPasswordFile = config.age.secrets.password_cato.path;
         };
         root = {
