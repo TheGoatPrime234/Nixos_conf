@@ -72,6 +72,10 @@
       url = "github:Xeravus/Xanterella-Etc";
       flake = false;
     };
+    pyroclear = {
+      url = "github:shreyanth-sureshkrishnaa/pyroclear";
+      flake = true;
+    };
     pomo-src = {
       url = "github:Bahaaio/pomo";
       flake = false;

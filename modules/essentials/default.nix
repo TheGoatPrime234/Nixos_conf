@@ -1,6 +1,7 @@
 {
   imports = [
     ./audio.nix
+    ./pyroclear.nix
     ./netbird.nix
     ./nix-warper.nix
     ./bluetooth.nix

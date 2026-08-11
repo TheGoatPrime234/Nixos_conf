@@ -62,6 +62,9 @@
       attic = {
         enable = true;
       };
+      pyroclear = {
+        enable = true;
+      };
       zsh = {
         enable = true;
       };
