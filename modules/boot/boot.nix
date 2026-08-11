@@ -70,7 +70,6 @@
             enable = lib.mkForce false;
           };
         };
-        kernelPackages = pkgs.linuxPackages_6_12;
         kernelParams = ["btusb.enable_autosuspend=0"];
       };
     })

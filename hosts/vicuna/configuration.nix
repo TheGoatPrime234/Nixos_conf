@@ -23,8 +23,11 @@
       # Pfad zum fertig kompilierten NixOS-System
       systemdir=${config.system.build.toplevel}
 
-      # Originale Raspberry Pi Firmware kopieren (start.elf, bootcode.bin etc.)
+      # Originale Raspberry Pi Firmware kopieren
       cp -r ${pkgs.raspberrypifw}/share/raspberrypi/boot/* firmware/
+
+      # WICHTIG: Den Ordner wieder beschreibbar machen!
+      chmod -R +w firmware/
 
       # Den echten NixOS-Kernel und die RAM-Disk umbenennen und kopieren
       cp $systemdir/kernel firmware/kernel_2712.img

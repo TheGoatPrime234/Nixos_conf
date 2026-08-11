@@ -82,9 +82,6 @@
                   isDefault = true;
                 }
               ];
-              dashboards = {
-                default_home_dashboard_path = "${inputs.xanterella-etc}/grafana/monitoring.json";
-              };
             };
           };
           dashboards = {
@@ -135,6 +132,15 @@
           extraGroups = [
             "tailscale"
           ];
+        };
+      };
+    };
+    systemd = {
+      services = {
+        grafana = {
+          environment = {
+            GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH = "${inputs.xanterella-etc}/grafana/monitoring.json";
+          };
         };
       };
     };
