@@ -48,6 +48,15 @@ in {
           bat
         ];
       };
+      systemd = {
+        user = {
+          tmpfiles = {
+            rules = [
+              "f %h/.zshrc 0644 - - - #"
+            ];
+          };
+        };
+      };
       users = {
         defaultUserShell = pkgs.zsh;
       };
