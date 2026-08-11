@@ -21,21 +21,8 @@
   sdImage = {
     firmwareSize = 1024;
   };
-  fileSystems = {
-    "/mnt/server-data" = {
-      device = "/dev/disk/by-label/Server";
-      fsType = "ext4";
-      options = [
-        "defaults"
-        "nofail"
-        "x-systemd.device-timeout=5s"
-      ];
-    };
-  };
   hardware = {
-    bluetooth = {
-      enable = false;
-    };
+    #bluetooth = { enable = false; };
     enableRedistributableFirmware = true;
   };
   system = {
