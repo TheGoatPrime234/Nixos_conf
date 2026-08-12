@@ -24,6 +24,10 @@
       stress = {
         enable = true;
       };
+      vikunja = {
+        enable = true;
+        domain = "lutik.gute-nessie.ts.net";
+      };
       monitoring = {
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
@@ -37,10 +41,6 @@
         domain = "lutik.gute-nessie.ts.net";
       };
       vaultwarden = {
-        enable = true;
-        domain = "lutik.gute-nessie.ts.net";
-      };
-      homarr = {
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
       };
