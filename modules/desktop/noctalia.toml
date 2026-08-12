@@ -126,7 +126,7 @@ screen_time_enabled = true
     [shell.launcher]
     categories = false
     compact = true
-    provider_prefix = "-"
+    provider_prefix = " "
 
         [shell.launcher.providers.calculator]
         prefix = "c"
@@ -158,10 +158,10 @@ wallpaper_scheme = "muted"
 
     [theme.templates]
     builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "hyprland", "kitty", "qt" ]
-    community_ids = [ "spicetify", "zen-browser", "discord", "obsidian", "vscode", "lazygit", "yazi" ]
+    community_ids = [ "spicetify", "zen-browser", "discord", "neovim", "obsidian", "vscode", "fastfetch", "lazygit", "yazi" ]
 
 [wallpaper]
-directory = "/etc/wallpaper/wallpapers"
+directory = "/etc/xanterella-etc/wallpapers"
 transition = [ "disc", "honeycomb" ]
 transition_on_startup = true
 
@@ -169,13 +169,13 @@ transition_on_startup = true
     order = "alphabetical"
 
     [wallpaper.default]
-    path = "/etc/wallpaper/wallpapers/luna_gruvbox.png"
+    path = "/etc/xanterella-etc/wallpapers/luna_gruvbox.png"
 
     [wallpaper.last]
-    path = "/etc/wallpaper/wallpapers/luna_gruvbox.png"
+    path = "/etc/xanterella-etc/wallpapers/luna_gruvbox.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/etc/wallpaper/wallpapers/luna_gruvbox.png"
+    path = "/etc/xanterella-etc/wallpapers/luna_gruvbox.png"
 
     [[wallpaper.favorite]]
     builtin_palette = "Ayu"
