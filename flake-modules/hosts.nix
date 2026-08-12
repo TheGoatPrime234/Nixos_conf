@@ -9,9 +9,6 @@
         system = system;
         config = {
           allowUnfree = true;
-          permittedInsecurePackages = [
-            "docker-28.5.2"
-          ];
         };
       };
       pkgs-unstable = import inputs.nixpkgs-unstable {

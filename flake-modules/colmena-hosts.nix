@@ -12,6 +12,9 @@
       system = systemarch;
       config = {
         allowUnfree = true;
+        permittedInsecurePackages = [
+          "docker-28.5.2"
+        ];
       };
       purity = "impure";
     };

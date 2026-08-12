@@ -18,7 +18,7 @@
   config = lib.mkIf config.xanterella.homarr.enable {
     virtualisation = {
       oci-containers = {
-        backend = "docker";
+        backend = "podman";
         containers = {
           homarr = {
             image = "ghcr.io/ajnart/homarr:latest";
@@ -53,11 +53,20 @@
         virtualHosts = {
           "https://${config.xanterella.homarr.domain}" = {
             extraConfig = ''
-                          handle /home* {
-                            reverse_proxy 127.0.0.1:7575
+              handle /home* {
+                reverse_proxy 127.0.0.1:7575
               }
             '';
           };
+        };
+      };
+    };
+    users = {
+      users = {
+        caddy = {
+          extraGroups = [
+            "tailscale"
+          ];
         };
       };
     };
