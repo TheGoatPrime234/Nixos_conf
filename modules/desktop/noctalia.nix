@@ -38,9 +38,8 @@ in {
         services = {
           noctalia = {
             description = "Noctalia App Launcher";
-
+            restartIfChanged = true;
             reloadTriggers = [noctaliaConfigFile];
-
             environment = {
               PATH = lib.mkForce "/run/wrappers/bin:/run/current-system/sw/bin:/etc/profiles/per-user/cato/bin";
             };
