@@ -22,9 +22,11 @@
       vikunja = {
         enable = true;
         port = 8919;
+        frontendScheme = "https";
+        frontendHostname = "lutik";
         settings = {
           service = {
-            frontendurl = "https://${config.xanterella.vikunja.domain}/vikunja/";
+            frontendurl = "https://${config.xanterella.vikunja.domain}:3456/";
           };
         };
       };
@@ -34,11 +36,9 @@
       caddy = {
         enable = true;
         virtualHosts = {
-          "${config.services.vikunja.settings.service.frontendurl}" = {
+          "https://${config.xanterella.vikunja.domain}:3456" = {
             extraConfig = ''
-              handle /vikunja* {
-                       reverse_proxy 127.0.0.1:${toString config.services.vikunja.port}
-                }
+              reverse_proxy 127.0.0.1:${toString config.services.vikunja.port}
             '';
           };
         };
