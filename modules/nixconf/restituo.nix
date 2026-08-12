@@ -13,7 +13,6 @@
     alejandra -q *
     nix flake update nix-programs
     nix flake update xanterella-etc
-    git commit -m "Start Rebuild"
     nh os switch . -H xeravus
 
     if [ -z "$1" ]; then
