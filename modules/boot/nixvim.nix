@@ -154,7 +154,12 @@
           }
         ];
 
-        #colorschemes = { catppuccin = { enable = true; autoLoad = true; }; };
+        colorschemes = {
+          catppuccin = {
+            enable = true;
+            autoLoad = true;
+          };
+        };
         plugins = {
           lualine = {
             enable = true;
@@ -252,7 +257,7 @@
                   "qmlformat"
                 ];
                 nix = [
-                  #"alejandra"
+                  "alejandra"
                 ];
               };
             };
