@@ -14,6 +14,10 @@
       url = "github:nixos/nixpkgs/nixpkgs-unstable";
       flake = true;
     };
+    nixpkgs-bleeding-edge = {
+      url = "github:nixos/nixpkgs/nixpkgs-unstable";
+      flake = true;
+    };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
       flake = true;

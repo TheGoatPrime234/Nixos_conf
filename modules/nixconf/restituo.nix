@@ -13,6 +13,7 @@
     alejandra -q *
     nix flake update nix-programs
     nix flake update xanterella-etc
+    nix flake update nixpkgs-bleeding-edge
     nh os switch . -H xeravus
 
     if [ -z "$1" ]; then

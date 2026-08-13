@@ -34,6 +34,7 @@ in {
         commonSSHKeys = commonSSHKeys;
         pkgs-new = pkgs-new;
         pkgs-unstable = pkgs-unstable;
+        pgks-bleeding = inputs.pkgs-bleeding;
       });
   };
 }

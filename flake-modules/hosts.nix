@@ -20,6 +20,12 @@
           ];
         };
       };
+      pkgs-bleeding = import inputs.nixpkgs-bleeding-edge {
+        system = system;
+        config = {
+          allowUnfree = true;
+        };
+      };
     };
   };
   flake = {
@@ -27,6 +33,7 @@
       xeravus = withSystem "x86_64-linux" ({
         pkgs-new,
         pkgs-unstable,
+        pkgs-bleeding,
         ...
       }:
         inputs.nixpkgs.lib.nixosSystem {
@@ -35,6 +42,7 @@
             inputs = inputs;
             pkgs-new = pkgs-new;
             pkgs-unstable = pkgs-unstable;
+            pkgs-bleeding = pkgs-bleeding;
           };
           modules = [
             inputs.disko.nixosModules.disko
@@ -44,6 +52,7 @@
       xorus = withSystem "x86_64-linux" ({
         pkgs-new,
         pkgs-unstable,
+        pkgs-bleeding,
         ...
       }:
         inputs.nixpkgs.lib.nixosSystem {
@@ -52,6 +61,7 @@
             inputs = inputs;
             pkgs-new = pkgs-new;
             pkgs-unstable = pkgs-unstable;
+            pkgs-bleeding = pkgs-bleeding;
           };
           modules = [
             inputs.disko.nixosModules.disko
@@ -61,6 +71,7 @@
       installer = withSystem "x86_64-linux" ({
         pkgs-new,
         pkgs-unstable,
+        pkgs-bleeding,
         ...
       }:
         inputs.nixpkgs.lib.nixosSystem {
@@ -68,6 +79,7 @@
           specialArgs = {
             inputs = inputs;
             pkgs-unstable = pkgs-unstable;
+            pkgs-bleeding = pkgs-bleeding;
           };
           modules = [
             ./../hosts/installer/configuration.nix
@@ -77,6 +89,7 @@
       vicuna-image = withSystem "aarch64-linux" ({
         pkgs-new,
         pkgs-unstable,
+        pkgs-bleeding,
         ...
       }:
         inputs.nixpkgs.lib.nixosSystem {
@@ -85,6 +98,7 @@
             inputs = inputs;
             pkgs-new = pkgs-new;
             pkgs-unstable = pkgs-unstable;
+            pkgs-bleeding = pkgs-bleeding;
           };
           modules = [
             ./../hosts/vicuna/configuration.nix
@@ -96,6 +110,7 @@
       crylia = withSystem "x86_64-linux" ({
         pkgs-new,
         pkgs-unstable,
+        pkgs-bleeding,
         ...
       }:
         inputs.nixpkgs.lib.nixosSystem {
@@ -104,6 +119,7 @@
             inputs = inputs;
             pkgs-new = pkgs-new;
             pkgs-unstable = pkgs-unstable;
+            pkgs-bleeding = pkgs-bleeding;
           };
           modules = [
             ./../hosts/crylia/configuration.nix

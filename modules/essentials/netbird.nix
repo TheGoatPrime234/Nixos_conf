@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
+  pkgs-bleeding,
   ...
 }: {
   options = {
@@ -23,7 +23,7 @@
     services = {
       netbird = {
         enable = true;
-        package = pkgs-unstable.netbird;
+        package = pkgs-bleeding.netbird;
         clients = {
           "${config.networking.hostName}" = {
             login = {

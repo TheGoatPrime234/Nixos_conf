@@ -5,6 +5,7 @@
   commonSSHKeys,
   pkgs-new,
   pkgs-unstable,
+  pkgs-bleeding,
   ...
 }: {
   meta = {
