@@ -26,6 +26,7 @@
         package = pkgs-unstable.netbird;
         clients = {
           "${config.networking.hostName}" = {
+            autoStart = true;
             login = {
               enable = true;
               setupKeyFile = config.age.secrets.netbird-env.path;
