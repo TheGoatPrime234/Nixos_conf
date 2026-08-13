@@ -8,7 +8,7 @@
   options = {
     xanterella = {
       netbird = {
-        enable = lib.mkEnableOption "Aktiviert netbird als client";
+        enable = lib.mkEnableOption "Aktiviert netbird als Client";
       };
     };
   };
