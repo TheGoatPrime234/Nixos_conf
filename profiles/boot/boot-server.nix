@@ -35,6 +35,9 @@
       zsh = {
         enable = true;
       };
+      pyroclear = {
+        enable = true;
+      };
       ssh = {
         enable = true;
       };
