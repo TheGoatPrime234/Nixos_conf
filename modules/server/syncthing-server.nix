@@ -8,49 +8,16 @@
     xanterella = {
       syncthing_server = {
         enable = lib.mkEnableOption "Aktiviert Syncthing_server ohne externes Speichermedium";
-      };
-      syncthing_server-extern = {
-        enable = lib.mkEnableOption "Aktiviert Syncthing_server mit externem Speichermedium";
+        domain = lib.mkOption {
+          type = lib.types.str;
+          default = "xanterella.de/syncthing";
+        };
       };
     };
   };
 
   config = lib.mkMerge [
     (lib.mkIf config.xanterella.syncthing_server.enable {
-      environment = {
-        systemPackages = with pkgs; [
-          syncthing
-        ];
-      };
-      systemd = {
-        tmpfiles = {
-          rules = [
-            "d /home/cato/server-data/nix/syncthing 0750 syncthing syncthing -"
-            "d /home/cato/server-data/nix/syncthing/data 0750 syncthing syncthing -"
-            "d /home/cato/server-data/nix/syncthing/config 0750 syncthing syncthing -"
-          ];
-        };
-      };
-      services = {
-        syncthing = {
-          enable = true;
-          systemService = true;
-          dataDir = "/home/cato/server-data/nix/syncthing/data";
-          configDir = "/home/cato/server-data/nix/syncthing/config";
-          user = "syncthing";
-          group = "syncthing";
-          guiAddress = "0.0.0.0:8384";
-        };
-      };
-      networking = {
-        firewall = {
-          allowedTCPPorts = [
-            8384
-          ];
-        };
-      };
-    })
-    (lib.mkIf config.xanterella.syncthing_server-extern.enable {
       environment = {
         systemPackages = with pkgs; [
           syncthing
@@ -69,17 +36,50 @@
         syncthing = {
           enable = true;
           systemService = true;
-          dataDir = "/mnt/server-data/nix/syncthing/data";
-          configDir = "/mnt/server-data/nix/syncthing/config";
+          dataDir = "/home/cato/server-data/nix/syncthing/data";
+          configDir = "/home/cato/server-data/nix/syncthing/config";
           user = "syncthing";
           group = "syncthing";
-          guiAddress = "0.0.0.0:8384";
+          guiAddress = "127.0.0.1:8384";
+          settings = {
+            gui = {
+              insecureSkipHostcheck = true;
+            };
+          };
+        };
+        tailscale = {
+          permitCertUid = "caddy";
+        };
+        caddy = {
+          enable = true;
+          virtualHosts = {
+            "https://${config.xanterella.syncthing_server.domain}" = {
+              extraConfig = ''
+                handle /syncthing* {
+                    reverse_proxy ${config.services.syncthing.guiAddress}
+                }
+              '';
+            };
+          };
+        };
+      };
+      users = {
+        users = {
+          caddy = {
+            extraGroups = [
+              "tailscale"
+            ];
+          };
         };
       };
       networking = {
         firewall = {
           allowedTCPPorts = [
-            8384
+            22000
+          ];
+          allowedUDPPorts = [
+            22000
+            21027
           ];
         };
       };

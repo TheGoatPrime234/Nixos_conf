@@ -43,8 +43,14 @@
             "https://${config.xanterella.audiobookshelf.domain}" = {
               extraConfig = ''
                    handle /audiobookshelf* {
-                reverse_proxy 127.0.0.1:13378
-                          }
+                reverse_proxy 127.0.0.1:13378 {
+                	flush_interval -1
+                    }
+
+                    request_body {
+                	max_size 0
+                    }
+                }
               '';
             };
           };

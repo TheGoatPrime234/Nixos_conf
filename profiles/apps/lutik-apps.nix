@@ -44,6 +44,10 @@
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
       };
+      syncthing_server = {
+        enable = true;
+        domain = "lutik.gute-nessie.ts.net";
+      };
       audiobookshelf = {
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
