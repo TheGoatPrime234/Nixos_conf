@@ -36,9 +36,13 @@
         openDefaultPorts = true;
         overrideDevices = true;
         settings = {
+          options = {
+            defaultFolderPath = "/home/cato/Documents/";
+          };
           devices = {
             "Samsung S25+" = {
               id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";
+              autoAcceptFolders = true;
             };
           };
           folder = {
