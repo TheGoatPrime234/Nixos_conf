@@ -49,7 +49,7 @@
               id = "OLIYCOU-35J6CBI-ROHN6GJ-JXY42PF-DO7JGDA-HSTC7PN-XIVDEZ5-6KBNDQ6";
               autoAcceptFolders = true;
             };
-            "Xerauvs" = {
+            "Xeravus" = {
               id = "U6WAEJX-YTJLVVL-GDOM62T-ES7I4FJ-C7IKTYG-ZEY2FS3-2SVKE4Y-FZEY4QX";
               autoAcceptFolders = true;
             };
