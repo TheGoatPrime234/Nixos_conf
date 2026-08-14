@@ -32,6 +32,61 @@
             port = 9100;
             listenAddress = "127.0.0.1";
           };
+          process = {
+            enable = true;
+            settings = {
+              process_names = [
+                {
+                  name = "Netbird";
+                  cmdline = [".*netbird.*"];
+                }
+                {
+                  name = "Tailscale";
+                  cmdline = [".*tailscaled.*"];
+                }
+                {
+                  name = "Caddy";
+                  cmdline = [".*caddy.*"];
+                }
+                {
+                  name = "Grafana";
+                  cmdline = [".*grafana.*"];
+                }
+                {
+                  name = "GitHub-Runner";
+                  cmdline = [".*github-runner.*"];
+                }
+                {
+                  name = "Vikunja";
+                  cmdline = [".*vikunja.*"];
+                }
+                {
+                  name = "Vaultwarden";
+                  cmdline = [".*vaultwarden.*"];
+                }
+                {
+                  name = "Audiobookshelf";
+                  cmdline = [".*audiobookshelf.*"];
+                }
+                {
+                  name = "Matrix Synapse";
+                  cmdline = [".*synapse.*"];
+                }
+                {
+                  name = "Matrix Discord";
+                  cmdline = [".*mautrix-discord.*"];
+                }
+                {
+                  name = "Matrix Whatsapp";
+                  cmdline = [".*mautrix-whatsapp.*"];
+                }
+                {
+                  name = "Attic";
+                  cmdline = [".*atticd.*"];
+                }
+              ];
+            };
+          };
         };
         scrapeConfigs = [
           {
