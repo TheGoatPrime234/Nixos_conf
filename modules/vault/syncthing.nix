@@ -59,6 +59,7 @@
               enable = true;
               id = "ngxgj-f2ouz";
               path = "~/Documents/Vaults/";
+              label = "Vaults";
               devices = [
                 "Samsung S25+"
                 "Lutik"
