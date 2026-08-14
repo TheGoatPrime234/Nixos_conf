@@ -28,12 +28,16 @@
             enable = true;
             enabledCollectors = [
               "systemd"
+              "hwmon"
+              "tcpstat"
             ];
             port = 9100;
             listenAddress = "127.0.0.1";
           };
           process = {
             enable = true;
+            port = 9101;
+            listenAddress = "127.0.0.1";
             settings = {
               process_names = [
                 {
@@ -90,12 +94,23 @@
         };
         scrapeConfigs = [
           {
-            job_name = "nixos-laptop";
+            job_name = "node_exporter";
             scrape_interval = "15s";
             static_configs = [
               {
                 targets = [
                   "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
+                ];
+              }
+            ];
+          }
+          {
+            job_name = "process_exporter";
+            scrape_interval = "30s";
+            static_configs = [
+              {
+                targets = [
+                  "127.0.0.1:${toString config.services.prometheus.exporters.process.port}"
                 ];
               }
             ];
