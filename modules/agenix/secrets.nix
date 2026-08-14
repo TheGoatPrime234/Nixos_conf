@@ -37,6 +37,9 @@ in {
   "netbird.env.age" = {
     publicKeys = users ++ systems;
   };
+  "syncthing.age" = {
+    publicKeys = users ++ systems;
+  };
   "github-runner.age" = {
     publicKeys = users ++ systems;
   };

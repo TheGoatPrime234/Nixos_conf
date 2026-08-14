@@ -18,6 +18,13 @@
 
   config = lib.mkMerge [
     (lib.mkIf config.xanterella.syncthing_server.enable {
+      age = {
+        secrets = {
+          gui-password = {
+            file = ./../syncthing.age;
+          };
+        };
+      };
       environment = {
         systemPackages = with pkgs; [
           syncthing
@@ -41,6 +48,7 @@
           user = "syncthing";
           group = "syncthing";
           guiAddress = "127.0.0.1:8284";
+          guiPasswordFile = config.age.secrets.gui-password.path;
           settings = {
             gui = {
               insecureSkipHostcheck = true;
