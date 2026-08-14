@@ -49,7 +49,7 @@
             "Vaults" = {
               enable = true;
               id = "ngxgj-f2ouz";
-              path = "~/Documents/Vaults/";
+              path = "/home/cato/Documents/Vaults/";
               devices = [
                 "Samsung S25+"
               ];
