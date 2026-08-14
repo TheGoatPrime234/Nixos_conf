@@ -59,6 +59,7 @@ in {
     environment = {
       systemPackages = [
         kittywrapped
+        pkgs.tmux
         pkgs.kitty-themes
       ];
     };
