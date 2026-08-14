@@ -9,6 +9,7 @@
     ./../../modules
     ./../../profiles/boot/boot.nix
     ./../../profiles/essentials/essentials.nix
+    ./../../profiles/vault.nix
     ./../../profiles/apps/xorus-apps.nix
     ./../../profiles/desktops/hyprland.nix
   ];

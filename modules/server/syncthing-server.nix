@@ -56,6 +56,7 @@
             devices = {
               "Xeravus" = {
                 id = "U6WAEJX-YTJLVVL-GDOM62T-ES7I4FJ-C7IKTYG-ZEY2FS3-2SVKE4Y-FZEY4QX";
+                autoAcceptFolders = true;
               };
               "Samsung S25+" = {
                 id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";

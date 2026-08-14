@@ -35,11 +35,11 @@
         configDir = "/home/cato/.config/syncthing";
         openDefaultPorts = true;
         overrideDevices = true;
-        overrideFolders = true;
         settings = {
           devices = {
             "Samsung S25+" = {
               id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";
+              autoAcceptFolders = true;
             };
           };
           folder = {
