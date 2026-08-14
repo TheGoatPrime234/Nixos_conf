@@ -54,20 +54,32 @@
               insecureSkipHostcheck = true;
             };
             devices = {
-              "Xeravus" = {
+              "Samsung S25+" = {
+                id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";
+                autoAcceptFolders = true;
+              };
+              "Lutik" = {
+                id = "QCGYDG6-3JIVU2A-LJATSGN-MAJV2GX-VZCFJHE-OXZXNFV-GDQL7TK-B7MHOAC";
+                autoAcceptFolders = true;
+              };
+              "Xorus" = {
+                id = "OLIYCOU-35J6CBI-ROHN6GJ-JXY42PF-DO7JGDA-HSTC7PN-XIVDEZ5-6KBNDQ6";
+                autoAcceptFolders = true;
+              };
+              "Xerauvs" = {
                 id = "U6WAEJX-YTJLVVL-GDOM62T-ES7I4FJ-C7IKTYG-ZEY2FS3-2SVKE4Y-FZEY4QX";
                 autoAcceptFolders = true;
               };
-              "Samsung S25+" = {
-                id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";
-              };
             };
             folders = {
-              "Vault" = {
+              "Vaults" = {
+                enable = true;
                 id = "ngxgj-f2ouz";
-                path = "/mnt/server-path/nix/syncthing/folders/vault";
+                path = "/mnt/server-path/nix/syncthing/folders/vaults";
                 devices = [
                   "Xeravus"
+                  "Xorus"
+                  "Lutik"
                   "Samsung S25+"
                 ];
               };
