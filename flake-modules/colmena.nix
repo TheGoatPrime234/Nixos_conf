@@ -25,6 +25,7 @@ in {
     colmena = withSystem systemarch ({
       pkgs-new,
       pkgs-unstable,
+      pkgs-bleeding,
       ...
     }:
       import ./colmena-hosts.nix {
@@ -34,7 +35,7 @@ in {
         commonSSHKeys = commonSSHKeys;
         pkgs-new = pkgs-new;
         pkgs-unstable = pkgs-unstable;
-        pgks-bleeding = inputs.pkgs-bleeding;
+        pkgs-bleeding = pkgs-bleeding;
       });
   };
 }

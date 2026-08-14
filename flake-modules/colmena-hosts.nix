@@ -31,6 +31,7 @@
       inputs = inputs;
       pkgs-new = pkgs-new;
       pkgs-unstable = pkgs-unstable;
+      pkgs-bleeding = pkgs-bleeding;
     };
   };
   xeravus = {
