@@ -9,11 +9,11 @@
     set -e
     cd ~/xanterella/config
 
-    git add -A
     alejandra -q *
     nix flake update nix-programs
     nix flake update xanterella-etc
     nix flake update nixpkgs-bleeding-edge
+    git add -A
     nh os switch . -H xeravus
 
     if [ -z "$1" ]; then

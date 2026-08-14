@@ -18,6 +18,15 @@
         syncthing
       ];
     };
+    systemd = {
+      tmpfiles = {
+        rules = [
+          "d /home/cato/.local/syncthing 0750 syncthing syncthing -"
+          "d /home/cato/.local/syncthing/data 0750 syncthing syncthing -"
+          "d /home/cato/.local/syncthing/config 0750 syncthing syncthing -"
+        ];
+      };
+    };
     services = {
       syncthing = {
         enable = true;
@@ -29,9 +38,6 @@
         overrideFolders = true;
         settings = {
           devices = {
-            "raspi" = {
-              id = "IKHZFQ4-UEA4QFZ-AQETPT7-TH2J65Z-3UBP6Y5-KP4QEVI-YR6QNR5-43YSAAC";
-            };
             "Samsung S25+" = {
               id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";
             };
@@ -41,7 +47,6 @@
               id = "ngxgj-f2ouz";
               path = "/home/cato/Documents/Vaults/";
               devices = [
-                "raspi"
                 "Samsung S25+"
               ];
               versioning = {

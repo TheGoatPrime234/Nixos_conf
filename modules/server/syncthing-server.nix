@@ -21,7 +21,7 @@
       age = {
         secrets = {
           gui-password = {
-            file = ./../syncthing.age;
+            file = ./../agenix/syncthing.age;
           };
         };
       };
@@ -52,6 +52,24 @@
           settings = {
             gui = {
               insecureSkipHostcheck = true;
+            };
+            devices = {
+              "Xeravus" = {
+                id = "U6WAEJX-YTJLVVL-GDOM62T-ES7I4FJ-C7IKTYG-ZEY2FS3-2SVKE4Y-FZEY4QX";
+              };
+              "Samsung S25+" = {
+                id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";
+              };
+            };
+            folders = {
+              "Vault" = {
+                id = "ngxgj-f2ouz";
+                path = "/mnt/server-path/nix/syncthing/folders/vault";
+                devices = [
+                  "Xeravus"
+                  "Samsung S25+"
+                ];
+              };
             };
           };
         };
