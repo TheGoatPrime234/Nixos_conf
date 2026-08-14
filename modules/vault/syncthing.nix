@@ -36,9 +36,6 @@
         openDefaultPorts = true;
         overrideDevices = true;
         settings = {
-          options = {
-            defaultFolderPath = "/home/cato/Documents";
-          };
           devices = {
             "Samsung S25+" = {
               id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";
@@ -46,6 +43,10 @@
             };
             "Lutik" = {
               id = "QCGYDG6-3JIVU2A-LJATSGN-MAJV2GX-VZCFJHE-OXZXNFV-GDQL7TK-B7MHOAC";
+              autoAcceptFolders = true;
+            };
+            "Xorus" = {
+              id = "OLIYCOU-35J6CBI-ROHN6GJ-JXY42PF-DO7JGDA-HSTC7PN-XIVDEZ5-6KBNDQ6";
               autoAcceptFolders = true;
             };
             "Xerauvs" = {
@@ -57,9 +58,11 @@
             "Vaults" = {
               enable = true;
               id = "ngxgj-f2ouz";
+              path = "~/Documents/Vaults/";
               devices = [
                 "Samsung S25+"
                 "Lutik"
+                "Xorus"
                 "Xeravus"
               ];
               versioning = {
