@@ -44,58 +44,87 @@
 in {
   options = {
     xanterella = {
-      zsh.enable = lib.mkEnableOption "Aktiviert zsh";
-      bash.enable = lib.mkEnableOption "Aktiviert Bash";
+      zsh = {
+        enable = lib.mkEnableOption "Aktiviert zsh";
+      };
+      bash = {
+        enable = lib.mkEnableOption "Aktiviert Bash";
+      };
     };
   };
 
   config = lib.mkMerge [
     (lib.mkIf config.xanterella.zsh.enable {
-      environment.systemPackages = with pkgs; [
-        zsh-powerlevel10k
-        bat
-      ];
-
-      systemd.user.tmpfiles.rules = [
-        "L+ %h/.zshrc - - - - ${userZshrc}"
-      ];
-
-      users.defaultUserShell = pkgs.zsh;
-
-      programs.zsh = {
-        enable = true;
-        enableCompletion = true;
-        enableBashCompletion = true;
-        enableLsColors = true;
-        autosuggestions.enable = true;
-        syntaxHighlighting.enable = true;
-
-        promptInit = "";
-
-        setOptions = [
-          "NO_NOMATCH"
-          "NO_PROMPT_CR"
+      environment = {
+        systemPackages = with pkgs; [
+          zsh-powerlevel10k
+          bat
         ];
-
-        shellAliases = {
-          l = "ls -lha";
-          cl = "clear";
-          f = "fastfetch";
-          v = "nvim";
-          vim = "nvim";
-          sv = "sudo nvim";
-          za = "yazi";
-          nix-pr = "nixpkgs-review pr --print-result";
-          b = "btop";
-          carrun = "cargo c && cargo t && cargo b";
-        };
-
-        interactiveShellInit = "";
       };
 
-      users.users = {
-        cato.shell = pkgs.zsh;
-        root.shell = pkgs.zsh;
+      systemd = {
+        user = {
+          tmpfiles = {
+            rules = [
+              "L+ %h/.zshrc - - - - ${userZshrc}"
+            ];
+          };
+        };
+      };
+
+      users = {
+        defaultUserShell = pkgs.zsh;
+      };
+
+      programs = {
+        zsh = {
+          enable = true;
+          enableCompletion = true;
+          enableBashCompletion = true;
+          enableLsColors = true;
+          autosuggestions = {
+            enable = true;
+          };
+          syntaxHighlighting = {
+            enable = true;
+          };
+
+          promptInit = "";
+
+          setOptions = [
+            "NO_NOMATCH"
+            "NO_PROMPT_CR"
+          ];
+
+          shellAliases = {
+            l = "ls -lha";
+            cl = "clear";
+            f = "fastfetch";
+            v = "nvim";
+            vim = "nvim";
+            sv = "sudo nvim";
+            za = "yazi";
+            nix-pr = "nixpkgs-review pr --print-result";
+            b = "btop";
+            carrun = "cargo c && cargo t && cargo b";
+            pcl = "pyroclear";
+            plc = "pyroclear";
+            p = "pyroclear";
+          };
+
+          interactiveShellInit = "";
+        };
+      };
+
+      users = {
+        users = {
+          cato = {
+            shell = pkgs.zsh;
+          };
+          root = {
+            shell = pkgs.zsh;
+          };
+        };
       };
     })
 
