@@ -53,11 +53,9 @@
         caddy = {
           enable = true;
           virtualHosts = {
-            "https://${config.xanterella.syncthing_server.domain}" = {
+            "https://${config.xanterella.syncthing_server.domain}:8384" = {
               extraConfig = ''
-                     handle /syncthing* {
-                              reverse_proxy ${config.services.syncthing.guiAddress}
-                }
+                reverse_proxy ${config.services.syncthing.guiAddress}
               '';
             };
           };
