@@ -36,11 +36,11 @@
         syncthing = {
           enable = true;
           systemService = true;
-          dataDir = "/home/cato/server-data/nix/syncthing/data";
-          configDir = "/home/cato/server-data/nix/syncthing/config";
+          dataDir = "/mnt/server-data/nix/syncthing/data";
+          configDir = "/mnt/server-data/nix/syncthing/config";
           user = "syncthing";
           group = "syncthing";
-          guiAddress = "127.0.0.1:8384";
+          guiAddress = "127.0.0.1:8284";
           settings = {
             gui = {
               insecureSkipHostcheck = true;
@@ -55,8 +55,8 @@
           virtualHosts = {
             "https://${config.xanterella.syncthing_server.domain}" = {
               extraConfig = ''
-                handle /syncthing* {
-                    reverse_proxy ${config.services.syncthing.guiAddress}
+                     handle /syncthing* {
+                              reverse_proxy ${config.services.syncthing.guiAddress}
                 }
               '';
             };
@@ -76,6 +76,7 @@
         firewall = {
           allowedTCPPorts = [
             22000
+            8384
           ];
           allowedUDPPorts = [
             22000
