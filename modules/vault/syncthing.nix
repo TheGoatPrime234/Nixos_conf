@@ -37,11 +37,19 @@
         overrideDevices = true;
         settings = {
           options = {
-            defaultFolderPath = "/home/cato/Documents/";
+            defaultFolderPath = "/home/cato/Documents";
           };
           devices = {
             "Samsung S25+" = {
               id = "KTMXZ37-UVIDCOC-SSPXJDV-HSL2KE7-DYGTDRQ-RWUUNSH-PMBACVF-UUJOSAE";
+              autoAcceptFolders = true;
+            };
+            "Lutik" = {
+              id = "QCGYDG6-3JIVU2A-LJATSGN-MAJV2GX-VZCFJHE-OXZXNFV-GDQL7TK-B7MHOAC";
+              autoAcceptFolders = true;
+            };
+            "Xerauvs" = {
+              id = "U6WAEJX-YTJLVVL-GDOM62T-ES7I4FJ-C7IKTYG-ZEY2FS3-2SVKE4Y-FZEY4QX";
               autoAcceptFolders = true;
             };
           };
@@ -51,6 +59,8 @@
               id = "ngxgj-f2ouz";
               devices = [
                 "Samsung S25+"
+                "Lutik"
+                "Xeravus"
               ];
               versioning = {
                 type = "staggered";
