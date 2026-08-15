@@ -63,5 +63,11 @@ in {
         pkgs.kitty-themes
       ];
     };
+    programs = {
+      tmux = {
+        clock24 = true;
+        keyMode = "vi";
+      };
+    };
   };
 }
