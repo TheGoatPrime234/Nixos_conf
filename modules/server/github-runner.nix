@@ -36,10 +36,12 @@ in {
       github-runners =
         lib.mapAttrs (runnerName: runnerCfg: {
           enable = true;
+          package = pkgs-unstable.github-runner;
           name = "${config.networking.hostName}-${runnerName}";
           url = runnerCfg.url;
           tokenFile = config.age.secrets.github-runner-token.path;
           extraLabels = runnerCfg.labels;
+          nodeRuntimes = ["node24"];
           replace = true;
           extraPackages = with pkgs-unstable; [
             git
