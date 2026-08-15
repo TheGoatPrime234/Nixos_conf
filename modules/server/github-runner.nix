@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs-new,
+  pkgs-unstable,
   ...
 }: let
   cfg = config.xanterella.github-runner;
@@ -41,7 +41,7 @@ in {
           tokenFile = config.age.secrets.github-runner-token.path;
           extraLabels = runnerCfg.labels;
           replace = true;
-          extraPackages = with pkgs-new; [
+          extraPackages = with pkgs-unstable; [
             git
             nodejs
             bash
