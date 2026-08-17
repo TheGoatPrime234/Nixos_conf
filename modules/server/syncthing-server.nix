@@ -13,7 +13,7 @@ in {
         enable = lib.mkEnableOption "Aktiviert Syncthing_server ohne externes Speichermedium";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}:6";
+          default = "${nodeCfg.domain}:1006";
         };
       };
     };

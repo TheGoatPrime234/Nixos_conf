@@ -14,7 +14,7 @@ in {
         enable = lib.mkEnableOption "Aktiviert Vikuna";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}:2";
+          default = "${nodeCfg.domain}:1002";
         };
       };
     };

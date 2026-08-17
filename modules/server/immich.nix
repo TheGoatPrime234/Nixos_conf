@@ -13,7 +13,7 @@ in {
         enable = lib.mkEnableOption "Aktiviert Immich";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}:4";
+          default = "${nodeCfg.domain}:1004";
         };
       };
     };

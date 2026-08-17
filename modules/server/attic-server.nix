@@ -13,7 +13,7 @@ in {
         enable = lib.mkEnableOption "Aktiviert Attic für Caching";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}:1";
+          default = "${nodeCfg.domain}:1001";
         };
       };
     };

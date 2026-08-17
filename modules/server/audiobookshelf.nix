@@ -14,7 +14,7 @@ in {
         enable = lib.mkEnableOption "Aktiviert audiobookshelf ohne externes Speichermedium";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}:5";
+          default = "${nodeCfg.domain}:1005";
         };
       };
     };
