@@ -39,7 +39,7 @@
             image = "docker.io/redis:6.2-alpine";
           };
           immich-postgres = {
-            image = "docker.io/tensorchord/pgvecto-rs:pg14";
+            image = "docker.io/pgvector/pgvector:pg14";
             environment = {
               POSTGRES_USER = "postgres";
               POSTGRES_DB = "immich";
