@@ -14,7 +14,7 @@ in {
         enable = lib.mkEnableOption "Aktiviert audiobookshelf ohne externes Speichermedium";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}:1005";
+          default = "${nodeCfg.domain}/audiobookshelf";
         };
       };
     };
@@ -32,13 +32,15 @@ in {
         virtualHosts = {
           "https://${cfg.domain}" = {
             extraConfig = ''
-              reverse_proxy 127.0.0.1:13378 {
-              	flush_interval -1
-                  }
+              handle /audiobookshelf* {
+                       reverse_proxy 127.0.0.1:13378 {
+                       	flush_interval -1
+                           }
 
-                  request_body {
-              	max_size 0
-                  }
+                           request_body {
+                       	max_size 0
+                           }
+                }
             '';
           };
         };

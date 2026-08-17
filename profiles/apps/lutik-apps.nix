@@ -25,6 +25,9 @@
       btop = {
         enable = true;
       };
+      homarr = {
+        enable = true;
+      };
       vikunja = {
         enable = true;
       };

@@ -14,7 +14,7 @@ in {
         enable = lib.mkEnableOption "Aktiviert Matrix Pipeline";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}:1007";
+          default = "${nodeCfg.domain}";
         };
       };
     };
@@ -144,6 +144,13 @@ in {
             '';
           };
         };
+      };
+    };
+    networking = {
+      firewall = {
+        allowedTCPPorts = [
+          1007
+        ];
       };
     };
     nixpkgs = {
