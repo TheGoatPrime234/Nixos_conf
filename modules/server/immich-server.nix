@@ -60,17 +60,18 @@
               DB_DATABASE_NAME = "immich";
               REDIS_HOSTNAME = "immich-redis";
               TZ = "Europe/Berlin";
-              IMMICH_HOST = "127.0.0.1";
+              #IMMICH_HOST = "127.0.0.1";
+              IMMICH_MACHINE_LEARNING_ENABLED = "false";
             };
             environmentFiles = [
               config.age.secrets.immich-env.path
             ];
           };
-          immich-machine-learning = {
-            image = "ghcr.io/immich-app/immich-machine-learning:v3.1.0";
-            dependsOn = ["immich-server"];
-            volumes = ["/mnt/server-data/immich/model-cache:/cache"];
-          };
+          # immich-machine-learning = {
+          #  image = "ghcr.io/immich-app/immich-machine-learning:v3.1.0";
+          #  dependsOn = ["immich-server"];
+          #  volumes = ["/mnt/server-data/immich/model-cache:/cache"];
+          #};
         };
       };
     };
@@ -97,11 +98,6 @@
             '';
           };
         };
-      };
-    };
-    networking = {
-      firewall = {
-        allowedTCPPorts = [9999 2283];
       };
     };
     users = {

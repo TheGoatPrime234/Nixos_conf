@@ -57,6 +57,10 @@
                   cmdline = [".*grafana.*"];
                 }
                 {
+                  name = "Immich";
+                  cmdline = [".*podman-immich*"];
+                }
+                {
                   name = "GitHub-Runner";
                   cmdline = [".*github-runner.*"];
                 }
