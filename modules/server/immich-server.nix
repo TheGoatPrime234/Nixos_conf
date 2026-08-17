@@ -94,7 +94,13 @@
         virtualHosts = {
           "https://${config.xanterella.immich-server.domain}:9999" = {
             extraConfig = ''
-              reverse_proxy 127.0.0.1:2283
+              reverse_proxy 127.0.0.1:2283 {
+                  flush_interval -1
+              }
+
+              request_body {
+                  max_size 0
+              }
             '';
           };
         };
