@@ -3,20 +3,23 @@
   pkgs-unstable,
   lib,
   ...
-}: {
+}: let
+  cfg = config.xanterella.attic-server;
+  nodeCfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
       attic-server = {
         enable = lib.mkEnableOption "Aktiviert Attic für Caching";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "xanterella.de/attic";
+          default = "${nodeCfg.domain}:1";
         };
       };
     };
   };
 
-  config = lib.mkIf config.xanterella.attic-server.enable {
+  config = lib.mkIf (cfg.enable && nodeCfg.enable) {
     services = {
       atticd = {
         enable = true;
@@ -44,23 +47,10 @@
         openssl
       ];
     };
-    users = {
-      users = {
-        caddy = {
-          extraGroups = [
-            "tailscale"
-          ];
-        };
-      };
-    };
     services = {
-      tailscale = {
-        permitCertUid = "caddy";
-      };
       caddy = {
-        enable = true;
         virtualHosts = {
-          "https://${config.xanterella.attic-server.domain}" = {
+          "https://${cfg.domain}" = {
             extraConfig = ''
               handle {
               reverse_proxy ${config.services.atticd.settings.listen}

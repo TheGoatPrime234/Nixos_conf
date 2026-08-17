@@ -5,6 +5,10 @@
 }: {
   config = {
     xanterella = {
+      cluster-node = {
+        enable = true;
+        domain = "lutik.gute-nessie.ts.net";
+      };
       github-runner = {
         "default_builder" = {
           url = "https://github.com/Xeravus/Xanterella-Cli";
@@ -21,12 +25,8 @@
       btop = {
         enable = true;
       };
-      stress = {
-        enable = true;
-      };
       vikunja = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net";
       };
       monitoring = {
         enable = true;
@@ -34,27 +34,21 @@
       };
       matrix-server = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net";
       };
       attic-server = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net";
       };
       vaultwarden = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net";
       };
       syncthing_server = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net";
       };
       audiobookshelf = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net";
       };
-      immich-server = {
+      immich = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net";
       };
       netbird = {
         enable = true;

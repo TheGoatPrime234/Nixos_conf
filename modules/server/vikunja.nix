@@ -4,50 +4,42 @@
   lib,
   pkgs-unstable,
   ...
-}: {
+}: let
+  cfg = config.xanterella.vikunja;
+  nodeCfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
       vikunja = {
         enable = lib.mkEnableOption "Aktiviert Vikuna";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "xanterella.de/vikunja";
+          default = "${nodeCfg.domain}:2";
         };
       };
     };
   };
 
-  config = lib.mkIf config.xanterella.vikunja.enable {
+  config = lib.mkIf (cfg.enable && nodeCfg.enable) {
     services = {
       vikunja = {
         enable = true;
         port = 8919;
         frontendScheme = "https";
-        frontendHostname = "lutik";
+        frontendHostname = "${config.networking.hostName}";
         settings = {
           service = {
-            frontendurl = "https://${config.xanterella.vikunja.domain}:3456/";
+            frontendurl = "https://${cfg.domain}";
           };
         };
       };
-      tailscale = {
-        permitCertUid = "caddy";
-      };
       caddy = {
-        enable = true;
         virtualHosts = {
-          "https://${config.xanterella.vikunja.domain}:3456" = {
+          "https://${cfg.domain}" = {
             extraConfig = ''
               reverse_proxy 127.0.0.1:${toString config.services.vikunja.port}
             '';
           };
-        };
-      };
-    };
-    users = {
-      users = {
-        caddy = {
-          extraGroups = ["tailscale"];
         };
       };
     };

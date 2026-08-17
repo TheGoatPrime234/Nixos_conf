@@ -4,20 +4,23 @@
   lib,
   pkgs-unstable,
   ...
-}: {
+}: let
+  cfg = config.xanterella.vaultwarden;
+  nodeCfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
       vaultwarden = {
         enable = lib.mkEnableOption "Aktiviert Vaultwarden ohne externes Speichermedium";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "xanterella.de/vaultwarden";
+          default = "${nodeCfg.domain}:3";
         };
       };
     };
   };
 
-  config = lib.mkIf config.xanterella.vaultwarden.enable {
+  config = lib.mkIf (cfg.enable && nodeCfg.enable) {
     environment = {
       systemPackages = with pkgs-unstable; [
         vaultwarden
@@ -27,30 +30,19 @@
       vaultwarden = {
         enable = true;
         config = {
-          DOMAIN = "https://${config.xanterella.vaultwarden.domain}";
+          DOMAIN = "https://${cfg.domain}";
           WEBSOCKET_ENABLED = true;
           ROCKET_ADDRESS = "127.0.0.1";
           ROCKET_PORT = 8222;
         };
       };
-      tailscale = {
-        permitCertUid = "caddy";
-      };
       caddy = {
-        enable = true;
         virtualHosts = {
-          "https://${config.xanterella.vaultwarden.domain}:8443" = {
+          "https://${cfg.domain}" = {
             extraConfig = ''
               reverse_proxy 127.0.0.1:8222
             '';
           };
-        };
-      };
-    };
-    users = {
-      users = {
-        caddy = {
-          extraGroups = ["tailscale"];
         };
       };
     };

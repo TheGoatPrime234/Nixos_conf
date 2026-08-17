@@ -3,19 +3,22 @@
   pkgs-new,
   lib,
   ...
-}: {
+}: let
+  cfg = config.xanterella.immich;
+  nodeCfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
-      immich-server = {
+      immich = {
         enable = lib.mkEnableOption "Aktiviert Immich";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "xanterella.de/immich";
+          default = "${nodeCfg.domain}:4";
         };
       };
     };
   };
-  config = lib.mkIf config.xanterella.immich-server.enable {
+  config = lib.mkIf (cfg.enable && nodeCfg.enable) {
     age = {
       secrets = {
         immich-env = {
@@ -60,7 +63,6 @@
               DB_DATABASE_NAME = "immich";
               REDIS_HOSTNAME = "immich-redis";
               TZ = "Europe/Berlin";
-              #IMMICH_HOST = "127.0.0.1";
               IMMICH_MACHINE_LEARNING_ENABLED = "false";
             };
             environmentFiles = [
@@ -86,13 +88,9 @@
       };
     };
     services = {
-      tailscale = {
-        permitCertUid = "caddy";
-      };
       caddy = {
-        enable = true;
         virtualHosts = {
-          "https://${config.xanterella.immich-server.domain}:9999" = {
+          "https://${cfg.domain}" = {
             extraConfig = ''
               reverse_proxy 127.0.0.1:2283 {
                   flush_interval -1
@@ -103,15 +101,6 @@
               }
             '';
           };
-        };
-      };
-    };
-    users = {
-      users = {
-        caddy = {
-          extraGroups = [
-            "tailscale"
-          ];
         };
       };
     };

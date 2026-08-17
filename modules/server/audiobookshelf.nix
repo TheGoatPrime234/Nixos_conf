@@ -4,117 +4,61 @@
   lib,
   pkgs-new,
   ...
-}: {
+}: let
+  cfg = config.xanterella.audiobookshelf;
+  nodeCfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
       audiobookshelf = {
         enable = lib.mkEnableOption "Aktiviert audiobookshelf ohne externes Speichermedium";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "xanterella.de/audiobookshelf";
-        };
-      };
-      audiobookshelf-extern = {
-        enable = lib.mkEnableOption "Aktiviert Audiobookshelf mit externem Speichermedium";
-        domain = lib.mkOption {
-          type = lib.types.str;
-          default = "xanterella.de/audiobookshelf";
+          default = "${nodeCfg.domain}:5";
         };
       };
     };
   };
 
-  config = lib.mkMerge [
-    (lib.mkIf config.xanterella.audiobookshelf.enable {
-      services = {
-        audiobookshelf = {
-          enable = true;
-          package = pkgs-new.audiobookshelf;
-          host = "127.0.0.1";
-          port = 13378;
-        };
+  config = lib.mkIf (cfg.enable && nodeCfg.enable) {
+    services = {
+      audiobookshelf = {
+        enable = true;
+        package = pkgs-new.audiobookshelf;
+        host = "127.0.0.1";
+        port = 13378;
+      };
+      caddy = {
+        virtualHosts = {
+          "https://${cfg.domain}" = {
+            extraConfig = ''
+              reverse_proxy 127.0.0.1:13378 {
+              	flush_interval -1
+                  }
 
-        tailscale = {
-          permitCertUid = "caddy";
-        };
-        caddy = {
-          enable = true;
-          virtualHosts = {
-            "https://${config.xanterella.audiobookshelf.domain}" = {
-              extraConfig = ''
-                   handle /audiobookshelf* {
-                reverse_proxy 127.0.0.1:13378 {
-                	flush_interval -1
-                    }
-
-                    request_body {
-                	max_size 0
-                    }
-                }
-              '';
-            };
+                  request_body {
+              	max_size 0
+                  }
+            '';
           };
         };
       };
-      systemd = {
-        services = {
-          audiobookshelf = {
-            environment = {
-              ROUTER_BASE_PATH = "/audiobookshelf";
-            };
-          };
-        };
-      };
-    })
-    (lib.mkIf config.xanterella.audiobookshelf-extern.enable {
-      fileSystems = {
-        "/var/lib/audiobookshelf" = {
-          device = "/mnt/server-data/nix/audiobookshelf";
-          options = [
-            "bind"
-            "nofail"
-          ];
-          depends = ["/mnt/server-data"];
-        };
+    };
+    systemd = {
+      tmpfiles = {
+        rules = [
+          "d /mnt/server-data/audiobookshelf 0750 audiobookshelf audiobookshelf -"
+          "d /mnt/server-data/audiobookshelf/metadata 0750 audiobookshelf audiobookshelf -"
+          "d /mnt/server-data/audiobookshelf/config 0750 audiobookshelf audiobookshelf -"
+        ];
       };
       services = {
         audiobookshelf = {
-          enable = true;
-          package = pkgs-new.audiobookshelf;
-          host = "127.0.0.1";
-          port = 13378;
-        };
-        tailscale = {
-          permitCertUid = "caddy";
-        };
-        caddy = {
-          enable = true;
-          virtualHosts = {
-            "https://${config.xanterella.audiobookshelf-extern.domain}" = {
-              extraConfig = ''
-                       handle /audiobookshelf* {
-                                  reverse_proxy ${config.extern.services.audiobookshelf.host}:${toString config.extern.services.audiobookshelf.port} {
-                	flush_interval -1
-                    }
-
-                    request_body {
-                	max_size 0
-                    }
-                }
-              '';
-            };
+          environment = {
+            ROUTER_BASE_PATH = "/mnt/server-data/audiobookshelf";
           };
         };
       };
-      systemd = {
-        services = {
-          audiobookshelf = {
-            environment = {
-              ROUTER_BASE_PATH = "/audiobookshelf";
-            };
-          };
-        };
-      };
-    })
-  ];
+    };
+  };
 }

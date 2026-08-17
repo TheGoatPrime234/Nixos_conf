@@ -4,20 +4,23 @@
   lib,
   pkgs-unstable,
   ...
-}: {
+}: let
+  cfg = config.xanterella.matrix-server;
+  nodeCfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
       matrix-server = {
         enable = lib.mkEnableOption "Aktiviert Matrix Pipeline";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "xanterella.de/matrix";
+          default = "${nodeCfg.domain}";
         };
       };
     };
   };
 
-  config = lib.mkIf config.xanterella.matrix-server.enable {
+  config = lib.mkIf (cfg.enable && nodeCfg.enable) {
     age = {
       secrets = {
         matrix-password = {
@@ -63,7 +66,7 @@
       matrix-synapse = {
         enable = true;
         settings = {
-          server_name = config.xanterella.matrix-server.domain;
+          server_name = cfg.domain;
           enable_registration = false;
           database = {
             name = "psycopg2";
@@ -95,11 +98,11 @@
           };
           homeserver = {
             address = "http://127.0.0.1:8008";
-            domain = config.xanterella.matrix-server.domain;
+            domain = cfg.domain;
           };
           bridge = {
             permissions = {
-              "@xeravus:${config.xanterella.matrix-server.domain}" = "admin";
+              "@xeravus:${cfg.domain}" = "admin";
             };
           };
         };
@@ -123,19 +126,14 @@
           };
           bridge = {
             permissions = {
-              "@xeravus:${config.xanterella.matrix-server.domain}" = "admin";
+              "@xeravus:${cfg.domain}" = "admin";
             };
           };
         };
       };
-
-      tailscale = {
-        permitCertUid = "caddy";
-      };
       caddy = {
-        enable = true;
         virtualHosts = {
-          "https://${config.xanterella.matrix-server.domain}" = {
+          "https://${cfg.domain}" = {
             extraConfig = ''
               handle /_matrix* {
               reverse_proxy 127.0.0.1:8008
@@ -145,13 +143,6 @@
               }
             '';
           };
-        };
-      };
-    };
-    users = {
-      users = {
-        caddy = {
-          extraGroups = ["tailscale"];
         };
       };
     };

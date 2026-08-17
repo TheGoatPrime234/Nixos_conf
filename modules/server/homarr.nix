@@ -3,19 +3,22 @@
   pkgs-new,
   lib,
   ...
-}: {
+}: let
+  cfg = config.xanterella.homarr;
+  nodeCfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
       homarr = {
         enable = lib.mkEnableOption "Aktiviert Homarr. Eine Homepage";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "xanterella.de/home";
+          default = "${nodeCfg.domain}";
         };
       };
     };
   };
-  config = lib.mkIf config.xanterella.homarr.enable {
+  config = lib.mkIf (cfg.enable && nodeCfg.enable) {
     virtualisation = {
       oci-containers = {
         backend = "podman";
@@ -45,28 +48,13 @@
       };
     };
     services = {
-      tailscale = {
-        permitCertUid = "caddy";
-      };
       caddy = {
-        enable = true;
         virtualHosts = {
-          "https://${config.xanterella.homarr.domain}" = {
+          "https://${cfg.domain}" = {
             extraConfig = ''
-              handle /home* {
-                reverse_proxy 127.0.0.1:7575
-              }
+              reverse_proxy 127.0.0.1:7575
             '';
           };
-        };
-      };
-    };
-    users = {
-      users = {
-        caddy = {
-          extraGroups = [
-            "tailscale"
-          ];
         };
       };
     };

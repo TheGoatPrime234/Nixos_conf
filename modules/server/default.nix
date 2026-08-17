@@ -1,7 +1,8 @@
 {
   imports = [
+    ./cluster-node.nix
     ./audiobookshelf.nix
-    ./immich-server.nix
+    ./immich.nix
     ./vikunja.nix
     ./netbird-server.nix
     ./stay-on.nix
