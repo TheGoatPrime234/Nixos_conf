@@ -58,7 +58,11 @@
                 }
                 {
                   name = "Immich";
-                  cmdline = [".*podman-immich*"];
+                  cmdline = [
+                    ".*podman-immich-postgres.*"
+                    ".*podman-immich-server.*"
+                    ".*podman-immich-redis.*"
+                  ];
                 }
                 {
                   name = "GitHub-Runner";
