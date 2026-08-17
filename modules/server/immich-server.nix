@@ -60,7 +60,7 @@
               DB_DATABASE_NAME = "immich";
               REDIS_HOSTNAME = "immich-redis";
               TZ = "Europe/Berlin";
-              #IMMICH_HOST = "127.0.0.1";
+              IMMICH_HOST = "127.0.0.1";
             };
             environmentFiles = [
               config.age.secrets.immich-env.path
