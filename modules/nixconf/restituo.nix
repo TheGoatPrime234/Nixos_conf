@@ -10,7 +10,6 @@
     cd ~/xanterella/config
 
     alejandra -q *
-    nix flake update nix-programs
     nix flake update xanterella-etc
     nix flake update nixpkgs-bleeding-edge
     git add -A

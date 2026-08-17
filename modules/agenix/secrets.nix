@@ -40,6 +40,9 @@ in {
   "syncthing.age" = {
     publicKeys = users ++ systems;
   };
+  "immich.env.age" = {
+    publicKeys = users ++ systems;
+  };
   "github-runner.age" = {
     publicKeys = users ++ systems;
   };

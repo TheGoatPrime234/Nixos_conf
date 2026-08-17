@@ -1,6 +1,7 @@
 {
   imports = [
     ./audiobookshelf.nix
+    ./immich-server.nix
     ./vikunja.nix
     ./netbird-server.nix
     ./stay-on.nix
