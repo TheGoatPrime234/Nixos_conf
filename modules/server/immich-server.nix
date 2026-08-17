@@ -24,6 +24,14 @@
       };
     };
     virtualisation = {
+      podman = {
+        enable = true;
+        defaultNetwork = {
+          settings = {
+            dns_enabled = true;
+          };
+        };
+      };
       oci-containers = {
         backend = "podman";
         containers = {
@@ -40,7 +48,7 @@
             volumes = ["/mnt/server-data/immich/db:/var/lib/postgresql/data"];
           };
           immich-server = {
-            image = "ghcr.io/immich-app/immich-server:latest";
+            image = "ghcr.io/immich-app/immich-server:v3.1.0";
             dependsOn = ["immich-postgres" "immich-redis"];
             ports = [
               "127.0.0.1:2283:2283"
@@ -59,7 +67,22 @@
             ];
           };
           immich-machine-learning = {
-            image = "ghcr.io/immich-app/immich-machine-learning:latest";
+            image = "ghcr.io/immich-app/immich-machine-learning:v3.1.0";
+            cmd = [
+              "postgres"
+              "-c"
+              "shared_preload_libraries=vectors.so"
+              "-c"
+              "search_path=\"$user\", public, vectors"
+              "-c"
+              "logging_collector=on"
+              "-c"
+              "max_wal_size=2GB"
+              "-c"
+              "shared_buffers=512MB"
+              "-c"
+              "wal_compression=on"
+            ];
             dependsOn = ["immich-server"];
             volumes = ["/mnt/server-data/immich/model-cache:/cache"];
           };
