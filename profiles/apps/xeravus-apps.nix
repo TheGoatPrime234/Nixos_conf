@@ -35,7 +35,10 @@
       spicetify = {
         enable = true;
       };
-      #immich-server = { enable = false; domain = "xeravus.gute-nessie.ts.net"; };
+      immich-server = {
+        enable = true;
+        domain = "xeravus.gute-nessie.ts.net";
+      };
     };
   };
 }

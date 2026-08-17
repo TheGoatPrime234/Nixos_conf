@@ -39,7 +39,7 @@
             image = "docker.io/redis:6.2-alpine";
           };
           immich-postgres = {
-            image = "docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0";
+            image = "docker.io/tensorchord/pgvecto-rs:pg14";
             environment = {
               POSTGRES_USER = "postgres";
               POSTGRES_DB = "immich";
@@ -68,21 +68,6 @@
           };
           immich-machine-learning = {
             image = "ghcr.io/immich-app/immich-machine-learning:v3.1.0";
-            cmd = [
-              "postgres"
-              "-c"
-              "shared_preload_libraries=vectors.so"
-              "-c"
-              "search_path=\"$user\", public, vectors"
-              "-c"
-              "logging_collector=on"
-              "-c"
-              "max_wal_size=2GB"
-              "-c"
-              "shared_buffers=512MB"
-              "-c"
-              "wal_compression=on"
-            ];
             dependsOn = ["immich-server"];
             volumes = ["/mnt/server-data/immich/model-cache:/cache"];
           };
