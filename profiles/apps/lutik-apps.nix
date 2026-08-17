@@ -33,7 +33,6 @@
       };
       monitoring = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net";
       };
       matrix-server = {
         enable = true;
@@ -51,6 +50,9 @@
         enable = true;
       };
       immich = {
+        enable = true;
+      };
+      prometheus = {
         enable = true;
       };
       netbird = {

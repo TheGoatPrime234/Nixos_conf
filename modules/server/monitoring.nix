@@ -4,14 +4,17 @@
   inputs,
   lib,
   ...
-}: {
+}: let
+  cfg = config.xanterella.monitoring;
+  nodeCfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
       monitoring = {
         enable = lib.mkEnableOption "Aktiviert Monitoring";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "xanterella.de/monitoring";
+          default = "${nodeCfg.domain}";
         };
       };
     };
@@ -23,113 +26,16 @@
         port = 9090;
         listenAddress = "127.0.0.1";
         retentionTime = "15d";
-        exporters = {
-          node = {
-            enable = true;
-            enabledCollectors = [
-              "systemd"
-              "hwmon"
-              "tcpstat"
-            ];
-            port = 9100;
-            listenAddress = "127.0.0.1";
-          };
-          process = {
-            enable = true;
-            port = 9101;
-            listenAddress = "127.0.0.1";
-            settings = {
-              process_names = [
-                {
-                  name = "Netbird";
-                  cmdline = [".*netbird.*"];
-                }
-                {
-                  name = "Tailscale";
-                  cmdline = [".*tailscaled.*"];
-                }
-                {
-                  name = "Caddy";
-                  cmdline = [".*caddy.*"];
-                }
-                {
-                  name = "Grafana";
-                  cmdline = [".*grafana.*"];
-                }
-                {
-                  name = "Immich";
-                  cmdline = [
-                    ".*podman-immich-postgres.*"
-                    ".*podman-immich-server.*"
-                    ".*podman-immich-redis.*"
-                  ];
-                }
-                {
-                  name = "GitHub-Runner";
-                  cmdline = [".*github-runner.*"];
-                }
-                {
-                  name = "Vikunja";
-                  cmdline = [".*vikunja.*"];
-                }
-                {
-                  name = "Vaultwarden";
-                  cmdline = [".*vaultwarden.*"];
-                }
-                {
-                  name = "Audiobookshelf";
-                  cmdline = [".*audiobookshelf.*"];
-                }
-                {
-                  name = "Matrix Synapse";
-                  cmdline = [".*synapse.*"];
-                }
-                {
-                  name = "Matrix Discord";
-                  cmdline = [".*mautrix-discord.*"];
-                }
-                {
-                  name = "Matrix Whatsapp";
-                  cmdline = [".*mautrix-whatsapp.*"];
-                }
-                {
-                  name = "Attic";
-                  cmdline = [".*atticd.*"];
-                }
-              ];
-            };
-          };
-        };
         scrapeConfigs = [
           {
-            job_name = "node_exporter";
+            job_name = "lutik";
             scrape_interval = "15s";
+            scheme = "https";
             static_configs = [
               {
                 targets = [
-                  "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
-                ];
-              }
-            ];
-          }
-          {
-            job_name = "process_exporter";
-            scrape_interval = "30s";
-            static_configs = [
-              {
-                targets = [
-                  "127.0.0.1:${toString config.services.prometheus.exporters.process.port}"
-                ];
-              }
-            ];
-          }
-          {
-            job_name = "caddy";
-            scrape_interval = "15s";
-            static_configs = [
-              {
-                targets = [
-                  "127.0.0.1:2019"
+                  "lutik.gute-nessie.ts.net:9998"
+                  "lutik.gute-nessie.ts.net:9999"
                 ];
               }
             ];
@@ -142,7 +48,7 @@
           server = {
             http_addr = "127.0.0.1";
             http_port = 9000;
-            domain = config.xanterella.monitoring.domain;
+            domain = cfg.domain;
             root_url = "%(protocol)s://%(domain)s/grafana/";
             serve_from_sub_path = true;
           };
@@ -176,9 +82,6 @@
           };
         };
       };
-      tailscale = {
-        permitCertUid = "caddy";
-      };
       caddy = {
         enable = true;
         globalConfig = ''
@@ -187,29 +90,13 @@
           }
         '';
         virtualHosts = {
-          "https://${config.xanterella.monitoring.domain}" = {
+          "https://${cfg.domain}" = {
             extraConfig = ''
               handle /grafana* {
                        reverse_proxy ${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}
                 }
             '';
           };
-        };
-      };
-    };
-    networking = {
-      firewall = {
-        allowedTCPPorts = [
-          config.services.grafana.settings.server.http_port
-        ];
-      };
-    };
-    users = {
-      users = {
-        caddy = {
-          extraGroups = [
-            "tailscale"
-          ];
         };
       };
     };

@@ -57,7 +57,7 @@ in {
       services = {
         audiobookshelf = {
           environment = {
-            ROUTER_BASE_PATH = "/mnt/server-data/audiobookshelf";
+            ROUTER_BASE_PATH = "/audiobookshelf";
           };
         };
       };
