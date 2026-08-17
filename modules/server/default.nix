@@ -1,6 +1,7 @@
 {
   imports = [
     ./cluster-node.nix
+    ./prometheus.nix
     ./audiobookshelf.nix
     ./immich.nix
     ./vikunja.nix

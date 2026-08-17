@@ -14,7 +14,7 @@ in {
         enable = lib.mkEnableOption "Aktiviert Monitoring";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}";
+          default = "${nodeCfg.domain}:99";
         };
       };
     };
@@ -92,9 +92,7 @@ in {
         virtualHosts = {
           "https://${cfg.domain}" = {
             extraConfig = ''
-              handle /grafana* {
-                       reverse_proxy ${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}
-                }
+              reverse_proxy ${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}
             '';
           };
         };
