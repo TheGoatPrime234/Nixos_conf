@@ -84,6 +84,11 @@ in {
       };
       caddy = {
         enable = true;
+        globalConfig = ''
+          servers {
+          metrics
+          }
+        '';
         virtualHosts = {
           "https://${cfg.domain}" = {
             extraConfig = ''
