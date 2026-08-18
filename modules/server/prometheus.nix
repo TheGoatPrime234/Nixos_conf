@@ -102,11 +102,6 @@ in {
       };
       caddy = {
         enable = true;
-        globalConfig = ''
-          servers {
-            metrics
-          }
-        '';
         virtualHosts = {
           "https://${cfg.domain}:9998" = {
             extraConfig = ''
