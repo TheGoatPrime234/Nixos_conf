@@ -107,9 +107,9 @@ in {
             nix-pr = "nixpkgs-review pr --print-result";
             b = "btop";
             carrun = "cargo c && cargo t && cargo b";
-            pcl = "pyroclear";
-            plc = "pyroclear";
-            p = "pyroclear";
+            pcl = "pyroclear && clear";
+            plc = "pyroclear && clear";
+            p = "pyroclear && clear";
           };
 
           interactiveShellInit = "";

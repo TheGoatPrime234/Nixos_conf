@@ -35,6 +35,13 @@
       spicetify = {
         enable = true;
       };
+      cluster-node = {
+        enable = true;
+        domain = "xeravus.gute-nessie.ts.net";
+      };
+      vaultwarden = {
+        enable = true;
+      };
     };
   };
 }
