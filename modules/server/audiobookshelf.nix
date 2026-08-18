@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  pkgs-new,
+  pkgs-unstable,
   ...
 }: let
   cfg = config.xanterella.audiobookshelf;
@@ -11,37 +11,30 @@ in {
   options = {
     xanterella = {
       audiobookshelf = {
-        enable = lib.mkEnableOption "Aktiviert audiobookshelf ohne externes Speichermedium";
+        enable = lib.mkEnableOption "Aktiviert audiobookshelf";
         domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}/audiobookshelf";
+          default = "${nodeCfg.domain}:1005";
         };
       };
     };
   };
 
   config = lib.mkIf (cfg.enable && nodeCfg.enable) {
-    services = {
-      audiobookshelf = {
-        enable = true;
-        package = pkgs-new.audiobookshelf;
-        host = "127.0.0.1";
-        port = 13378;
-      };
-      caddy = {
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              handle /audiobookshelf* {
-                       reverse_proxy 127.0.0.1:13378 {
-                       	flush_interval -1
-                           }
-
-                           request_body {
-                       	max_size 0
-                           }
-                }
-            '';
+    virtualisation = {
+      oci-containers = {
+        backend = "podman";
+        containers = {
+          audiobookshelf = {
+            image = "ghcr.io/advplyr/audiobookshelf:latest";
+            ports = [
+              "127.0.0.1:13378:80"
+            ];
+            volumes = [
+              "/mnt/server-data/audiobookshelf/config:/config"
+              "/mnt/server-data/audiobookshelf/metadata:/metadata"
+              "/mnt/server-data/audiobookshelf/audiobooks:/audiobooks"
+            ];
           };
         };
       };
@@ -49,15 +42,26 @@ in {
     systemd = {
       tmpfiles = {
         rules = [
-          "d /mnt/server-data/audiobookshelf 0750 audiobookshelf audiobookshelf -"
-          "d /mnt/server-data/audiobookshelf/metadata 0750 audiobookshelf audiobookshelf -"
-          "d /mnt/server-data/audiobookshelf/config 0750 audiobookshelf audiobookshelf -"
+          "d /mnt/server-data/audiobookshelf 0755 audiobookshelf audiobookshelf -"
+          "d /mnt/server-data/audiobookshelf/configs 0755 audiobookshelf audiobookshelf -"
+          "d /mnt/server-data/audiobookshelf/metadata 0755 audiobookshelf audiobookshelf -"
+          "d /mnt/server-data/audiobookshelf/audiobookshelf 0755 audiobookshelf audiobookshelf -"
         ];
       };
-      services = {
-        audiobookshelf = {
-          environment = {
-            ROUTER_BASE_PATH = "/audiobookshelf";
+    };
+    services = {
+      caddy = {
+        virtualHosts = {
+          "https://${cfg.domain}" = {
+            extraConfig = ''
+              reverse_proxy 127.0.0.1:13378 {
+              	flush_interval -1
+                  }
+
+                  request_body {
+              	max_size 0
+                  }
+            '';
           };
         };
       };
