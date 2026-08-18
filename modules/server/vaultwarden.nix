@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  pkgs-bleeding,
   pkgs-unstable,
   ...
 }: let
@@ -22,8 +21,6 @@ in {
   };
 
   config = lib.mkIf (cfg.enable && nodeCfg.enable) {
-    environment = {
-    };
     services = {
       vaultwarden = {
         enable = true;
