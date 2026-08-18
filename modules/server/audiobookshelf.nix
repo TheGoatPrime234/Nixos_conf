@@ -42,10 +42,10 @@ in {
     systemd = {
       tmpfiles = {
         rules = [
-          "d /mnt/server-data/audiobookshelf 0755 audiobookshelf audiobookshelf -"
-          "d /mnt/server-data/audiobookshelf/config 0755 audiobookshelf audiobookshelf -"
-          "d /mnt/server-data/audiobookshelf/metadata 0755 audiobookshelf audiobookshelf -"
-          "d /mnt/server-data/audiobookshelf/audiobookshelf 0755 audiobook audiobookshelf -"
+          "d /mnt/server-data/audiobookshelf 0755 root root -"
+          "d /mnt/server-data/audiobookshelf/config 0755 root root -"
+          "d /mnt/server-data/audiobookshelf/metadata 0755 root root -"
+          "d /mnt/server-data/audiobookshelf/audiobooks 0755 root root -"
         ];
       };
     };
