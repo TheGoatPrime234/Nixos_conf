@@ -49,8 +49,6 @@ in {
             http_addr = "127.0.0.1";
             http_port = 9000;
             domain = cfg.domain;
-            root_url = "%(protocol)s://%(domain)s/grafana/";
-            serve_from_sub_path = true;
           };
         };
         provision = {
