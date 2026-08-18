@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgs-bleeding,
   pkgs-unstable,
   ...
 }: let
@@ -22,13 +23,11 @@ in {
 
   config = lib.mkIf (cfg.enable && nodeCfg.enable) {
     environment = {
-      systemPackages = with pkgs-unstable; [
-        vaultwarden
-      ];
     };
     services = {
       vaultwarden = {
         enable = true;
+        package = pkgs-unstable.vaultwarden;
         config = {
           DOMAIN = "https://${cfg.domain}";
           WEBSOCKET_ENABLED = true;
