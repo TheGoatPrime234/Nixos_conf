@@ -424,11 +424,11 @@
     },
     "nixpkgs-bleeding-edge": {
       "locked": {
-        "lastModified": 1787111413,
-        "narHash": "sha256-sFosWtq21eHGJRnTc/hvf4M1obRgLEUMNm/IzllkHMA=",
+        "lastModified": 1787172299,
+        "narHash": "sha256-PShzS87awOlE5XWkxUGBd/58/F+AtE2ZMgFffKj4r8s=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "afe3d8ac4395617bdcdac9f188ac8717a062e014",
+        "rev": "07e1d92cdc0ed416cfa11ff3ca40d17e61cfba7a",
         "type": "github"
       },
       "original": {
@@ -928,11 +928,11 @@
     "xanterella-etc": {
       "flake": false,
       "locked": {
-        "lastModified": 1787083615,
-        "narHash": "sha256-xEGvMJ7XeDauxtE7oO5GJjtmPGabzg1E+MW02WkPd3Y=",
+        "lastModified": 1787205557,
+        "narHash": "sha256-kjgTQE8JanGL7eCd4v1gR82lbAvz1Up4Ju1m3LtAjeE=",
         "owner": "Xeravus",
         "repo": "Xanterella-Etc",
-        "rev": "5f2608b21b996b63c2b047d28314620022995979",
+        "rev": "9741845a4dd9a90315a600f42635c8ce18c2f201",
         "type": "github"
       },
       "original": {
