@@ -50,7 +50,7 @@ in {
             static_configs =
               builtins.map (host: {
                 targets = [
-                  "${host}.${nodeCfg.domain}:9998"
+                  "${host}.gute-nessie.ts.net:9998"
                 ];
                 labels = {
                   nodename = host;
