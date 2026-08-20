@@ -7,6 +7,7 @@
 }: let
   cfg = config.xanterella.monitoring;
   nodeCfg = config.xanterella.cluster-node;
+  ClusteNodes = ["lutik"];
 in {
   options = {
     xanterella = {
@@ -33,12 +34,16 @@ in {
             scheme = "https";
             static_configs = [
               {
-                labels = {
-                  nodename = "lutik";
-                };
-                targets = [
-                  "lutik.gute-nessie.ts.net:9999"
-                ];
+                static_configs =
+                  builtins.map (host: {
+                    targets = [
+                      "${host}.${nodeCfg.domain}:9999"
+                    ];
+                    labels = {
+                      nodename = host;
+                    };
+                  })
+                  ClusteNodes;
               }
             ];
           }
@@ -48,12 +53,16 @@ in {
             scheme = "https";
             static_configs = [
               {
-                labels = {
-                  nodename = "lutik";
-                };
-                targets = [
-                  "lutik.gute-nessie.ts.net:9998"
-                ];
+                static_configs =
+                  builtins.map (host: {
+                    targets = [
+                      "${host}.${nodeCfg.domain}:9998"
+                    ];
+                    labels = {
+                      nodename = host;
+                    };
+                  })
+                  ClusteNodes;
               }
             ];
           }
