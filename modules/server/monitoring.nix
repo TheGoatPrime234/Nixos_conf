@@ -28,14 +28,31 @@ in {
         retentionTime = "15d";
         scrapeConfigs = [
           {
-            job_name = "lutik";
+            job_name = "node";
             scrape_interval = "15s";
             scheme = "https";
             static_configs = [
               {
+                labels = {
+                  nodename = "lutik";
+                };
+                targets = [
+                  "lutik.gute-nessie.ts.net:9999"
+                ];
+              }
+            ];
+          }
+          {
+            job_name = "process";
+            scrape_interval = "15s";
+            scheme = "https";
+            static_configs = [
+              {
+                labels = {
+                  nodename = "lutik";
+                };
                 targets = [
                   "lutik.gute-nessie.ts.net:9998"
-                  "lutik.gute-nessie.ts.net:9999"
                 ];
               }
             ];
