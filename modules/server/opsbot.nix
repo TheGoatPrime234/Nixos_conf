@@ -5,42 +5,11 @@
   ...
 }: let
   cfg = config.xanterella.opsbot;
-  nodeCfg = config.xanterella.cluster-ndoe;
-  opsbot-script =
-    pkgs.writers.writePython3Bin "opsbot" {
-      libraries = [pkgs.python3Packages.simplematrixbotlib];
-    } ''
-      import simplematrixbotlib as botlib
-      import subprocess
-      import sys
-
-      try:
-          with open("/run/agenix/matrix-bot-token", "r") as f:
-              token = f.read().strip()
-      except FileNotFoundError:
-          print("Fehler: Token-Datei nicht gefunden!")
-          sys.exit(1)
-
-      creds = botlib.Creds("https://${nodeCfg.domain}", "@opsbot:${nodeCfg.domain}", token)
-      bot = botlib.Bot(creds)
-
-      ALLOWED_USER = "@xeravus:${nodeCfg.domain}"
-
-      @bot.listener.on_message_event
-      async def handle_commands(room, message):
-          if message.sender != ALLOWED_USER:
-              return
-
-          if message.body == "!start_lab":
-              subprocess.run(["sudo", "/run/current-system/sw/bin/systemctl", "start", "podman-metasploitable.service"])
-              await bot.api.send_text_message(room.room_id, "Metasploitable gestartet! Viel Spaß beim Hacken unter 10.99.99.1.")
-
-          elif message.body == "!stop_lab":
-              subprocess.run(["sudo", "/run/current-system/sw/bin/systemctl", "stop", "podman-metasploitable.service"])
-              await bot.api.send_text_message(room.room_id, "Lab erfolgreich heruntergefahren.")
-
-      bot.run()
-    '';
+  nodeCfg = config.xanterella.cluster-node;
+  opsbot-script = pkgs.writers.writePython3Bin "opsbot" {
+    libraries = [pkgs.python3Packages.matrix-nio];
+    flakeIgnore = ["E501" "E302" "E305" "F401" "E265"];
+  } (builtins.readFile ./opsbot.py);
 in {
   options = {
     xanterella = {
@@ -57,7 +26,7 @@ in {
     age = {
       secrets = {
         matrix-opsbot-token = {
-          file = ./../secrets/matrix-opsbot-token;
+          file = ./../agenix/matrix-opsbot-token.age;
           owner = "opsbot";
         };
       };

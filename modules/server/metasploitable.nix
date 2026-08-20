@@ -11,7 +11,7 @@ in {
   options = {
     xanterella = {
       metasploitable = {
-        enable = lib.mkEnableOption "Aktiviert Vaultwarden ohne externes Speichermedium";
+        enable = lib.mkEnableOption "Aktiviert Metasploitable 2";
       };
     };
   };
