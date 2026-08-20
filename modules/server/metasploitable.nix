@@ -12,10 +12,6 @@ in {
     xanterella = {
       metasploitable = {
         enable = lib.mkEnableOption "Aktiviert Vaultwarden ohne externes Speichermedium";
-        domain = lib.mkOption {
-          type = lib.types.str;
-          default = "${nodeCfg.domain}:1003";
-        };
       };
     };
   };
