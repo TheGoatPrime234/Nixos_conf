@@ -37,6 +37,9 @@
       matrix-server = {
         enable = true;
       };
+      opsbot = {
+        enable = true;
+      };
       attic-server = {
         enable = true;
       };

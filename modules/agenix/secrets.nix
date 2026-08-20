@@ -34,6 +34,9 @@ in {
   "mautrix_whatsapp.env.age" = {
     publicKeys = users ++ server;
   };
+  "matrix-opsbot-token.age" = {
+    publicKeys = users ++ server;
+  };
   "netbird.env.age" = {
     publicKeys = users ++ systems;
   };

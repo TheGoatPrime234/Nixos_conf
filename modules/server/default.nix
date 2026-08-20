@@ -1,5 +1,6 @@
 {
   imports = [
+    ./opsbot.nix
     ./cluster-node.nix
     ./metasploitable.nix
     ./prometheus.nix

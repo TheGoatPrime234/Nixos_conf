@@ -30,7 +30,7 @@ in {
         scrapeConfigs = [
           {
             job_name = "node";
-            scrape_interval = "15s";
+            scrape_interval = "10s";
             scheme = "https";
             static_configs =
               builtins.map (host: {
@@ -45,7 +45,7 @@ in {
           }
           {
             job_name = "process";
-            scrape_interval = "15s";
+            scrape_interval = "10s";
             scheme = "https";
             static_configs =
               builtins.map (host: {
