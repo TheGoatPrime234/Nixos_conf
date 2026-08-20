@@ -7,7 +7,7 @@
 }: let
   cfg = config.xanterella.monitoring;
   nodeCfg = config.xanterella.cluster-node;
-  ClusteNodes = ["lutik"];
+  ClusterNodes = ["lutik"];
 in {
   options = {
     xanterella = {
@@ -32,39 +32,31 @@ in {
             job_name = "node";
             scrape_interval = "15s";
             scheme = "https";
-            static_configs = [
-              {
-                static_configs =
-                  builtins.map (host: {
-                    targets = [
-                      "${host}.${nodeCfg.domain}:9999"
-                    ];
-                    labels = {
-                      nodename = host;
-                    };
-                  })
-                  ClusteNodes;
-              }
-            ];
+            static_configs =
+              builtins.map (host: {
+                targets = [
+                  "${host}.${nodeCfg.domain}:9999"
+                ];
+                labels = {
+                  nodename = host;
+                };
+              })
+              ClusterNodes;
           }
           {
             job_name = "process";
             scrape_interval = "15s";
             scheme = "https";
-            static_configs = [
-              {
-                static_configs =
-                  builtins.map (host: {
-                    targets = [
-                      "${host}.${nodeCfg.domain}:9998"
-                    ];
-                    labels = {
-                      nodename = host;
-                    };
-                  })
-                  ClusteNodes;
-              }
-            ];
+            static_configs =
+              builtins.map (host: {
+                targets = [
+                  "${host}.${nodeCfg.domain}:9998"
+                ];
+                labels = {
+                  nodename = host;
+                };
+              })
+              ClusterNodes;
           }
         ];
       };
