@@ -30,7 +30,7 @@ in {
               "127.0.0.1:7575:7575"
             ];
             volumes = [
-              "/mnt/server-data/homarr/configs:/app/public/configs"
+              "${inputs.xanterella-etc}/homarr:/app/data/configs"
               "/mnt/server-data/homarr/icons:/app/public/icons"
               "/mnt/server-data/homarr/data:/data"
             ];
@@ -46,7 +46,6 @@ in {
           "d /mnt/server-data/homarr/configs 0755 root root -"
           "d /mnt/server-data/homarr/icons 0755 root root -"
           "d /mnt/server-data/homarr/data 0755 root root -"
-          "C+ /mnt/server-data/homarr/configs/default.json 0644 root root - ${inputs.xanterella-etc}/homarr/default.json"
         ];
       };
     };
