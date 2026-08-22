@@ -20,6 +20,9 @@
           ];
         };
       };
+      homarr = {
+        enable = true;
+      };
       fastfetch = {
         enable = true;
       };
@@ -30,6 +33,9 @@
         enable = true;
       };
       netbird = {
+        enable = true;
+      };
+      metasploitable = {
         enable = true;
       };
     };

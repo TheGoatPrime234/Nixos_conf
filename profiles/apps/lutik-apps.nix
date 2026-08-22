@@ -58,9 +58,6 @@
       prometheus = {
         enable = true;
       };
-      metasploitable = {
-        enable = true;
-      };
       netbird = {
         enable = true;
       };

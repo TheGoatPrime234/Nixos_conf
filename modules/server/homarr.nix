@@ -2,6 +2,7 @@
   config,
   pkgs-new,
   lib,
+  inputs,
   ...
 }: let
   cfg = config.xanterella.homarr;
@@ -29,9 +30,9 @@ in {
               "127.0.0.1:7575:7575"
             ];
             volumes = [
-              "/var/lib/homarr/configs:/app/data/configs"
-              "/var/lib/homarr/icons:/app/public/icons"
-              "/var/lib/homarr/data:/data"
+              "/mnt/server-data/homarr/configs:/app/public/configs"
+              "/mnt/server-data/homarr/icons:/app/public/icons"
+              "/mnt/server-data/homarr/data:/data"
             ];
           };
         };
@@ -41,9 +42,11 @@ in {
     systemd = {
       tmpfiles = {
         rules = [
-          "d /var/lib/homarr/configs 0755 root root -"
-          "d /var/lib/homarr/icons 0755 root root -"
-          "d /var/lib/homarr/data 0755 root root -"
+          "d /mnt/server-data/homarr 0755 root root -"
+          "d /mnt/server-data/homarr/configs 0755 root root -"
+          "d /mnt/server-data/homarr/icons 0755 root root -"
+          "d /mnt/server-data/homarr/data 0755 root root -"
+          "C+ /mnt/server-data/homarr/configs/default.json 0644 root root - ${inputs.xanterella-etc}/homarr/default.json"
         ];
       };
     };
