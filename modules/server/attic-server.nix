@@ -42,19 +42,31 @@ in {
         };
       };
     };
+    users = {
+      users = {
+        atticd = {
+          isSystemUser = true;
+          group = "atticd";
+        };
+      };
+      groups = {
+        atticd = {};
+      };
+    };
     systemd = {
+      services = {
+        atticd = {
+          serviceConfig = {
+            DynamicUser = lib.mkForce false;
+            ReadWritePaths = ["/mnt/server-data/attic"];
+          };
+        };
+      };
       tmpfiles = {
         rules = [
           "d /mnt/server-data/attic 0750 atticd atticd -"
           "d /mnt/server-data/attic/storage 0750 atticd atticd -"
         ];
-      };
-      services = {
-        atticd = {
-          serviceConfig = {
-            ReadWritePaths = ["/mnt/server-data/attic"];
-          };
-        };
       };
     };
     environment = {
