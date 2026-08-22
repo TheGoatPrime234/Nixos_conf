@@ -7,7 +7,28 @@
 }: let
   cfg = config.xanterella.monitoring;
   nodeCfg = config.xanterella.cluster-node;
-  ClusterNodes = ["lutik"];
+  ClusterNodes = ["lutik" "swetik"];
+
+  rawNodeDashboard = builtins.fromJSON (builtins.readFile "${inputs.xanterella-etc}/grafana/monitoring.json");
+  patchedNodeDashboard =
+    rawNodeDashboard
+    // {
+      title = "Node Exporter";
+      uid = "custom-node-dashboard-01";
+    };
+  rawProcessDashboard = builtins.fromJSON (builtins.readFile "${inputs.xanterella-etc}/grafana/process.json");
+  patchedProcessDashboard =
+    rawProcessDashboard
+    // {
+      title = "Process Exporter";
+      uid = "custom-process-dashboard-01";
+    };
+
+  customDashboardDir = pkgs.runCommand "custom-dashboards" {} ''
+    mkdir -p $out
+    cp ${pkgs.writeText "node.json" (builtins.toJSON patchedNodeDashboard)} $out/node.json
+    cp ${pkgs.writeText "process.json" (builtins.toJSON patchedProcessDashboard)} $out/process.json
+  '';
 in {
   options = {
     xanterella = {
@@ -90,7 +111,7 @@ in {
                 {
                   name = "GitHub Dashboard";
                   options = {
-                    path = "${inputs.xanterella-etc}";
+                    path = "${customDashboardDir}";
                   };
                 }
               ];
