@@ -27,17 +27,32 @@ in {
         settings = {
           listen = "127.0.0.1:6000";
           database = {
-            url = "sqlite:///var/lib/atticd/server.db";
+            url = "sqlite:///mnt/server-data/attic/server.db";
           };
           storage = {
             type = "local";
-            path = "/var/lib/atticd/storage";
+            path = "/mnt/server-data/attic/storage";
           };
           chunking = {
             "nar-size-threshold" = 65536;
             "min-size" = 16384;
             "avg-size" = 65536;
             "max-size" = 262144;
+          };
+        };
+      };
+    };
+    systemd = {
+      tmpfiles = {
+        rules = [
+          "d /mnt/server-data/attic 0750 atticd atticd -"
+          "d /mnt/server-data/attic/storage 0750 atticd atticd -"
+        ];
+      };
+      services = {
+        atticd = {
+          serviceConfig = {
+            ReadWritePaths = ["/mnt/server-data/attic"];
           };
         };
       };
