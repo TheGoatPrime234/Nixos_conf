@@ -25,12 +25,11 @@
     };
     nix = {
       settings = {
-        substituters = [
-          #"https://lutik.gute-nessie.ts.net/main"
-          #"https://lutik.gute-nessie.ts.net:1/main"
+        extra-substituters = [
+          "https://lutik.gute-nessie.ts.net:1001/main"
         ];
-        trusted-public-keys = [
-          #"main:bLMFpRICiPB1bYrlJCfFuYthr3VG5Xhmcz2R6rubCFc="
+        extra-trusted-public-keys = [
+          "main:bLMFpRICiPB1bYrlJCfFuYthr3VG5Xhmcz2R6rubCFc="
         ];
       };
     };
