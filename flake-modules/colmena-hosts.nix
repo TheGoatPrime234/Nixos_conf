@@ -45,6 +45,18 @@
       ./../profiles/ssh-keys.nix
     ];
   };
+  swetik = {
+    deployment = {
+      targetHost = "swetik";
+      targetUser = taruser;
+      buildOnTarget = false;
+      keys = commonSSHKeys;
+    };
+    imports = [
+      ./../hosts/swetik/configuration.nix
+      ./../profiles/ssh-keys.nix
+    ];
+  };
   xorus = {
     deployment = {
       targetHost = "192.168.178.69";

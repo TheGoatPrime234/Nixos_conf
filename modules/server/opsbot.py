@@ -5,15 +5,15 @@ import sys
 
 async def main():
     try:
-        with open("/run/agenix/matrix-bot-token", "r") as f:
+        with open("/run/agenix/matrix-opsbot-token", "r") as f:
             token = f.read().strip()
     except FileNotFoundError:
         print("Fehler: Token-Datei nicht gefunden!")
         sys.exit(1)
 
-    client = AsyncClient("https://matrix.deine-domain.de", "@opsbot:deine-domain.de")
+    client = AsyncClient("https://lutik.gute-nessie.ts.net", "@opsbot:lutik.gute-nessie.ts.net")
     client.access_token = token
-    ALLOWED_USER = "@cato:deine-domain.de"
+    ALLOWED_USER = "@xeravus:lutik.gute-nessie.ts.net"
 
     async def message_callback(room: MatrixRoom, event: RoomMessageText) -> None:
         if event.sender != ALLOWED_USER:

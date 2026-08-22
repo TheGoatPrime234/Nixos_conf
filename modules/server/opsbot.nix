@@ -8,7 +8,7 @@
   nodeCfg = config.xanterella.cluster-node;
   opsbot-script = pkgs.writers.writePython3Bin "opsbot" {
     libraries = [pkgs.python3Packages.matrix-nio];
-    flakeIgnore = ["E501" "E302" "E305" "F401" "E265"];
+    flakeIgnore = ["E501" "E302" "E305" "F401" "E265" "W293"];
   } (builtins.readFile ./opsbot.py);
 in {
   options = {

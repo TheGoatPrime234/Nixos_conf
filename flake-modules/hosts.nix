@@ -49,6 +49,25 @@
             ./../hosts/xeravus/configuration.nix
           ];
         });
+      swetik = withSystem "x86_64-linux" ({
+        pkgs-new,
+        pkgs-unstable,
+        pkgs-bleeding,
+        ...
+      }:
+        inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inputs = inputs;
+            pkgs-new = pkgs-new;
+            pkgs-unstable = pkgs-unstable;
+            pkgs-bleeding = pkgs-bleeding;
+          };
+          modules = [
+            inputs.disko.nixosModules.disko
+            ./../hosts/swetik/configuration.nix
+          ];
+        });
       xorus = withSystem "x86_64-linux" ({
         pkgs-new,
         pkgs-unstable,
