@@ -23,6 +23,7 @@ in {
     services = {
       atticd = {
         enable = true;
+        package = pkgs-unstable.atticd;
         environmentFile = "/root/secrets/atticd.env";
         settings = {
           listen = "127.0.0.1:6000";
