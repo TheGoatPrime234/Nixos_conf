@@ -19,13 +19,12 @@ in {
   config = lib.mkIf (cfg.enable && nodeCfg.enable) {
     networking = {
       interfaces = {
-        metasploit-net = {
-          virtual = true;
+        lo = {
           ipv4 = {
             addresses = [
               {
                 address = "10.99.99.1";
-                prefixLength = 24;
+                prefixLength = 32;
               }
             ];
           };
