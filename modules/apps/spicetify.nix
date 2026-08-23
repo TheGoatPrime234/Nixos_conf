@@ -45,7 +45,7 @@ in {
           name = "spotify";
           desktopName = "Spotify";
           icon = "spotify-client";
-          exec = "/run/current-system/sw/bin/spotify %U";
+          exec = "/run/current-system/sw/bin/spotify --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
           tryExec = "/run/current-system/sw/bin/spotify";
           terminal = false;
           type = "Application";
