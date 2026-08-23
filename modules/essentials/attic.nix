@@ -44,7 +44,6 @@
             after = [
               "network-online.target"
             ];
-            bindsTo = ["tailscaled.service"];
             serviceConfig = {
               ExecStart = "${pkgs.attic-client}/bin/attic watch-store xanterella:main -j 1";
               Restart = "always";

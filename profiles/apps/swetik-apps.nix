@@ -35,9 +35,6 @@
       netbird = {
         enable = true;
       };
-      attic = {
-        enable = true;
-      };
       metasploitable = {
         enable = true;
       };
