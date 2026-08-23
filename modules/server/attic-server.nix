@@ -2,6 +2,7 @@
   config,
   pkgs-unstable,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.xanterella.attic-server;
@@ -23,7 +24,7 @@ in {
     services = {
       atticd = {
         enable = true;
-        package = pkgs-unstable.atticd;
+        package = pkgs-unstable.attic-server;
         environmentFile = "/root/secrets/atticd.env";
         settings = {
           listen = "127.0.0.1:6000";
