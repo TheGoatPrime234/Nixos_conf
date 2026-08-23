@@ -29,7 +29,7 @@
           "https://lutik.gute-nessie.ts.net:1001/main"
         ];
         extra-trusted-public-keys = [
-          "main:bLMFpRICiPB1bYrlJCfFuYthr3VG5Xhmcz2R6rubCFc="
+          "main:Z6A+g+ThOnrNBEAhZ8+DjThYby9FjrxFTGX52q0HMe4="
         ];
       };
     };
