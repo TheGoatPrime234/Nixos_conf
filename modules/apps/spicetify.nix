@@ -41,6 +41,16 @@ in {
       systemPackages = [
         pkgs-new.spotify-player
         pkgs.sptlrx
+        (lib.hiPrio (pkgs.makeDesktopItem {
+          name = "spotify";
+          desktopName = "Spotify";
+          icon = "spotify-client";
+          exec = "/run/current-system/sw/bin/spotify %U";
+          tryExec = "/run/current-system/sw/bin/spotify";
+          terminal = false;
+          type = "Application";
+          categories = ["Audio" "Music" "Player" "AudioVideo"];
+        }))
       ];
     };
     programs = {
