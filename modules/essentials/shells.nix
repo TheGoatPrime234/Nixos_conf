@@ -110,6 +110,9 @@ in {
             pcl = "pyroclear && clear";
             plc = "pyroclear && clear";
             p = "pyroclear && clear";
+
+            lutik = "ssh cato@lutik";
+            swetik = "ssh cato@swetik";
           };
 
           interactiveShellInit = "";
