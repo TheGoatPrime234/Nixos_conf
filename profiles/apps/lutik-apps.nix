@@ -15,7 +15,7 @@
           labels = [
             "nixos"
             "self-hosted"
-            "xanterella"
+            #"xanterella"
           ];
         };
       };

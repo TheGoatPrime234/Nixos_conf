@@ -35,6 +35,9 @@
       netbird = {
         enable = true;
       };
+      stres = {
+        enable = true;
+      };
       metasploitable = {
         enable = true;
       };
