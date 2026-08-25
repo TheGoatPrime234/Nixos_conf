@@ -9,5 +9,8 @@
     ./wifite.nix
     ./wireshark.nix
     ./proxychains.nix
+    ./git-dumper.nix
+    ./gobuster.nix
+    ./ffuf.nix
   ];
 }

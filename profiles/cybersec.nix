@@ -11,6 +11,15 @@
       hashcat = {
         enable = true;
       };
+      git-dumper = {
+        enable = true;
+      };
+      gobuster = {
+        enable = true;
+      };
+      ffuf = {
+        enable = true;
+      };
       metasploit = {
         enable = true;
       };
