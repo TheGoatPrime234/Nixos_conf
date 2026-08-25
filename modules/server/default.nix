@@ -1,5 +1,6 @@
 {
   imports = [
+    ./paperlessngx.nix
     ./opsbot.nix
     ./cluster-node.nix
     ./metasploitable.nix
