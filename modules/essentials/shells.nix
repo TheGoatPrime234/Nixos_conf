@@ -59,6 +59,7 @@ in {
         systemPackages = with pkgs; [
           zsh-powerlevel10k
           bat
+          jq
         ];
       };
 
