@@ -18,11 +18,11 @@ in {
         };
         ml-domain = lib.mkOption {
           type = lib.types.str;
-          default = "${nodeCfg.domain}:10041";
+          default = "${nodeCfg.domain}";
         };
       };
       immich-ml = {
-        enable = lib.mkEnableOption "Aktiviert Immich";
+        enable = lib.mkEnableOption "Aktiviert Immich ML";
         domain = lib.mkOption {
           type = lib.types.str;
           default = "${nodeCfg.domain}:10041";
@@ -76,7 +76,8 @@ in {
                 DB_DATABASE_NAME = "immich";
                 REDIS_HOSTNAME = "immich-redis";
                 TZ = "Europe/Berlin";
-                IMMICH_MACHINE_LEARNING_ENABLED = "false";
+                IMMICH_MACHINE_LEARNING_ENABLED = "true";
+                IMMICH_MACHINE_LEARNING_URL = "https://${cfg.ml-domain}:10041";
               };
               environmentFiles = [
                 config.age.secrets.immich-env.path
@@ -117,7 +118,7 @@ in {
             "https://${cfg.ml-domain}" = {
               extraConfig = ''
                    reverse_proxy 127.0.0.1:3003 {
-                flush_interval - 1
+                flush_interval -1
                    }
 
                    request_body {
@@ -152,10 +153,24 @@ in {
             immich-machine-learning = {
               image = "ghcr.io/immich-app/immich-machine-learning:v3.1.0";
               volumes = ["/mnt/server-data/immich/model-cache:/cache"];
-              environment = {
-                IMMICH_HOST = "${cfg-ml.domain}";
-                IMMICH_PORT = "10041";
-              };
+              ports = ["127.0.0.1:3003:3003"];
+            };
+          };
+        };
+      };
+      services = {
+        caddy = {
+          virtualHosts = {
+            "https://${cfg-ml.domain}" = {
+              extraConfig = ''
+                reverse_proxy 127.0.0.1:3003 {
+                    flush_interval -1
+                }
+
+                request_body {
+                    max_size 0
+                }
+              '';
             };
           };
         };

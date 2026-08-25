@@ -12,7 +12,11 @@
     };
   };
 
-  config =
-    lib.mkIf config.xanterella.metasploit.enable {
+  config = lib.mkIf config.xanterella.openvpn.enable {
+    environment = {
+      systemPackages = with pkgs; [
+        openvpn
+      ];
     };
+  };
 }

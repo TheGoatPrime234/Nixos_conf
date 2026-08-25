@@ -14,6 +14,9 @@
       metasploit = {
         enable = true;
       };
+      openvpn = {
+        enable = true;
+      };
       nmap = {
         enable = true;
       };

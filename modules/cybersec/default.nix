@@ -1,5 +1,6 @@
 {
   imports = [
+    ./openvpn.nix
     ./aircrack-ng.nix
     ./hashcat.nix
     ./metasploit.nix

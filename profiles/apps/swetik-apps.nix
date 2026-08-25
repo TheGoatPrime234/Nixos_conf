@@ -43,7 +43,6 @@
       };
       immich-ml = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net:10041";
       };
     };
   };
