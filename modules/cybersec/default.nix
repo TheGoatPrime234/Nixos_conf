@@ -1,5 +1,6 @@
 {
   imports = [
+    ./wordlists.nix
     ./openvpn.nix
     ./aircrack-ng.nix
     ./hashcat.nix

@@ -110,6 +110,7 @@ in {
             pcl = "pyroclear && clear";
             plc = "pyroclear && clear";
             p = "pyroclear && clear";
+            thm = "sudo openvpn ~/tryhackme/VPN/tryhackme.ovpn";
 
             lutik = "ssh cato@lutik";
             swetik = "ssh cato@swetik";

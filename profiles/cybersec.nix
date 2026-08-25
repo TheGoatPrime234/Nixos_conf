@@ -8,6 +8,9 @@
       aircrack-ng = {
         enable = true;
       };
+      wordlists = {
+        enable = true;
+      };
       hashcat = {
         enable = true;
       };
