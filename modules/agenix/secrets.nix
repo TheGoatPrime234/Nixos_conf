@@ -43,6 +43,9 @@ in {
   "netbird.env.age" = {
     publicKeys = users ++ systems;
   };
+  "paperless-pass.age" = {
+    publicKeys = users ++ systems;
+  };
   "syncthing.age" = {
     publicKeys = users ++ systems;
   };

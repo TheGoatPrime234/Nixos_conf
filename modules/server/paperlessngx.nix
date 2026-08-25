@@ -20,22 +20,30 @@ in {
   };
 
   config = lib.mkIf (cfg.enable && nodeCfg.enable) {
-    services.paperless = {
-      enable = true;
-      dataDir = "/mnt/server-data/paperlessngx";
-      mediaDir = "/mnt/server-data/paperlessngx/media";
-      consumptionDir = "/mnt/server-data/paperlessngx/consume";
-      passwordFile = builtins.toFile "paperless-pass" "admin";
-      settings = {
-        PAPERLESS_ADMIN_USER = "admin";
-        PAPERLESS_URL = "https://${cfg.domain}";
-        PAPERLESS_TIME_ZONE = "Europe/Berlin";
-        PAPERLESS_OCR_LANGUAGE = "deu+eng";
-        PAPERLESS_TASK_WORKERS = 1;
-        PAPERLESS_THREADS_PER_WORKER = 2;
+    age = {
+      secrets = {
+        paperless-pass = {
+          file = ./../agenix/paperless-pass.age;
+          owner = "paperless";
+        };
       };
     };
     services = {
+      paperless = {
+        enable = true;
+        dataDir = "/mnt/server-data/paperlessngx";
+        mediaDir = "/mnt/server-data/paperlessngx/media";
+        consumptionDir = "/mnt/server-data/paperlessngx/consume";
+        passwordFile = config.age.secrets.paperless-pass.path;
+        settings = {
+          PAPERLESS_ADMIN_USER = "admin";
+          PAPERLESS_URL = "https://${cfg.domain}";
+          PAPERLESS_TIME_ZONE = "Europe/Berlin";
+          PAPERLESS_OCR_LANGUAGE = "deu+eng";
+          PAPERLESS_TASK_WORKERS = 1;
+          PAPERLESS_THREADS_PER_WORKER = 2;
+        };
+      };
       caddy = {
         virtualHosts = {
           "https://${cfg.domain}" = {
