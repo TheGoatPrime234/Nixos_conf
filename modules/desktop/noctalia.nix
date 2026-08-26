@@ -51,6 +51,11 @@ in {
             };
           };
         };
+        services = {
+          libinput = {
+            enable = true;
+          };
+        };
         tmpfiles = {
           rules = [
             "d %h/.config/noctalia 0755 - - -"
