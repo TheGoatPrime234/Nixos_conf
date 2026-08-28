@@ -6,6 +6,13 @@
 }: {
   config = {
     xanterella = {
+      cluster-node = {
+        enable = true;
+        domain = "xeravus.gute-nessie.ts.net";
+      };
+      livesync = {
+        enable = true;
+      };
       ani-cli = {
         enable = true;
       };

@@ -1,6 +1,7 @@
 {
   imports = [
     ./paperlessngx.nix
+    ./livesync.nix
     ./opsbot.nix
     ./cluster-node.nix
     ./metasploitable.nix

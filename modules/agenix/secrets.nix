@@ -17,6 +17,7 @@ let
   server = [
     lutik
     swetik
+    xeravus
   ];
 in {
   "global.age" = {
@@ -29,6 +30,9 @@ in {
     publicKeys = users ++ systems;
   };
   "cloudflare-token.age" = {
+    publicKeys = users ++ server;
+  };
+  "couchdb.env.age" = {
     publicKeys = users ++ server;
   };
   "matrix.yaml.age" = {
