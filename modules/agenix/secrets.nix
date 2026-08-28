@@ -28,6 +28,9 @@ in {
   "password_root.age" = {
     publicKeys = users ++ systems;
   };
+  "cloudflare-token.age" = {
+    publicKeys = users ++ server;
+  };
   "matrix.yaml.age" = {
     publicKeys = users ++ server;
   };
