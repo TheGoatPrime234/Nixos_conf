@@ -33,6 +33,9 @@
       attic-server = {
         enable = true;
       };
+      livesync = {
+        enable = true;
+      };
       vaultwarden = {
         enable = true;
       };
