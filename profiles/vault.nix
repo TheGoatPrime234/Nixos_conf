@@ -8,9 +8,6 @@
       obsidian = {
         enable = true;
       };
-      syncthing = {
-        enable = true;
-      };
     };
   };
 }

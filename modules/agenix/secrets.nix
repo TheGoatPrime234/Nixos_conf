@@ -53,9 +53,6 @@ in {
   "paperless-pass.age" = {
     publicKeys = users ++ systems;
   };
-  "syncthing.age" = {
-    publicKeys = users ++ systems;
-  };
   "immich.env.age" = {
     publicKeys = users ++ systems;
   };

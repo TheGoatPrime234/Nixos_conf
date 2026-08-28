@@ -55,7 +55,7 @@ in {
         virtualHosts = {
           "https://${cfg.domain}" = {
             extraConfig = ''
-              reverse_proxy 127.0.0.1:7575
+              reverse_proxy 127.0.0.1:5984
             '';
           };
         };

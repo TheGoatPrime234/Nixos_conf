@@ -39,9 +39,6 @@
       vaultwarden = {
         enable = true;
       };
-      syncthing_server = {
-        enable = true;
-      };
       audiobookshelf = {
         enable = true;
       };
