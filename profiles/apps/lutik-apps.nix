@@ -8,6 +8,7 @@
       cluster-node = {
         enable = true;
         domain = "lutik.gute-nessie.ts.net";
+        head = true;
       };
       fastfetch = {
         enable = true;

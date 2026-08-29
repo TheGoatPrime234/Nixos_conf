@@ -14,6 +14,8 @@
           default = "xanterella.de";
         };
 
+        head = lib.mkEnableOption "Macht den Server zum Head Server";
+
         monitoring-server = lib.mkOption {
           type = lib.types.str;
           default = "";
@@ -21,55 +23,59 @@
       };
     };
   };
-  config = lib.mkIf config.xanterella.cluster-node.enable {
-    age = {
-      secrets = {
-        cloudflare-token = {
-          file = ./../agenix/cloudflare-token.age;
+  config = lib.mkMerge [
+    (lib.mkIf config.xanterella.cluster-node.enable {
+      services = {
+        caddy = {
+          enable = true;
+        };
+        tailscale = {
+          enable = true;
+          permitCertUid = "caddy";
         };
       };
-    };
-    systemd = {
-      services = {
-        cloudflare-tunnel = {
-          description = "Cloudflare Zero Trust Tunnel";
-          wantedBy = ["multi-user.target"];
-          after = ["network-online.target"];
-          wants = ["network-online.target"];
-
-          serviceConfig = {
-            ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run";
-            EnvironmentFile = config.age.secrets.cloudflare-token.path;
-
-            Restart = "always";
-            RestartSec = "5s";
-            DynamicUser = true;
+      users = {
+        users = {
+          caddy = {
+            extraGroups = [
+              "tailscale"
+            ];
           };
         };
       };
-    };
-    services = {
-      caddy = {
-        enable = true;
-      };
-      tailscale = {
-        enable = true;
-        permitCertUid = "caddy";
-      };
-    };
-    users = {
-      users = {
-        caddy = {
-          extraGroups = [
-            "tailscale"
-          ];
+      networking = {
+        firewall = {
+          allowedTCPPorts = [80 443];
         };
       };
-    };
-    networking = {
-      firewall = {
-        allowedTCPPorts = [80 443];
+    })
+    (lib.mkIf (config.xanterella.cluster-node.enable && config.xanterella.cluster-node.head) {
+      age = {
+        secrets = {
+          cloudflare-token = {
+            file = ./../agenix/cloudflare-token.age;
+          };
+        };
       };
-    };
-  };
+      systemd = {
+        services = {
+          cloudflare-tunnel = {
+            description = "Cloudflare Zero Trust Tunnel";
+            wantedBy = ["multi-user.target"];
+            after = ["network-online.target"];
+            wants = ["network-online.target"];
+
+            serviceConfig = {
+              ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run";
+              EnvironmentFile = config.age.secrets.cloudflare-token.path;
+
+              Restart = "always";
+              RestartSec = "5s";
+              DynamicUser = true;
+            };
+          };
+        };
+      };
+    })
+  ];
 }

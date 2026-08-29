@@ -20,9 +20,6 @@
           ];
         };
       };
-      homarr = {
-        enable = true;
-      };
       fastfetch = {
         enable = true;
       };
