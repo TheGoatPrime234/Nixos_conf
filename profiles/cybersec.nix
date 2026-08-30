@@ -11,6 +11,9 @@
       wordlists = {
         enable = true;
       };
+      sqlmap = {
+        enable = true;
+      };
       hashcat = {
         enable = true;
       };
