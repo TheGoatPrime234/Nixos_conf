@@ -13,7 +13,7 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
-  boot.kernelParams = ["i8042.nopnp=1"];
+  boot.kernelParams = ["i8042.reset" "i8042.nomux=1" "i8042.nopnp=0"];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/d53b5516-59f1-4ec1-a7b2-03549ebf5a59";
