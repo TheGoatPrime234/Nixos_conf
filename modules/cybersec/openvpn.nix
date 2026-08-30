@@ -18,5 +18,10 @@
         openvpn
       ];
     };
+    networking = {
+      firewall = {
+        allowedUDPPorts = [1194];
+      };
+    };
   };
 }
