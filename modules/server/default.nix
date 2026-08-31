@@ -1,6 +1,7 @@
 {
   imports = [
     ./paperlessngx.nix
+    ./jellyfin.nix
     ./livesync.nix
     ./opsbot.nix
     ./cluster-node.nix

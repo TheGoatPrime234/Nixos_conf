@@ -10,6 +10,9 @@
         enable = false;
         domain = "xeravus.gute-nessie.ts.net";
       };
+      jellyfin = {
+        enable = true;
+      };
       ani-cli = {
         enable = true;
       };
