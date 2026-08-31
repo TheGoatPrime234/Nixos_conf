@@ -23,6 +23,9 @@
       jellyfin = {
         enable = true;
       };
+      ha = {
+        enable = true;
+      };
       fastfetch = {
         enable = true;
       };

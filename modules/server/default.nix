@@ -1,6 +1,7 @@
 {
   imports = [
     ./paperlessngx.nix
+    ./home-assistant.nix
     ./jellyfin.nix
     ./livesync.nix
     ./opsbot.nix

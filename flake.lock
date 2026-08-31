@@ -928,11 +928,11 @@
     "xanterella-etc": {
       "flake": false,
       "locked": {
-        "lastModified": 1787768161,
-        "narHash": "sha256-THMLuJUYbnsOEG2kszV03cKuH5NwFIoWHRIWmRAEYso=",
+        "lastModified": 1788197191,
+        "narHash": "sha256-kYj96LJoeR6kuvoQQyHnRsY0gjyBkJVpNgUWf/RG1eM=",
         "owner": "Xeravus",
         "repo": "Xanterella-Etc",
-        "rev": "f0eaff02e8684cc8e7ad89d8a2768174794921f8",
+        "rev": "6201d488e06c442b9348348269c08a09e409cebf",
         "type": "github"
       },
       "original": {

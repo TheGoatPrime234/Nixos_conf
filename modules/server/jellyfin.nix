@@ -64,8 +64,9 @@ in {
     systemd = {
       tmpfiles = {
         rules = [
-          "d /mnt/jellyfin 0775 root root -"
-          "d /mnt/jellyfin/s3-media 0775 root root -"
+          "d /mnt/server-data/jellyfin 0775 root root -"
+          "d /mnt/server-data/jellyfin 0775 root root -"
+          "d /mnt/server-data/jellyfin/s3-media 0775 root root -"
         ];
       };
       services = {
@@ -78,7 +79,7 @@ in {
           serviceConfig = {
             Type = "notify";
             ExecStart = ''
-              ${pkgs.rclone}/bin/rclone mount garage-s3:jellyfin-bucket /mnt/jellyfin/s3-media \
+              ${pkgs.rclone}/bin/rclone mount garage-s3:jellyfin-bucket /mnt/server-data/jellyfin/s3-media \
                 --config=${config.age.secrets.rclone-conf.path} \
                 --allow-other \
                 --vfs-cache-mode full \
@@ -88,7 +89,7 @@ in {
                 --log-level INFO \
                 --syslog
             '';
-            ExecStop = "${pkgs.fuse}/bin/fusermount -u /mnt/jellyfin/s3-media";
+            ExecStop = "${pkgs.fuse}/bin/fusermount -u /mnt/server-data/jellyfin/s3-media";
             Restart = "on-failure";
             RestartSec = "10s";
           };
