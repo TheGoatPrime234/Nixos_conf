@@ -7,7 +7,7 @@
   config = {
     xanterella = {
       cluster-node = {
-        enable = false;
+        enable = true;
         domain = "xeravus.gute-nessie.ts.net";
       };
       jellyfin = {

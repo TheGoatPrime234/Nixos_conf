@@ -35,6 +35,9 @@ in {
   "couchdb.env.age" = {
     publicKeys = users ++ server;
   };
+  "rclone.conf.age" = {
+    publicKeys = users ++ server;
+  };
   "matrix.yaml.age" = {
     publicKeys = users ++ server;
   };
