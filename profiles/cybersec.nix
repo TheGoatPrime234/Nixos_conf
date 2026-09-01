@@ -8,6 +8,9 @@
       aircrack-ng = {
         enable = true;
       };
+      burp-suite = {
+        enable = true;
+      };
       wordlists = {
         enable = true;
       };

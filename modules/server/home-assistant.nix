@@ -36,6 +36,9 @@ in {
               "/mnt/server-data/homeassistant:/config"
               "/etc/localtime:/etc/localtime:ro"
             ];
+            ports = [
+              "127.0.0.1:8123:8123"
+            ];
             extraOptions = [
               "--network=host"
             ];

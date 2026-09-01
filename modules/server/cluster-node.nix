@@ -57,6 +57,11 @@
           };
         };
       };
+      environment = {
+        systemPackages = with pkgs; [
+          vlc
+        ];
+      };
       systemd = {
         services = {
           cloudflare-tunnel = {

@@ -31,8 +31,9 @@ in {
       };
     };
     environment = {
-      systemPackages = with pkgs; [
+      systemPackages = with pkgs-unstable; [
         rclone
+        makemkv
       ];
     };
     services = {

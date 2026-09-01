@@ -1,6 +1,7 @@
 {
   imports = [
     ./wordlists.nix
+    ./burp-suite.nix
     ./sqlmap.nix
     ./openvpn.nix
     ./aircrack-ng.nix
