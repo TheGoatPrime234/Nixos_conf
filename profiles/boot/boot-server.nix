@@ -8,6 +8,9 @@
       boot-server = {
         enable = true;
       };
+      makemkv = {
+        enable = true;
+      };
       stay-on = {
         enable = true;
       };
