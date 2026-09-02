@@ -11,6 +11,9 @@
       cava = {
         enable = true;
       };
+      vlc = {
+        enable = true;
+      };
       fastfetch = {
         enable = true;
       };

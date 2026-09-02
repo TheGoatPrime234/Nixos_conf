@@ -1,6 +1,7 @@
 {
   imports = [
     ./ani-cli.nix
+    ./vlc.nix
     ./fastfetch.nix
     ./makemkv.nix
     ./gparted.nix
