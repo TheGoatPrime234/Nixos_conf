@@ -4,7 +4,9 @@
   pkgs-unstable,
   lib,
   ...
-}: {
+}: let
+  cfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
       cluster-node = {
@@ -13,6 +15,11 @@
         domain = lib.mkOption {
           type = lib.types.str;
           default = "xanterella.de";
+        };
+
+        tailscale-domain = lib.mkOption {
+          type = lib.types.str;
+          default = "gute-nessie.ts.net";
         };
 
         head = lib.mkEnableOption "Macht den Server zum Head Server";
@@ -46,7 +53,7 @@
       };
       networking = {
         firewall = {
-          allowedTCPPorts = [80 443];
+          trustedInterfaces = ["tailscale0"];
         };
       };
     })
@@ -58,7 +65,105 @@
           };
         };
       };
+      services = {
+        caddy = {
+          enable = true;
+          virtualHosts = {
+            "home.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://lacrux.${cfg.tailscale-domain}:8123
+              '';
+            };
+            "jellyfin.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://swetik.${cfg.tailscale-domain}:8096
+              '';
+            };
+            "paperless.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://[NODE].${cfg.tailscale-domain}:2731
+              '';
+            };
 
+            "audiobookshelf.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://[NODE].${cfg.tailscale-domain}:13378 {
+                  flush_interval -1
+                }
+                request_body {
+                  max_size 0
+                }
+              '';
+            };
+
+            "immich.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://[NODE].${cfg.tailscale-domain}:2283 {
+                  flush_interval -1
+                }
+                request_body {
+                  max_size 0
+                }
+              '';
+            };
+
+            "immich-ml.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://[NODE].${cfg.tailscale-domain}:3003
+              '';
+            };
+
+            "livesync.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://[NODE].${cfg.tailscale-domain}:5984
+              '';
+            };
+
+            "homarr.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://[NODE].${cfg.tailscale-domain}:7575
+              '';
+            };
+
+            "vaultwarden.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://[NODE].${cfg.tailscale-domain}:8222
+              '';
+            };
+
+            "vikunja.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://[NODE].${cfg.tailscale-domain}:8919
+              '';
+            };
+
+            "grafana.${cfg.domain}" = {
+              extraConfig = ''
+                reverse_proxy http://[NODE].${cfg.tailscale-domain}:9000
+              '';
+            };
+
+            "attic.${cfg.domain}" = {
+              extraConfig = ''
+                handle {
+                  reverse_proxy http://[NODE].${cfg.tailscale-domain}:6000
+                }
+              '';
+            };
+
+            "matrix.${cfg.domain}" = {
+              extraConfig = ''
+                handle /_matrix* {
+                  reverse_proxy http://[NODE].${cfg.tailscale-domain}:8008
+                }
+                handle /_synapse/client* {
+                  reverse_proxy http://[NODE].${cfg.tailscale-domain}:8008
+                }
+              '';
+            };
+          };
+        };
+      };
       environment = {
         systemPackages = with pkgs-unstable; [
           vlc

@@ -131,20 +131,6 @@ in {
           };
         };
       };
-      caddy = {
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              handle /_matrix* {
-              reverse_proxy 127.0.0.1:8008
-              }
-              handle /_synapse/client* {
-              reverse_proxy 127.0.0.1:8008
-              }
-            '';
-          };
-        };
-      };
     };
     networking = {
       firewall = {

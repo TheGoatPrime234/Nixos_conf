@@ -28,7 +28,7 @@ in {
           audiobookshelf = {
             image = "ghcr.io/advplyr/audiobookshelf:latest";
             ports = [
-              "127.0.0.1:13378:80"
+              "0.0.0.0:13378:80"
             ];
             volumes = [
               "/mnt/server-data/audiobookshelf/config:/config"
@@ -47,23 +47,6 @@ in {
           "d /mnt/server-data/audiobookshelf/metadata 0755 root root -"
           "d /mnt/server-data/audiobookshelf/audiobooks 0755 root root -"
         ];
-      };
-    };
-    services = {
-      caddy = {
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              reverse_proxy 127.0.0.1:13378 {
-              	flush_interval -1
-                  }
-
-                  request_body {
-              	max_size 0
-                  }
-            '';
-          };
-        };
       };
     };
   };

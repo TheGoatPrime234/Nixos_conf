@@ -12,10 +12,6 @@ in {
     xanterella = {
       vikunja = {
         enable = lib.mkEnableOption "Aktiviert Vikuna";
-        domain = lib.mkOption {
-          type = lib.types.str;
-          default = "${nodeCfg.domain}:1002";
-        };
       };
     };
   };
@@ -30,15 +26,6 @@ in {
         settings = {
           service = {
             frontendurl = "https://${cfg.domain}";
-          };
-        };
-      };
-      caddy = {
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              reverse_proxy 127.0.0.1:${toString config.services.vikunja.port}
-            '';
           };
         };
       };

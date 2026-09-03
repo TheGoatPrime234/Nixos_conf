@@ -12,10 +12,6 @@ in {
     xanterella = {
       jellyfin = {
         enable = lib.mkEnableOption "Aktiviert Jellyfin";
-        domain = lib.mkOption {
-          type = lib.types.str;
-          default = "${nodeCfg.domain}:1009";
-        };
       };
     };
   };
@@ -39,21 +35,6 @@ in {
       jellyfin = {
         enable = true;
         package = pkgs-unstable.jellyfin;
-      };
-      caddy = {
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              reverse_proxy 127.0.0.1:8096 {
-              	flush_interval -1
-                  }
-
-                  request_body {
-              	max_size 0
-                  }
-            '';
-          };
-        };
       };
     };
     programs = {

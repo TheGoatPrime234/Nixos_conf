@@ -27,7 +27,7 @@ in {
           homarr = {
             image = "ghcr.io/ajnart/homarr:latest";
             ports = [
-              "127.0.0.1:7575:7575"
+              "0.0.0.0:7575:7575"
             ];
             volumes = [
               "${inputs.xanterella-etc}/homarr:/app/data/configs"
@@ -47,17 +47,6 @@ in {
           "d /mnt/server-data/homarr/icons 0755 root root -"
           "d /mnt/server-data/homarr/data 0755 root root -"
         ];
-      };
-    };
-    services = {
-      caddy = {
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              reverse_proxy 127.0.0.1:7575
-            '';
-          };
-        };
       };
     };
   };

@@ -7,7 +7,8 @@
     xanterella = {
       cluster-node = {
         enable = true;
-        domain = "lutik.gute-nessie.ts.net";
+        domain = "xanterella.de";
+        tailscale-domain = "gute-nessie.ts.net";
         head = true;
       };
       fastfetch = {

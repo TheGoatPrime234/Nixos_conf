@@ -12,10 +12,6 @@ in {
     xanterella = {
       prometheus = {
         enable = lib.mkEnableOption "Aktiviert Prometheus";
-        domain = lib.mkOption {
-          type = lib.types.str;
-          default = "${nodeCfg.domain}";
-        };
       };
     };
   };
@@ -30,13 +26,13 @@ in {
               "hwmon"
               "tcpstat"
             ];
-            listenAddress = "127.0.0.1";
+            listenAddress = "0.0.0.0";
             port = 9100;
           };
           process = {
             enable = true;
             port = 9101;
-            listenAddress = "127.0.0.1";
+            listenAddress = "0.0.0.0";
             settings = {
               process_names = [
                 {
@@ -99,29 +95,6 @@ in {
             };
           };
         };
-      };
-      caddy = {
-        enable = true;
-        virtualHosts = {
-          "https://${cfg.domain}:9998" = {
-            extraConfig = ''
-              reverse_proxy ${config.services.prometheus.exporters.process.listenAddress}:${toString config.services.prometheus.exporters.process.port}
-            '';
-          };
-          "https://${cfg.domain}:9999" = {
-            extraConfig = ''
-              reverse_proxy ${config.services.prometheus.exporters.node.listenAddress}:${toString config.services.prometheus.exporters.node.port}
-            '';
-          };
-        };
-      };
-    };
-    networking = {
-      firewall = {
-        allowedTCPPorts = [
-          9998
-          9999
-        ];
       };
     };
   };

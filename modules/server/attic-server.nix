@@ -27,7 +27,7 @@ in {
         package = pkgs-unstable.attic-server;
         environmentFile = "/root/secrets/atticd.env";
         settings = {
-          listen = "127.0.0.1:6000";
+          listen = "0.0.0.0:6000";
           database = {
             url = "sqlite:///mnt/server-data/attic/server.db";
           };
@@ -75,19 +75,6 @@ in {
       systemPackages = with pkgs-unstable; [
         openssl
       ];
-    };
-    services = {
-      caddy = {
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              handle {
-              reverse_proxy ${config.services.atticd.settings.listen}
-              }
-            '';
-          };
-        };
-      };
     };
   };
 }

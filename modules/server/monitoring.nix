@@ -46,17 +46,17 @@ in {
       prometheus = {
         enable = true;
         port = 9090;
-        listenAddress = "127.0.0.1";
+        listenAddress = "0.0.0.0";
         retentionTime = "15d";
         scrapeConfigs = [
           {
             job_name = "node";
             scrape_interval = "10s";
-            scheme = "https";
+            scheme = "http";
             static_configs =
               builtins.map (host: {
                 targets = [
-                  "${host}.gute-nessie.ts.net:9999"
+                  "${host}.${nodeCfg.tailscale-domain}:9100"
                 ];
                 labels = {
                   nodename = host;
@@ -67,11 +67,11 @@ in {
           {
             job_name = "process";
             scrape_interval = "10s";
-            scheme = "https";
+            scheme = "http";
             static_configs =
               builtins.map (host: {
                 targets = [
-                  "${host}.gute-nessie.ts.net:9998"
+                  "${host}.${nodeCfg.tailscale-domain}:9101"
                 ];
                 labels = {
                   nodename = host;
@@ -116,21 +116,6 @@ in {
                 }
               ];
             };
-          };
-        };
-      };
-      caddy = {
-        enable = true;
-        globalConfig = ''
-          servers {
-          metrics
-          }
-        '';
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              reverse_proxy ${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}
-            '';
           };
         };
       };

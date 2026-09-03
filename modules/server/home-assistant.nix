@@ -12,10 +12,6 @@ in {
     xanterella = {
       ha = {
         enable = lib.mkEnableOption "Aktiviert Home Assisant";
-        domain = lib.mkOption {
-          type = lib.types.str;
-          default = "${nodeCfg.domain}:1010";
-        };
       };
     };
   };
@@ -36,24 +32,10 @@ in {
               "/mnt/server-data/homeassistant:/config"
               "/etc/localtime:/etc/localtime:ro"
             ];
-            ports = [
-              "127.0.0.1:8123:8123"
-            ];
             extraOptions = [
               "--network=host"
             ];
             autoStart = true;
-          };
-        };
-      };
-    };
-    services = {
-      caddy = {
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              reverse_proxy 127.0.0.1:8123
-            '';
           };
         };
       };

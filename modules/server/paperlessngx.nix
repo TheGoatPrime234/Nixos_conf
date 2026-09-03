@@ -45,15 +45,6 @@ in {
           PAPERLESS_THREADS_PER_WORKER = 2;
         };
       };
-      caddy = {
-        virtualHosts = {
-          "https://${cfg.domain}" = {
-            extraConfig = ''
-              reverse_proxy 127.0.0.1:${toString config.services.paperless.port}
-            '';
-          };
-        };
-      };
     };
     systemd = {
       tmpfiles = {

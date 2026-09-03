@@ -7,7 +7,6 @@
     xanterella = {
       cluster-node = {
         enable = true;
-        domain = "swetik.gute-nessie.ts.net";
       };
       github-runner = {
         "default_builder" = {
