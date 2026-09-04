@@ -23,16 +23,16 @@
         attic-client
       ];
     };
-    # nix = {
-    #   settings = {
-    #     extra-substituters = [
-    #       "https://lutik.gute-nessie.ts.net:1001/main"
-    #     ];
-    #     extra-trusted-public-keys = [
-    #       "main:Z6A+g+ThOnrNBEAhZ8+DjThYby9FjrxFTGX52q0HMe4="
-    #     ];
-    #   };
-    # };
+    nix = {
+      settings = {
+        extra-substituters = [
+          "https://attic.xanterella.de/main"
+        ];
+        extra-trusted-public-keys = [
+          "main:hb8AzhhBIUsAT+TOJnzHMC9+WiYlQh9fSGeDxzQgy4s="
+        ];
+      };
+    };
     systemd = {
       user = {
         services = {
