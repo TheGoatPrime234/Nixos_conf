@@ -1,6 +1,7 @@
 {
   imports = [
     ./paperlessngx.nix
+    ./portainer.nix
     ./makemkv.nix
     ./home-assistant.nix
     ./jellyfin.nix

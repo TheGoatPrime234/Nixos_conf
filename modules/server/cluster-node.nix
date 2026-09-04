@@ -33,22 +33,9 @@ in {
   };
   config = lib.mkMerge [
     (lib.mkIf config.xanterella.cluster-node.enable {
-      services = {
-        caddy = {
+      xanterella = {
+        portainer-agent = {
           enable = true;
-        };
-        tailscale = {
-          enable = true;
-          permitCertUid = "caddy";
-        };
-      };
-      users = {
-        users = {
-          caddy = {
-            extraGroups = [
-              "tailscale"
-            ];
-          };
         };
       };
       networking = {
