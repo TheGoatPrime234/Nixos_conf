@@ -28,6 +28,7 @@ in {
             extraOptions = [
               "--device=/dev/sr0:/dev/sr0"
               "--device=/dev/sg0:/dev/sg0"
+              "--network=host"
             ];
           };
         };
@@ -39,9 +40,9 @@ in {
     systemd = {
       tmpfiles = {
         rules = [
-          "d /mnt/server-data/makemkv 0775 cato cato -"
-          "d /mnt/server-data/makemkv/config 0775 cato cato -"
-          "d /mnt/server-data/makemkv/storage 0775 cato cato -"
+          "d /mnt/server-data/makemkv 0775 root root -"
+          "d /mnt/server-data/makemkv/config 0775 root root -"
+          "d /mnt/server-data/makemkv/storage 0775 root root -"
         ];
       };
     };

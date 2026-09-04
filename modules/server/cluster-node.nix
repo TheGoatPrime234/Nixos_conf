@@ -34,7 +34,10 @@ in {
   config = lib.mkMerge [
     (lib.mkIf config.xanterella.cluster-node.enable {
       xanterella = {
-        portainer-agent = {
+        arcane-agent = {
+          enable = true;
+        };
+        makemkv = {
           enable = true;
         };
       };
@@ -71,7 +74,7 @@ in {
 
               Restart = "always";
               RestartSec = "5s";
-              DynamicUser = true;
+              User = "root";
             };
           };
         };

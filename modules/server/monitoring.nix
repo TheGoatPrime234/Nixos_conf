@@ -7,7 +7,7 @@
 }: let
   cfg = config.xanterella.monitoring;
   nodeCfg = config.xanterella.cluster-node;
-  ClusterNodes = ["lutik" "swetik"];
+  ClusterNodes = ["lutik" "swetik" "lacrux"];
 
   rawNodeDashboard = builtins.fromJSON (builtins.readFile "${inputs.xanterella-etc}/grafana/monitoring.json");
   patchedNodeDashboard =
