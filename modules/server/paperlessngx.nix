@@ -34,6 +34,7 @@ in {
         dataDir = "/mnt/server-data/paperlessngx";
         mediaDir = "/mnt/server-data/paperlessngx/media";
         consumptionDir = "/mnt/server-data/paperlessngx/consume";
+        address = "0.0.0.0";
         port = 2731;
         passwordFile = config.age.secrets.paperless-pass.path;
         settings = {

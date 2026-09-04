@@ -1,42 +1,26 @@
 {
   config,
-  pkgs,
-  pkgs-unstable,
   lib,
   ...
-}: {
+}: let
+  cfg = config.xanterella.makemkv;
+  nodeCfg = config.xanterella.cluster-node;
+in {
   options = {
     xanterella = {
       makemkv = {
-        enable = lib.mkEnableOption "Aktiviert makemkv";
+        enable = lib.mkEnableOption "Aktiviert MakeMKV Web-GUI";
       };
     };
   };
 
-  config = lib.mkIf config.xanterella.makemkv.enable {
-    boot = {
-      kernelModules = ["sg"];
-    };
-    users = {
-      users = {
-        cato = {
-          extraGroups = ["cdrom" "video"];
-        };
-      };
-    };
+  config = lib.mkIf (cfg.enable && nodeCfg.enable) {
     virtualisation = {
       oci-containers = {
         containers = {
           makemkv = {
             image = "jlesage/makemkv";
-            environment = {
-              TZ = "Europe/Berlin";
-              USER_ID = "1000";
-              GROUP_ID = "100";
-            };
-            ports = [
-              "5800:5800"
-            ];
+            ports = ["0.0.0.0:5800:5800"];
             volumes = [
               "/mnt/server-data/makemkv/config:/config"
               "/mnt/server-data/makemkv/storage:/storage"
@@ -44,12 +28,13 @@
             extraOptions = [
               "--device=/dev/sr0:/dev/sr0"
               "--device=/dev/sg0:/dev/sg0"
-              # "--privileged" # Nur einkommentieren, falls das Laufwerk im Container fehlt
             ];
-            autoStart = true;
           };
         };
       };
+    };
+    boot = {
+      kernelModules = ["sg"];
     };
     systemd = {
       tmpfiles = {
@@ -60,10 +45,12 @@
         ];
       };
     };
-    environment = {
-      systemPackages = with pkgs-unstable; [
-        makemkv
-      ];
+    users = {
+      users = {
+        cato = {
+          extraGroups = ["cdrom" "video"];
+        };
+      };
     };
   };
 }

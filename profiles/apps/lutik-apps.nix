@@ -17,9 +17,6 @@
       btop = {
         enable = true;
       };
-      homarr = {
-        enable = true;
-      };
       vikunja = {
         enable = true;
       };
@@ -47,9 +44,6 @@
       immich = {
         enable = true;
         ml-domain = "swetik.gute-nessie.ts.net";
-      };
-      paperlessngx = {
-        enable = true;
       };
       prometheus = {
         enable = true;

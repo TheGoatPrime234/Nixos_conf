@@ -25,7 +25,7 @@ in {
         frontendHostname = "${config.networking.hostName}";
         settings = {
           service = {
-            frontendurl = "https://${cfg.domain}";
+            frontendurl = "https://${nodeCfg.domain}";
           };
         };
       };

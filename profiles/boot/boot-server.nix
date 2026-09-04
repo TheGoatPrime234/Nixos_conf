@@ -9,7 +9,7 @@
         enable = true;
       };
       makemkv = {
-        enable = true;
+        enable = false;
       };
       stay-on = {
         enable = true;
