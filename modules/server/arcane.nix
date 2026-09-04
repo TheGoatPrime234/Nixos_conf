@@ -18,7 +18,7 @@ in {
     age = {
       secrets = {
         arcane-token = {
-          file = "./../agenix/arcane-token-${config.networking.hostName}.env.age";
+          file = ./. + "/../agenix/arcane-token-${config.networking.hostName}.env.age";
         };
       };
     };
@@ -36,17 +36,19 @@ in {
             environment = {
               "AGENT_MODE" = "true";
               "MANAGER_API_URL" = "http://lacrux.gute-nessie.ts.net:3552";
+              "EDGE_TRANSPORT" = "poll";
             };
             environmentFiles = [
-              config.age.secrets.arcane-token.env.age.path
+              config.age.secrets.arcane-token.path
             ];
             volumes = [
               "/run/podman/podman.sock:/var/run/docker.sock"
             ];
-            extraOptions = ["--privileged"];
+            extraOptions = ["--privileged" "--network=host"];
           };
         };
       };
     };
+    networking.firewall.allowedTCPPorts = [3552];
   };
 }
